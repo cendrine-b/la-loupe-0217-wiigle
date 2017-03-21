@@ -1,0 +1,82 @@
+body{
+	font-family: Helvetica, sans-serif;
+	background-color: #EDB2FF;/*fond rose*/
+}
+/*START position contain bar+logo*/
+.recherche{margin-top: 15%;}
+/*END position contain bar+logo*/
+
+/*START lettres logo*/
+.blue{color: blue;}
+.rouge{color: red;}
+.jaune{color: yellow;}
+.vert{color: green;}
+h1{letter-spacing: 8px;font-size: 50px;font-weight: bold;}
+.logo{margin-bottom: 1%;}
+/*END lettres logo*/
+
+/*START Barre de Recherche */
+.search-bar{width: 50%;}
+.search-bar{height: 40px;
+	font-family: sans-serif;}
+	.loupe{
+		height: 35px;
+		margin-left: -52px;font-size: 20px;opacity: 0.6;
+		margin-bottom: 5px;
+		border-radius: 10px;}
+
+/*START Barre de Recherche*/
+
+
+/*START general*/
+body{
+	background-color: #edb2ff;
+}
+.border{
+	border-radius:2em 2em 2em 2em;
+}
+/*END general*/
+/*START barre de recherche*/
+.barre{
+	margin-top: 5%;
+}
+.barre-rech{
+	margin-top: 2%;
+	width:50%;
+	height: 35px;
+}
+.logo{
+	margin-right: -150px;
+	width: 200px;
+	margin-left: 40px;
+}
+/*END barre de recherche*/
+
+/*START Affichage des résultats*/
+.resultat{
+	margin-top: 3%;
+}
+.image img{
+
+}
+.video{
+
+}
+.ligne2{
+	margin-top: 2%;
+}
+.couleur{
+	background-color: black;
+	height: 100px;
+}
+.site{
+	background-color: white;
+	height: 250px;
+	margin-top: 2%;
+}
+.musique{
+	margin-top: 2%;
+	background-color: green;
+	height: 120px;
+}
+/*ENd affichage des reusltats*/
