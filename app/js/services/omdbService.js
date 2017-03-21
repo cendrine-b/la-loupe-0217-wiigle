@@ -5,7 +5,7 @@ angular.module('app')
                 return $http.get('http://www.omdbapi.com/?');
             },
             getOne: function(title) {
-                return $http.get('http://www.omdbapi.com/?t=' + $scope.query + '&tomatoes=true&plot=full');
+                return $http.get('http://www.omdbapi.com/?t=' + title + '&tomatoes=true&plot=short');
             },
         };
     });

@@ -38,10 +38,14 @@
 
                 <!-- FILM -->
                 <div class="col-lg-8 film text-center" style="border:1px solid yellow">
-                    <div id="film">
+                    <div class="film">
                         <div ng-if="details.Response==='True'" class="ng-binding ng-scope">
                             <div id="results">
-                                <img ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}">
+                              <div class="col-lg-5 col-sm-12 col-xs-12">
+                                <img class="img-responsive" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}">
+                              </div>
+
+                              <div class="col-lg-7">
                                 <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
                                 <ul class="film-details">
                                     <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
@@ -54,6 +58,8 @@
                                     <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
                                     <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
                                 </ul>
+                              </div>
+
                             </div>
                         </div>
                     </div>
