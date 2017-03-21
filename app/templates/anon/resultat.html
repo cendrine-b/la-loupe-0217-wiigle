@@ -37,15 +37,15 @@
                 </div>
 
                 <!-- FILM -->
-                <div class="col-lg-8 film text-center" style="border:1px solid yellow">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 film" style="border:1px solid yellow">
                     <div class="film">
                         <div ng-if="details.Response==='True'" class="ng-binding ng-scope">
                             <div id="results">
-                              <div class="col-lg-5 col-sm-12 col-xs-12">
-                                <img class="img-responsive" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}">
+                              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                <img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}">
                               </div>
 
-                              <div class="col-lg-7">
+                              <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                                 <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
                                 <ul class="film-details">
                                     <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
