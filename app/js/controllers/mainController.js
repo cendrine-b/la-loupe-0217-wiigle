@@ -4,8 +4,9 @@ angular.module('app')
             $scope.query = "";
             $scope.goSearch = function() {
                 gifService.getOne($scope.query).then(function(res) {
-                    $scope.gif = res.data;
+                    $scope.gif = res.data.data;
                     console.log($scope.gif);
+
                 });
             };
     });
