@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, omdbService) {
+    .controller('MainController', function($scope, omdbService, gifService) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -8,7 +8,10 @@ angular.module('app')
             // OMDB API
               omdbService.getOne($scope.query).then(function(response) {
                 $scope.details = response.data;
-              });
-
+              }
+                gifService.getOne($scope.query).then(function(res) {
+                $scope.gif = res.data.data;
+            });
+          
         };
     });
