@@ -21,5 +21,11 @@ angular.module('app')
                 console.log($scope.image.value[0].contentUrl);
             });
 
+            // SPOTIFY API
+              spotifyService.getOne($scope.query).then(function(response) {
+                $scope.data = response.data;
+                console.log($scope.data);
+              });
+
         };
     });
