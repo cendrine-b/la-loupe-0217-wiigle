@@ -57787,6 +57787,37 @@ angular.module('app')
         };
     });
 
+// angular.module('app')
+//     .service('DeezerService', function($http, query) {
+//             return {
+//                 DeezerService.get("https://deezerdevs-deezer.p.mashape.com/search?q=" + query);
+//                 .header("X-Mashape-Key", "frfFTkz1xY7KeA1DEHLVoNM3lGUsVAmseWy4axR2yKu8cVqae02")
+//                 .header("Accept", "text/plain")
+//                 .end(function(result) {
+//                     console.log(result.status, result.headers, result.body);
+//                 });
+//             }
+//         };
+//     });
+
+angular.module('app')
+    .service('GiphyService', function($http) {
+            return {
+                getAll: function(giphy) {
+                    return $http.get("http://api.giphy.com/v1/gifs/search?q=" + $scope.query + "&api_key=dc6zaTOxFJmzC");
+                      },
+                    getOne: function(query) {
+                            return $http.get("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC");
+                        },
+                        update: function(id, giphy) {
+                            return $http.put('/giphys/' + id, giphy);
+                        },
+                        delete: function(id) {
+                            return $http.put('/giphys/' + id);
+                        }
+                };
+            });
+
 angular.module('app')
     .service('UserService', function($http) {
         return {
@@ -57829,20 +57860,42 @@ angular.module('app')
     });
 
 angular.module('app')
-    .controller('MainController', function($scope, $http) {
+    .controller('MainController', function($scope, GiphyService) {
         /* Here is your main controller */
-
-        $scope.query = "";
+        $scope.query = '';
         $scope.goSearch = function() {
+            // GiphyService.getOne($scope.query).then(function(response) {
+            //     $scope.gif = response.data.data;
+            //     console.log($scope.gif);
+            // });
 
-            $http.get("http://api.giphy.com/v1/gifs/search?q=" + $scope.query + "&api_key=dc6zaTOxFJmzC ")
-                .then(function(response) {
-                    $scope.gif = response.data.data;
-                    console.log($scope.gif);
-                });
-$http.get("http://www.omdbapi.com/?t=" + $scope.query + "&tomatoes=true&plot=full") .then(function(response) { $scope.details = response.data; });
+
+            // DeezerService.getOne($scope.query).then(function(response) {
+            //     $scope.dzresult = response.data.data;
+            //     console.log($scope.dzresult);
+            // });
+             var reqimage = {
+                 method: 'GET',
+                 url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=" + $scope.query + "&count=10&offset=0&mkt=en-us&safeSearch=Moderate",
+                 headers: {
+                     'Ocp-Apim-Subscription-Key': 'cf968acca48c492b88c535945b332bf0'
+                 }
+             };
+
+             $http(reqimage).then(function(response) {
+                 $scope.image = response.data;
+               console.log($scope.image.value[0].contentUrl);
+             });
+
         };
     });
+
+
+// .controller('DashboardController', function($scope, CurrentUser, UserService) {
+//     UserService.getOne(CurrentUser.user()._id).then(function(res) {
+//         $scope.user = res.data;
+//     });
+// });
 
 angular.module('app')
     .controller('NavbarController', function($scope, Auth, CurrentUser) {
@@ -57899,8 +57952,8 @@ angular.module('app')
                 url: '/resultat',
                 views: {
                     'content@': {
-                        templateUrl: 'anon/resultat.html',
-                        controller: 'MainController'
+                        templateUrl: 'anon/resultats.html',
+                        controller: 'ResultatsController'
                     }
                 }
             })
@@ -57974,17 +58027,9 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"col-xs-12 text-center\">\n" +
     "                <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
-    "              <a ui-sref=\"anon.resultat\"><button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
-    "                </button></a> \n" +
+    "              <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
+    "                </button>\n" +
     "\n" +
-    "<div ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
-    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
-    "\n" +
-    "<!-- </div>\n" +
-    "<div ng-repeat=\"i in deezer \">\n" +
-    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
-    "\n" +
-    "</div> -->\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -58086,7 +58131,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                    </div>\n" +
     "\n" +
     "                    <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
-    "                        <img class=\"img-responsive border\" src=\"img/chat2.jpeg\" alt=\"\">\n" +
+    "                      <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\">\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "                <div class=\"row ligne2\">\n" +

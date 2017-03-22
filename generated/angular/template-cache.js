@@ -9,17 +9,9 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"col-xs-12 text-center\">\n" +
     "                <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
-    "              <a ui-sref=\"anon.resultat\"><button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
-    "                </button></a> \n" +
+    "              <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
+    "                </button>\n" +
     "\n" +
-    "<div ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
-    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
-    "\n" +
-    "<!-- </div>\n" +
-    "<div ng-repeat=\"i in deezer \">\n" +
-    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
-    "\n" +
-    "</div> -->\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -121,7 +113,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                    </div>\n" +
     "\n" +
     "                    <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
-    "                        <img class=\"img-responsive border\" src=\"img/chat2.jpeg\" alt=\"\">\n" +
+    "                      <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\">\n" +
     "                    </div>\n" +
     "                </div>\n" +
     "                <div class=\"row ligne2\">\n" +

@@ -6,17 +6,9 @@
         <div class="row">
             <div class="col-xs-12 text-center">
                 <input class="search-bar" type="text" name="searching" value="" placeholder="Search something..." ng-model="query">
-              <a ui-sref="anon.resultat"><button type="button" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true" ng-click="goSearch()">
-                </button></a> 
+              <button type="button" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true" ng-click="goSearch()">
+                </button>
 
-<div ng-repeat="i in gif " ng-show="$first">
-  <img src="{{i.images.downsized.url}}" alt="">
-
-<!-- </div>
-<div ng-repeat="i in deezer ">
-  <img src="{{i.images.downsized.url}}" alt="">
-
-</div> -->
             </div>
         </div>
     </div>
