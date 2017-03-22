@@ -57787,36 +57787,54 @@ angular.module('app')
         };
     });
 
-// angular.module('app')
-//     .service('DeezerService', function($http, query) {
-//             return {
-//                 DeezerService.get("https://deezerdevs-deezer.p.mashape.com/search?q=" + query);
-//                 .header("X-Mashape-Key", "frfFTkz1xY7KeA1DEHLVoNM3lGUsVAmseWy4axR2yKu8cVqae02")
-//                 .header("Accept", "text/plain")
-//                 .end(function(result) {
-//                     console.log(result.status, result.headers, result.body);
-//                 });
-//             }
-//         };
-//     });
+angular.module('app')
+    .service('gifService', function($http) {
+        return {
+            getAll: function() {
+                return $http.get('http://api.giphy.com/v1/gifs/search?q=' + $scope.query + '&api_key=dc6zaTOxFJmzC');
+            },
+            getOne: function(query) {
+                return $http.get('http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=dc6zaTOxFJmzC');
+            },
+            update: function(id, user) {
+                return $http.put('/users/' + id, user);
+            },
+            delete: function(id) {
+                return $http.delete('/users/' + id);
+            }
+        };
+    });
 
 angular.module('app')
-    .service('GiphyService', function($http) {
-            return {
-                getAll: function(giphy) {
-                    return $http.get("http://api.giphy.com/v1/gifs/search?q=" + $scope.query + "&api_key=dc6zaTOxFJmzC");
-                      },
-                    getOne: function(query) {
-                            return $http.get("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=dc6zaTOxFJmzC");
-                        },
-                        update: function(id, giphy) {
-                            return $http.put('/giphys/' + id, giphy);
-                        },
-                        delete: function(id) {
-                            return $http.put('/giphys/' + id);
-                        }
-                };
-            });
+
+
+
+.service('imageService', function($http) {
+    return {
+        getOne: function(query) {
+          var reqimage = {
+            method: 'GET',
+            url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=" + query + "&count=10&offset=0&mkt=en-us&safeSearch=Moderate",
+            headers: {
+              'Ocp-Apim-Subscription-Key' : 'cf968acca48c492b88c535945b332bf0'
+            }
+          };
+            return $http(reqimage);
+        },
+    };
+});
+
+angular.module('app')
+    .service('omdbService', function($http) {
+      return {
+            getAll: function() {
+                return $http.get('http://www.omdbapi.com/?');
+            },
+            getOne: function(title) {
+                return $http.get('http://www.omdbapi.com/?t=' + title + '&tomatoes=true&plot=short');
+            },
+        };
+    });
 
 angular.module('app')
     .service('UserService', function($http) {
@@ -57831,7 +57849,7 @@ angular.module('app')
                 return $http.put('/users/' + id, user);
             },
             delete: function(id) {
-                return $http.put('/users/' + id);
+                return $http.delete('/users/' + id);
             }
         };
     });
@@ -57860,42 +57878,30 @@ angular.module('app')
     });
 
 angular.module('app')
-    .controller('MainController', function($scope, GiphyService) {
+    .controller('MainController', function($scope, omdbService, gifService, imageService) {
         /* Here is your main controller */
-        $scope.query = '';
+
+        $scope.query = "";
         $scope.goSearch = function() {
-            // GiphyService.getOne($scope.query).then(function(response) {
-            //     $scope.gif = response.data.data;
-            //     console.log($scope.gif);
-            // });
 
+            // OMDB API
+            omdbService.getOne($scope.query).then(function(response) {
+                $scope.details = response.data;
+            });
 
-            // DeezerService.getOne($scope.query).then(function(response) {
-            //     $scope.dzresult = response.data.data;
-            //     console.log($scope.dzresult);
-            // });
-             var reqimage = {
-                 method: 'GET',
-                 url: "https://api.cognitive.microsoft.com/bing/v5.0/images/search?q=" + $scope.query + "&count=10&offset=0&mkt=en-us&safeSearch=Moderate",
-                 headers: {
-                     'Ocp-Apim-Subscription-Key': 'cf968acca48c492b88c535945b332bf0'
-                 }
-             };
+            // GIPHY API
+            gifService.getOne($scope.query).then(function(res) {
+                $scope.gif = res.data.data;
+            });
 
-             $http(reqimage).then(function(response) {
-                 $scope.image = response.data;
-               console.log($scope.image.value[0].contentUrl);
-             });
+            //image
+            imageService.getOne($scope.query).then(function(response) {
+                $scope.image = response.data;
+                console.log($scope.image.value[0].contentUrl);
+            });
 
         };
     });
-
-
-// .controller('DashboardController', function($scope, CurrentUser, UserService) {
-//     UserService.getOne(CurrentUser.user()._id).then(function(res) {
-//         $scope.user = res.data;
-//     });
-// });
 
 angular.module('app')
     .controller('NavbarController', function($scope, Auth, CurrentUser) {
@@ -57921,6 +57927,7 @@ angular.module('app')
             });
         };
     });
+
 
 angular.module('app')
     .config(function($stateProvider, $urlRouterProvider, AccessLevels) {
@@ -57952,8 +57959,8 @@ angular.module('app')
                 url: '/resultat',
                 views: {
                     'content@': {
-                        templateUrl: 'anon/resultats.html',
-                        controller: 'ResultatsController'
+                        templateUrl: 'anon/resultat.html',
+                        controller: 'MainController'
                     }
                 }
             })
@@ -58027,9 +58034,17 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"col-xs-12 text-center\">\n" +
     "                <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
-    "              <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
-    "                </button>\n" +
+    "              <a ui-sref=\"anon.resultat\"><button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
+    "                </button></a> \n" +
     "\n" +
+    "<div ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
+    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
+    "\n" +
+    "<!-- </div>\n" +
+    "<div ng-repeat=\"i in deezer \">\n" +
+    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
+    "\n" +
+    "</div> -->\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -58106,77 +58121,100 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("anon/resultat.html",
-    "\n" +
-    "    <!-- START Barre de recherche  -->\n" +
-    "    <div class=\"container\">\n" +
-    "        <div class=\"row barre\">\n" +
-    "            <div class=\"col-xs-1 logo text-right\" style=\"border:1px solid red;\">\n" +
-    "                <h1>WIIGLE</h1>\n" +
-    "            </div>\n" +
-    "            <div class=\"col-xs-11 text-center\">\n" +
-    "              <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
-    "              <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
+    "<!-- START Barre de recherche  -->\n" +
+    "<div class=\"container\">\n" +
+    "    <div class=\"row barre\">\n" +
+    "        <div class=\"col-xs-1 logo text-right\" style=\"border:1px solid red;\">\n" +
+    "            <h1>WIIGLE</h1>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-11 text-center\">\n" +
+    "            <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
+    "            <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
     "              </button>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "<!-- END Barre de recherche -->\n" +
+    "<div class=\"container\">\n" +
+    "    <div class=\"row resultat\">\n" +
+    "        <!--START col géante lg 8 -->\n" +
+    "        <div class=\"col-lg-8\" style=\"border:1px solid red;\">\n" +
+    "            <div class=\"row\">\n" +
+    "\n" +
+    "\n" +
+    "                <!-- VIDEO -->\n" +
+    "\n" +
+    "                <div class=\"col-lg-8 video\" style=\"border:1px solid yellow;\">\n" +
+    "                    <img class=\"img-responsie border\" src=\"img/chat1.png\" alt=\"\">\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <!-- IMAGE -->\n" +
+    "\n" +
+    "                <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
+    "                  <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\"> </div>\n" +
+    "                </div>\n" +
+    "          \n" +
+    "            <div class=\"row ligne2\">\n" +
+    "\n" +
+    "                <!-- GIF -->\n" +
+    "                <div class=\"col-lg-4\" ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
+    "                    <img class=\"img-responsive\" src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <!-- FILM -->\n" +
+    "                <div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12 film\" style=\"border:1px solid yellow\">\n" +
+    "                    <div class=\"film\">\n" +
+    "                        <div ng-if=\"details.Response==='True'\" class=\"ng-binding ng-scope\">\n" +
+    "                            <div id=\"results\">\n" +
+    "                              <div class=\"col-lg-5 col-md-5 col-sm-5 col-xs-12\">\n" +
+    "                                <img class=\"img-responsive center-block\" ng-src=\"{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}\">\n" +
+    "                              </div>\n" +
+    "\n" +
+    "                              <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-12\">\n" +
+    "\n" +
+    "                                <h3 class=\"title\"><a href=\"http://imdb.com/title/{{ details.imdbID }}\" target=\"_blank\">{{ details.Title }}</a></h3>\n" +
+    "                                <ul class=\"film-details\">\n" +
+    "                                    <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>\n" +
+    "                                    <li><strong>Director: </strong> {{ details.Director }}</li>\n" +
+    "                                    <li><strong>Actors: </strong> {{ details.Actors }}</li>\n" +
+    "                                    <li><strong>Genre: </strong> {{ details.Genre }}</li>\n" +
+    "                                </ul>\n" +
+    "                                <p>{{ details.Plot }}</p>\n" +
+    "                                <ul class=\"ratings\">\n" +
+    "                                    <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>\n" +
+    "                                    <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>\n" +
+    "                                </ul>\n" +
+    "\n" +
+    "\n" +
+    "                              </div>\n" +
+    "\n" +
+    "\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "        <!-- END col géante lg 8 -->\n" +
+    "        <div class=\"col-lg-4\" style=\"border: 1px solid red;\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <!-- COLOR -->\n" +
+    "                <div class=\"col-xs-12 border couleur text-center\">\n" +
+    "                    <p>Couleur</p>\n" +
+    "                </div>\n" +
+    "                <!-- WEBSITE -->\n" +
+    "                <div class=\"site border col-xs-12 text-center\">\n" +
+    "                    <h1>Site</h1>\n" +
+    "                </div>\n" +
+    "                <!-- MUSIC -->\n" +
+    "                <div class=\"col-xs-12 border musique text-center\">\n" +
+    "                    <p>musique</p>\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "    <!-- END Barre de recherche -->\n" +
-    "    <div class=\"container\">\n" +
-    "        <div class=\"row resultat\">\n" +
-    "            <!--START col géante lg 8 -->\n" +
-    "            <div class=\"col-lg-8\" style=\"border:1px solid red;\">\n" +
-    "                <div class=\"row\">\n" +
-    "                    <div class=\"col-lg-8 video\" style=\"border:1px solid yellow;\">\n" +
-    "                        <img class=\"img-responsive border\" src=\"img/chat1.png\" alt=\"\">\n" +
-    "                    </div>\n" +
-    "\n" +
-    "                    <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
-    "                      <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\">\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "                <div class=\"row ligne2\">\n" +
-    "                    <div class=\"col-lg-4\"  ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
-    "                        <img class=\"img-responsive\" src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
-    "                  </div>\n" +
-    "                    <div class=\"col-lg-8 film text-center\" style=\"border:1px solid yellow\">\n" +
-    "                      <div id=\"film\">\n" +
-    "                <div ng-if=\"details.Response==='True'\" class=\"ng-binding ng-scope\">\n" +
-    "                    <div id=\"results\">\n" +
-    "                        <img ng-src=\"{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}\">\n" +
-    "                        <h3 class=\"title\"><a href=\"http://imdb.com/title/{{ details.imdbID }}\" target=\"_blank\">{{ details.Title }}</a></h3>\n" +
-    "                        <ul class=\"film-details\">\n" +
-    "                            <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>\n" +
-    "                            <li><strong>Director: </strong> {{ details.Director }}</li>\n" +
-    "                            <li><strong>Actors: </strong> {{ details.Actors }}</li>\n" +
-    "                            <li><strong>Genre: </strong> {{ details.Genre }}</li>\n" +
-    "                        </ul>\n" +
-    "                        <p>{{ details.Plot }}</p>\n" +
-    "                        <ul class=\"ratings\">\n" +
-    "                            <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>\n" +
-    "                            <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>\n" +
-    "                        </ul>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- END col géante lg 8 -->\n" +
-    "            <div class=\"col-lg-4\" style=\"border: 1px solid red;\">\n" +
-    "                <div class=\"row\">\n" +
-    "                    <div class=\"col-xs-12 border couleur text-center\">\n" +
-    "                        <p>Couleur</p>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"site border col-xs-12 text-center\">\n" +
-    "                        <h1>Site</h1>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"col-xs-12 border musique text-center\">\n" +
-    "                        <p>musique</p>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>\n"
+    "</div>\n"
   );
 
   $templateCache.put("user/dashboard.html",

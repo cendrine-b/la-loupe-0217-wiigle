@@ -9,9 +9,17 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "        <div class=\"row\">\n" +
     "            <div class=\"col-xs-12 text-center\">\n" +
     "                <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
-    "              <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
-    "                </button>\n" +
+    "              <a ui-sref=\"anon.resultat\"><button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
+    "                </button></a> \n" +
     "\n" +
+    "<div ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
+    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
+    "\n" +
+    "<!-- </div>\n" +
+    "<div ng-repeat=\"i in deezer \">\n" +
+    "  <img src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
+    "\n" +
+    "</div> -->\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -88,77 +96,100 @@ angular.module("app").run(["$templateCache", function($templateCache) {
   );
 
   $templateCache.put("anon/resultat.html",
-    "\n" +
-    "    <!-- START Barre de recherche  -->\n" +
-    "    <div class=\"container\">\n" +
-    "        <div class=\"row barre\">\n" +
-    "            <div class=\"col-xs-1 logo text-right\" style=\"border:1px solid red;\">\n" +
-    "                <h1>WIIGLE</h1>\n" +
-    "            </div>\n" +
-    "            <div class=\"col-xs-11 text-center\">\n" +
-    "              <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
-    "              <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
+    "<!-- START Barre de recherche  -->\n" +
+    "<div class=\"container\">\n" +
+    "    <div class=\"row barre\">\n" +
+    "        <div class=\"col-xs-1 logo text-right\" style=\"border:1px solid red;\">\n" +
+    "            <h1>WIIGLE</h1>\n" +
+    "        </div>\n" +
+    "        <div class=\"col-xs-11 text-center\">\n" +
+    "            <input class=\"search-bar\" type=\"text\" name=\"searching\" value=\"\" placeholder=\"Search something...\" ng-model=\"query\">\n" +
+    "            <button type=\"button\" class=\"btn btn-default glyphicon glyphicon-search loupe\" aria-hidden=\"true\" ng-click=\"goSearch()\">\n" +
     "              </button>\n" +
+    "        </div>\n" +
+    "    </div>\n" +
+    "</div>\n" +
+    "<!-- END Barre de recherche -->\n" +
+    "<div class=\"container\">\n" +
+    "    <div class=\"row resultat\">\n" +
+    "        <!--START col géante lg 8 -->\n" +
+    "        <div class=\"col-lg-8\" style=\"border:1px solid red;\">\n" +
+    "            <div class=\"row\">\n" +
+    "\n" +
+    "\n" +
+    "                <!-- VIDEO -->\n" +
+    "\n" +
+    "                <div class=\"col-lg-8 video\" style=\"border:1px solid yellow;\">\n" +
+    "                    <img class=\"img-responsie border\" src=\"img/chat1.png\" alt=\"\">\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <!-- IMAGE -->\n" +
+    "\n" +
+    "                <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
+    "                  <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\"> </div>\n" +
+    "                </div>\n" +
+    "          \n" +
+    "            <div class=\"row ligne2\">\n" +
+    "\n" +
+    "                <!-- GIF -->\n" +
+    "                <div class=\"col-lg-4\" ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
+    "                    <img class=\"img-responsive\" src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
+    "                </div>\n" +
+    "\n" +
+    "                <!-- FILM -->\n" +
+    "                <div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12 film\" style=\"border:1px solid yellow\">\n" +
+    "                    <div class=\"film\">\n" +
+    "                        <div ng-if=\"details.Response==='True'\" class=\"ng-binding ng-scope\">\n" +
+    "                            <div id=\"results\">\n" +
+    "                              <div class=\"col-lg-5 col-md-5 col-sm-5 col-xs-12\">\n" +
+    "                                <img class=\"img-responsive center-block\" ng-src=\"{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}\">\n" +
+    "                              </div>\n" +
+    "\n" +
+    "                              <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-12\">\n" +
+    "\n" +
+    "                                <h3 class=\"title\"><a href=\"http://imdb.com/title/{{ details.imdbID }}\" target=\"_blank\">{{ details.Title }}</a></h3>\n" +
+    "                                <ul class=\"film-details\">\n" +
+    "                                    <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>\n" +
+    "                                    <li><strong>Director: </strong> {{ details.Director }}</li>\n" +
+    "                                    <li><strong>Actors: </strong> {{ details.Actors }}</li>\n" +
+    "                                    <li><strong>Genre: </strong> {{ details.Genre }}</li>\n" +
+    "                                </ul>\n" +
+    "                                <p>{{ details.Plot }}</p>\n" +
+    "                                <ul class=\"ratings\">\n" +
+    "                                    <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>\n" +
+    "                                    <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>\n" +
+    "                                </ul>\n" +
+    "\n" +
+    "\n" +
+    "                              </div>\n" +
+    "\n" +
+    "\n" +
+    "                            </div>\n" +
+    "                        </div>\n" +
+    "                    </div>\n" +
+    "                </div>\n" +
+    "\n" +
+    "            </div>\n" +
+    "        </div>\n" +
+    "        <!-- END col géante lg 8 -->\n" +
+    "        <div class=\"col-lg-4\" style=\"border: 1px solid red;\">\n" +
+    "            <div class=\"row\">\n" +
+    "                <!-- COLOR -->\n" +
+    "                <div class=\"col-xs-12 border couleur text-center\">\n" +
+    "                    <p>Couleur</p>\n" +
+    "                </div>\n" +
+    "                <!-- WEBSITE -->\n" +
+    "                <div class=\"site border col-xs-12 text-center\">\n" +
+    "                    <h1>Site</h1>\n" +
+    "                </div>\n" +
+    "                <!-- MUSIC -->\n" +
+    "                <div class=\"col-xs-12 border musique text-center\">\n" +
+    "                    <p>musique</p>\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
-    "    <!-- END Barre de recherche -->\n" +
-    "    <div class=\"container\">\n" +
-    "        <div class=\"row resultat\">\n" +
-    "            <!--START col géante lg 8 -->\n" +
-    "            <div class=\"col-lg-8\" style=\"border:1px solid red;\">\n" +
-    "                <div class=\"row\">\n" +
-    "                    <div class=\"col-lg-8 video\" style=\"border:1px solid yellow;\">\n" +
-    "                        <img class=\"img-responsive border\" src=\"img/chat1.png\" alt=\"\">\n" +
-    "                    </div>\n" +
-    "\n" +
-    "                    <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
-    "                      <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\">\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "                <div class=\"row ligne2\">\n" +
-    "                    <div class=\"col-lg-4\"  ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
-    "                        <img class=\"img-responsive\" src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
-    "                  </div>\n" +
-    "                    <div class=\"col-lg-8 film text-center\" style=\"border:1px solid yellow\">\n" +
-    "                      <div id=\"film\">\n" +
-    "                <div ng-if=\"details.Response==='True'\" class=\"ng-binding ng-scope\">\n" +
-    "                    <div id=\"results\">\n" +
-    "                        <img ng-src=\"{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}\">\n" +
-    "                        <h3 class=\"title\"><a href=\"http://imdb.com/title/{{ details.imdbID }}\" target=\"_blank\">{{ details.Title }}</a></h3>\n" +
-    "                        <ul class=\"film-details\">\n" +
-    "                            <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>\n" +
-    "                            <li><strong>Director: </strong> {{ details.Director }}</li>\n" +
-    "                            <li><strong>Actors: </strong> {{ details.Actors }}</li>\n" +
-    "                            <li><strong>Genre: </strong> {{ details.Genre }}</li>\n" +
-    "                        </ul>\n" +
-    "                        <p>{{ details.Plot }}</p>\n" +
-    "                        <ul class=\"ratings\">\n" +
-    "                            <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>\n" +
-    "                            <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>\n" +
-    "                        </ul>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "            <!-- END col géante lg 8 -->\n" +
-    "            <div class=\"col-lg-4\" style=\"border: 1px solid red;\">\n" +
-    "                <div class=\"row\">\n" +
-    "                    <div class=\"col-xs-12 border couleur text-center\">\n" +
-    "                        <p>Couleur</p>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"site border col-xs-12 text-center\">\n" +
-    "                        <h1>Site</h1>\n" +
-    "                    </div>\n" +
-    "                    <div class=\"col-xs-12 border musique text-center\">\n" +
-    "                        <p>musique</p>\n" +
-    "                    </div>\n" +
-    "                </div>\n" +
-    "            </div>\n" +
-    "        </div>\n" +
-    "    </div>\n"
+    "</div>\n"
   );
 
   $templateCache.put("user/dashboard.html",

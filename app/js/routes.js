@@ -28,8 +28,8 @@ angular.module('app')
                 url: '/resultat',
                 views: {
                     'content@': {
-                        templateUrl: 'anon/resultats.html',
-                        controller: 'ResultatsController'
+                        templateUrl: 'anon/resultat.html',
+                        controller: 'MainController'
                     }
                 }
             })
