@@ -57837,6 +57837,15 @@ angular.module('app')
     });
 
 angular.module('app')
+    .service('spotifyService', function($http) {
+      return {
+            getOne: function(query) {
+                return $http.get('https://api.spotify.com/v1/search?q=' + query + '&type=track&limit=1');
+            },
+        };
+    });
+
+angular.module('app')
     .service('UserService', function($http) {
         return {
             getAll: function() {
@@ -57878,7 +57887,7 @@ angular.module('app')
     });
 
 angular.module('app')
-    .controller('MainController', function($scope, omdbService, gifService, imageService) {
+    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -57898,6 +57907,12 @@ angular.module('app')
             imageService.getOne($scope.query).then(function(response) {
                 $scope.image = response.data;
                 console.log($scope.image.value[0].contentUrl);
+            });
+
+            // SPOTIFY API
+              spotifyService.getOne($scope.query).then(function(response) {
+                $scope.data = response.data;
+                console.log($scope.data);
             });
 
         };
@@ -58153,7 +58168,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
     "                  <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\"> </div>\n" +
     "                </div>\n" +
-    "          \n" +
+    "\n" +
     "            <div class=\"row ligne2\">\n" +
     "\n" +
     "                <!-- GIF -->\n" +
@@ -58209,7 +58224,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                </div>\n" +
     "                <!-- MUSIC -->\n" +
     "                <div class=\"col-xs-12 border musique text-center\">\n" +
-    "                    <p>musique</p>\n" +
+    "                  <audio src=\"{{ data.tracks.items[0].preview_url }}\" controls></audio>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +

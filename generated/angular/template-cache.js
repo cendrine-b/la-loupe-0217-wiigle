@@ -128,7 +128,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
     "                  <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\"> </div>\n" +
     "                </div>\n" +
-    "          \n" +
+    "\n" +
     "            <div class=\"row ligne2\">\n" +
     "\n" +
     "                <!-- GIF -->\n" +
@@ -184,7 +184,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                </div>\n" +
     "                <!-- MUSIC -->\n" +
     "                <div class=\"col-xs-12 border musique text-center\">\n" +
-    "                    <p>musique</p>\n" +
+    "                  <audio src=\"{{ data.tracks.items[0].preview_url }}\" controls></audio>\n" +
     "                </div>\n" +
     "            </div>\n" +
     "        </div>\n" +

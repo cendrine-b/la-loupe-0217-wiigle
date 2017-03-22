@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, omdbService, gifService, imageService) {
+    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -25,7 +25,7 @@ angular.module('app')
               spotifyService.getOne($scope.query).then(function(response) {
                 $scope.data = response.data;
                 console.log($scope.data);
-              });
+            });
 
         };
     });
