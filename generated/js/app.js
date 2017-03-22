@@ -57791,10 +57791,10 @@ angular.module('app')
     .service('gifService', function($http) {
         return {
             getAll: function() {
-                return $http.get('http://api.giphy.com/v1/gifs/search?q=' + $scope.query +  '&api_key=dc6zaTOxFJmzC');
+                return $http.get('http://api.giphy.com/v1/gifs/search?q=' + $scope.query + '&api_key=dc6zaTOxFJmzC');
             },
             getOne: function(query) {
-                return $http.get('http://api.giphy.com/v1/gifs/search?q=' + query +  '&api_key=dc6zaTOxFJmzC');
+                return $http.get('http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=dc6zaTOxFJmzC');
             },
             update: function(id, user) {
                 return $http.put('/users/' + id, user);
@@ -57848,40 +57848,13 @@ angular.module('app')
 
 angular.module('app')
     .controller('MainController', function($scope, gifService) {
-
-            $scope.query = "";
-            $scope.goSearch = function() {
-                gifService.getOne($scope.query).then(function(res) {
-                    $scope.gif = res.data.data;
-                    console.log($scope.gif);
-
-                });
-            };
+        $scope.query = "";
+        $scope.goSearch = function() {
+            gifService.getOne($scope.query).then(function(res) {
+                $scope.gif = res.data.data;
+            });
+        };
     });
-
-
-
-
-
-
-
-
-
-// angular.module('app')
-// .controller('MainController', function($scope, gif) {
-//   /* Here is your main controller */
-//
-//   $scope.query = "";
-//   $scope.goSearch = function() {
-//
-//     $http.get("http://api.giphy.com/v1/gifs/search?q=" + $scope.query + "&api_key=dc6zaTOxFJmzC ")
-//     .then(function(response) {
-//       $scope.gif = response.data.data;
-//       console.log($scope.gif);
-//     });
-//     $http.get("http://www.omdbapi.com/?t=" + $scope.query + "&tomatoes=true&plot=full") .then(function(response) { $scope.details = response.data; });
-//   };
-// });
 
 angular.module('app')
     .controller('NavbarController', function($scope, Auth, CurrentUser) {
