@@ -58153,7 +58153,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
     "                  <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\"> </div>\n" +
     "                </div>\n" +
-    "            </div>\n" +
+    "          \n" +
     "            <div class=\"row ligne2\">\n" +
     "\n" +
     "                <!-- GIF -->\n" +
