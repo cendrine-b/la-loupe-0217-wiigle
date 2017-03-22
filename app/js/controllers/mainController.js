@@ -8,8 +8,10 @@ angular.module('app')
             // OMDB API
               omdbService.getOne($scope.query).then(function(response) {
                 $scope.details = response.data;
-              }
-                gifService.getOne($scope.query).then(function(res) {
+              });
+            
+            // GIPHY API
+               gifService.getOne($scope.query).then(function(res) {
                 $scope.gif = res.data.data;
             });
           
