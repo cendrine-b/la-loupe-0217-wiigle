@@ -17,59 +17,44 @@
         <!--START col géante lg 8 -->
         <div class="col-lg-8" style="border:1px solid red;">
             <div class="row">
-
-
                 <!-- VIDEO -->
-
                 <div ng-bind-html="bindHTML" class="col-lg-8 video-container video" style="border:1px solid yellow;">
                 </div>
-
                 <!-- IMAGE -->
-
                 <div class="col-lg-4 image" style="border:1px solid yellow;">
-                  <img class="img-responsive border" src="{{image.value[0].contentUrl}}" alt=""> </div>
-                </div>
-
+                    <img class="img-responsive border" src="{{image.value[0].contentUrl}}" alt=""> </div>
+            </div>
             <div class="row ligne2">
-
                 <!-- GIF -->
                 <div class="col-lg-4" ng-repeat="i in gif " ng-show="$first">
                     <img class="img-responsive" src="{{i.images.downsized.url}}" alt="">
                 </div>
-
                 <!-- FILM -->
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 film" style="border:1px solid yellow">
                     <div class="film">
                         <div ng-if="details.Response==='True'" class="ng-binding ng-scope">
                             <div id="results">
-                              <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                <img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}">
-                              </div>
-
-                              <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-
-                                <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
-                                <ul class="film-details">
-                                    <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
-                                    <li><strong>Director: </strong> {{ details.Director }}</li>
-                                    <li><strong>Actors: </strong> {{ details.Actors }}</li>
-                                    <li><strong>Genre: </strong> {{ details.Genre }}</li>
-                                </ul>
-                                <p>{{ details.Plot }}</p>
-                                <ul class="ratings">
-                                    <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
-                                    <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
-                                </ul>
-
-
-                              </div>
-
-
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                                    <img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}">
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                                    <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
+                                    <ul class="film-details">
+                                        <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
+                                        <li><strong>Director: </strong> {{ details.Director }}</li>
+                                        <li><strong>Actors: </strong> {{ details.Actors }}</li>
+                                        <li><strong>Genre: </strong> {{ details.Genre }}</li>
+                                    </ul>
+                                    <p>{{ details.Plot }}</p>
+                                    <ul class="ratings">
+                                        <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
+                                        <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- END col géante lg 8 -->
@@ -81,12 +66,14 @@
                 </div>
                 <!-- WEBSITE -->
                 <div class="site border col-xs-12 text-center">
-                    <h1>Site</h1>
+                    <h3>{{web.webPages.value[0].name}}</h3>
+                    <p><a href="{{web.webPages.value[0].url}}" target="_blank">{{web.webPages.value[0].url}}</a></p>
+                    <p>{{web.webPages.value[0].snippet}}</p>
                 </div>
-                <!-- MUSIC -->
-                <div class="col-xs-12 border musique text-center">
-                  <audio src="{{ data.tracks.items[0].preview_url }}" controls></audio>
-                </div>
+            </div>
+            <!-- MUSIC -->
+            <div class="col-xs-12 border musique text-center">
+                <audio src="{{ data.tracks.items[0].preview_url }}" controls></audio>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce) {
+    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -33,6 +33,13 @@ angular.module('app')
                 $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml);
                 console.log($scope.video);
             });
+
+            // WEB API
+            webService.getOne($scope.query).then(function(response) {
+                $scope.web = response.data;
+                console.log(response.data);
+            });
+
 
         };
     });
