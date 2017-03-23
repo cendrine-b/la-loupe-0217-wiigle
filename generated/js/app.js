@@ -57864,6 +57864,25 @@ angular.module('app')
     });
 
 angular.module('app')
+
+
+
+    .service('videoService', function($http) {
+        return {
+            getOne: function(query) {
+                var reqvideo = {
+                    method: 'GET',
+                    url: "https://api.cognitive.microsoft.com/bing/v5.0/videos/search?q=" + query + "&count=10&offset=0&mkt=en-us&safeSearch=Moderate",
+                    headers: {
+                        'Ocp-Apim-Subscription-Key': 'cf968acca48c492b88c535945b332bf0'
+                    }
+                };
+                return $http(reqvideo);
+            },
+        };
+    });
+
+angular.module('app')
     .controller('DashboardController', function($scope, CurrentUser, UserService) {
         UserService.getOne(CurrentUser.user()._id).then(function(res) {
             $scope.user = res.data;
@@ -57887,19 +57906,19 @@ angular.module('app')
     });
 
 angular.module('app')
-    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService) {
+    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce) {
         /* Here is your main controller */
 
         $scope.query = "";
         $scope.goSearch = function() {
 
             // OMDB API
-              omdbService.getOne($scope.query).then(function(response) {
+            omdbService.getOne($scope.query).then(function(response) {
                 $scope.details = response.data;
-              });
+            });
 
             // GIPHY API
-               gifService.getOne($scope.query).then(function(res) {
+            gifService.getOne($scope.query).then(function(res) {
                 $scope.gif = res.data.data;
             });
 
@@ -57910,9 +57929,16 @@ angular.module('app')
             });
 
             // SPOTIFY API
-              spotifyService.getOne($scope.query).then(function(response) {
+            spotifyService.getOne($scope.query).then(function(response) {
                 $scope.data = response.data;
                 console.log($scope.data);
+            });
+
+            //video
+            videoService.getOne($scope.query).then(function(response) {
+                $scope.video = response.data;
+                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml);
+                console.log($scope.video);
             });
 
         };
@@ -58159,8 +58185,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "\n" +
     "                <!-- VIDEO -->\n" +
     "\n" +
-    "                <div class=\"col-lg-8 video\" style=\"border:1px solid yellow;\">\n" +
-    "                    <img class=\"img-responsive border\" src=\"img/chat1.png\" alt=\"\">\n" +
+    "                <div ng-bind-html=\"bindHTML\" class=\"col-lg-8 video-container video\" style=\"border:1px solid yellow;\">\n" +
     "                </div>\n" +
     "\n" +
     "                <!-- IMAGE -->\n" +
