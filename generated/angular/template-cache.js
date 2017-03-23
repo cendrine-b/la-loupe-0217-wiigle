@@ -119,8 +119,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "\n" +
     "                <!-- VIDEO -->\n" +
     "\n" +
-    "                <div class=\"col-lg-8 video\" style=\"border:1px solid yellow;\">\n" +
-    "                    <img class=\"img-responsive border\" src=\"img/chat1.png\" alt=\"\">\n" +
+    "                <div ng-bind-html=\"bindHTML\" class=\"col-lg-8 video-container video\" style=\"border:1px solid yellow;\">\n" +
     "                </div>\n" +
     "\n" +
     "                <!-- IMAGE -->\n" +
