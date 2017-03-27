@@ -57954,8 +57954,7 @@ angular.module('app')
             //video
             videoService.getOne($scope.query).then(function(response) {
                 $scope.video = response.data;
-                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml);
-                console.log($scope.video);
+                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay\=1/g,"autoplay=0"));
             });
 
             // WEB API
