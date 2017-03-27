@@ -13,6 +13,7 @@ angular.module('app')
             // GIPHY API
             gifService.getOne($scope.query).then(function(res) {
                 $scope.gif = res.data.data;
+                console.log($scope.gif);
             });
 
             //image
