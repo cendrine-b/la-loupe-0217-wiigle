@@ -1,83 +1,84 @@
 <!-- START Barre de recherche  -->
 <div class="container">
-    <div class="row barre">
-        <div class="col-xs-1 logo text-right">
-            <h1>WIIGLE</h1>
+    <div class="row vertical-line">
+        <div class="col-lg-offset-2 col-lg-3 col-xs-4 logo-result">
+            <h1><span class="blue">W</span><span class="red">I</span><span class="yellow">I</span><span class="blue">G</span><span class="green">L</span><span class="red">E</span></h1>
         </div>
-        <div class="col-xs-11 text-center">
-            <input class="search-bar" type="text" name="searching" value="" placeholder="Search something..." ng-model="query">
-            <button type="button" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true" ng-click="goSearch()">
-              </button>
+        <div class="col-lg-5 col-xs-8 input-group search-result">
+            <input class="search-query form-control" placeholder="Search something..." type="text" ng-model="query">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="goSearch()">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
         </div>
     </div>
 </div>
 <!-- END Barre de recherche -->
 
-<div class="container" style="border:1px solid red;">
+<div class="container-fluid result">
     <div class="row">
-        <div class="col-lg-5">
-                    <!-- VIDEO -->
-                    <div ng-bind-html="bindHTML" class="video-container video">
+        <div class="col-lg-5 col-md-7 col-sm-7 first-column">
+            <!-- VIDEO -->
+            <div ng-bind-html="bindHTML" class="video-container video">
+            </div>
+            <!-- END VIDEO -->
+            <!-- START FILM -->
+            <div class="col-xs-12 film">
+                <div ng-if="details.Response==='True'" class="ng-binding ng-scope">
+                    <div id="results">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                            <a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"></a>
+                        </div>
+                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                            <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
+                            <ul class="film-details">
+                                <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
+                                <li><strong>Director: </strong> {{ details.Director }}</li>
+                                <li><strong>Actors: </strong> {{ details.Actors }}</li>
+                                <li><strong>Genre: </strong> {{ details.Genre }}</li>
+                            </ul>
+                            <p>{{ details.Plot }}</p>
+                            <ul class="ratings">
+                                <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
+                                <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
+                            </ul>
+                        </div>
                     </div>
-                    <!-- END VIDEO -->
-                    <!-- START FILM -->
-                            <div class="film">
-                                    <div ng-if="details.Response==='True'" class="ng-binding ng-scope">
-                                            <div id="results">
-                                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                                                            <a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"></a>
-                                                    </div>
-                                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                                                            <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
-                                                            <ul class="film-details">
-                                                                    <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
-                                                                    <li><strong>Director: </strong> {{ details.Director }}</li>
-                                                                    <li><strong>Actors: </strong> {{ details.Actors }}</li>
-                                                                    <li><strong>Genre: </strong> {{ details.Genre }}</li>
-                                                            </ul>
-                                                            <p>{{ details.Plot }}</p>
-                                                            <ul class="ratings">
-                                                                    <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
-                                                                    <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
-                                                            </ul>
-                                                    </div>
-                                            </div>
-                                    </div>
-                            </div>
-                    <!-- END FILM -->
+                </div>
+            </div>
+            <!-- END FILM -->
         </div>
 
-    <div class="col-lg-4">
-                <!-- START IMAGE -->
-                <div>
-                        <a href="{{image.value[0].contentUrl}}" target="_blank"> <img class="img-responsive border" src="{{image.value[0].contentUrl}}" alt=""></a>
-                </div>
-                <!-- END IMAGE -->
-                <!-- START GIF -->
-                <div>
-                        <a href="{{gif[0].bitly_gif_url}}"  target="_blank"><img class="img-responsive" src="{{gif[0].images.downsized.url}}" alt=""></a>
-                </div>
-                <!-- END GIF -->
+        <div class="col-lg-4 col-md-5 col-sm-5 second-column">
+            <!-- START IMAGE -->
+            <div>
+                <a href="{{image.value[0].contentUrl}}" target="_blank"> <img class="img-responsive center-block image" src="{{image.value[0].contentUrl}}" alt=""></a>
+            </div>
+            <!-- END IMAGE -->
+            <!-- START GIF -->
+            <div>
+                <a href="{{gif[0].bitly_gif_url}}" target="_blank"><img class="img-responsive center-block gif" src="{{gif[0].images.downsized.url}}" alt=""></a>
+            </div>
+            <!-- END GIF -->
 
+        </div>
+        <!-- START COULEUR -->
+        <div class="col-lg-3 col-md-5 col-sm-5 third-column">
+            <div class="color text-center">
+                <p>Couleur</p>
+            </div>
+            <!-- END COULEUR -->
+            <!-- START WEBSITE -->
+            <div class="col-xs-12 site text-center">
+                <h3><a href="{{web.webPages.value[0].url}}" target="_blank">{{web.webPages.value[0].name}}</a></h3>
+                <a class="website-link" href="{{web.webPages.value[0].url}}" target="_blank">See website</a>
+                <p>{{web.webPages.value[0].snippet}}</p>
+            </div>
+            <!-- END WEBSITE -->
+            <!-- START MUSIQUE -->
+            <audio class="col-xs-12 music text-center" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
+            <!-- END MUSIQUE -->
+        </div>
     </div>
-                <!-- START COULEUR -->
-    <div class="col-lg-3">
-                <div class="border couleur text-center">
-                        <p>Couleur</p>
-                </div>
-                <!-- END COULEUR -->
-                <!-- START WEBSITE -->
-                <div class="site border col-xs-12 text-center">
-                        <h3>{{web.webPages.value[0].name}}</h3>
-                        <p><a href="{{web.webPages.value[0].url}}" target="_blank">{{web.webPages.value[0].url}}</a></p>
-                        <p>{{web.webPages.value[0].snippet}}</p>
-                </div>
-                <!-- END WEBSITE -->
-                <!-- START MUSIQUE -->
-                <div class="col-xs-12 border musique text-center">
-                        <audio src="{{ data.tracks.items[0].preview_url }}" controls></audio>
-                </div>
-                <!-- END MUSIQUE -->
-    </div>
-</div>
 </div>
