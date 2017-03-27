@@ -40,7 +40,7 @@ angular.module('app')
             colorService.getOne($scope.query).then(function(response) {
                 $scope.color = response.data;
                 console.log($scope.color[0].hex);
-                console.log($scope.color[0]);
+                console.log($scope.color);
                 console.log($scope.color[0].imageUrl);
 
             });
