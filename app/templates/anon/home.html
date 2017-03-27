@@ -5,9 +5,12 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-center">
+              <form ng-submit="goSearch()">
+
                 <input class="search-bar" type="text" name="searching" value="" placeholder="Search something..." ng-model="query">
-              <a ui-sref="anon.resultat"><button type="button" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true" ng-click="goSearch()">
-                </button></a> 
+              <a ui-sref="anon.resultat"><button type="submit" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true">
+                </button></a>
+              </form>
 
 <div ng-repeat="i in gif " ng-show="$first">
   <img src="{{i.images.downsized.url}}" alt="">

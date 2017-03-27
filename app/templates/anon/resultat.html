@@ -5,9 +5,12 @@
             <h1>WIIGLE</h1>
         </div>
         <div class="col-xs-11 text-center">
+          <form ng-submit="goSearch()">
+
             <input class="search-bar" type="text" name="searching" value="" placeholder="Search something..." ng-model="query">
-            <button type="button" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true" ng-click="goSearch()">
+            <button type="submit" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true">
               </button>
+            </form>
         </div>
     </div>
 </div>
