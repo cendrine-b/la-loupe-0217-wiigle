@@ -57788,6 +57788,16 @@ angular.module('app')
     });
 
 angular.module('app')
+    .service('colorService', function($http) {
+        return {
+
+            getOne: function(query) {
+                return $http.get("http://www.colourlovers.com/api/colors/keywords=" + query + "?format=json");
+            },
+        };
+    });
+
+angular.module('app')
     .service('gifService', function($http) {
         return {
             getAll: function() {
@@ -57922,7 +57932,7 @@ angular.module('app')
     });
 
 angular.module('app')
-    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService) {
+    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -57941,26 +57951,31 @@ angular.module('app')
             //image
             imageService.getOne($scope.query).then(function(response) {
                 $scope.image = response.data;
-                console.log($scope.image.value[0].contentUrl);
             });
 
             // SPOTIFY API
             spotifyService.getOne($scope.query).then(function(response) {
                 $scope.data = response.data;
-                console.log($scope.data);
             });
 
             //video
             videoService.getOne($scope.query).then(function(response) {
                 $scope.video = response.data;
                 $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml);
-                console.log($scope.video);
             });
 
             // WEB API
             webService.getOne($scope.query).then(function(response) {
                 $scope.web = response.data;
-                console.log(response.data);
+            });
+
+            // color API
+            colorService.getOne($scope.query).then(function(response) {
+                $scope.color = response.data;
+                console.log($scope.color[0].hex);
+                console.log($scope.color[0]);
+                console.log($scope.color[0].imageUrl);
+
             });
 
 
@@ -58248,8 +58263,8 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "        <div class=\"col-lg-4\" style=\"border: 1px solid red;\">\n" +
     "            <div class=\"row\">\n" +
     "                <!-- COLOR -->\n" +
-    "                <div class=\"col-xs-12 border couleur text-center\">\n" +
-    "                    <p>Couleur</p>\n" +
+    "                <div class=\"col-xs-12 border text-center color\">\n" +
+    "<img class=\"img-responsive border\" src=\"{{ color[0].imageUrl }}\" alt=\"\">\n" +
     "                </div>\n" +
     "                <!-- WEBSITE -->\n" +
     "                <div class=\"site border col-xs-12 text-center\">\n" +

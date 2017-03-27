@@ -159,8 +159,8 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "        <div class=\"col-lg-4\" style=\"border: 1px solid red;\">\n" +
     "            <div class=\"row\">\n" +
     "                <!-- COLOR -->\n" +
-    "                <div class=\"col-xs-12 border couleur text-center\">\n" +
-    "                    <p>Couleur</p>\n" +
+    "                <div class=\"col-xs-12 border text-center color\">\n" +
+    "<img class=\"img-responsive border\" src=\"{{ color[0].imageUrl }}\" alt=\"\">\n" +
     "                </div>\n" +
     "                <!-- WEBSITE -->\n" +
     "                <div class=\"site border col-xs-12 text-center\">\n" +
