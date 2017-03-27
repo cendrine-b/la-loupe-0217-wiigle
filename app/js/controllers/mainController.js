@@ -13,6 +13,7 @@ angular.module('app')
             // GIPHY API
             gifService.getOne($scope.query).then(function(res) {
                 $scope.gif = res.data.data;
+                console.log($scope.gif);
             });
 
             //image
@@ -28,7 +29,11 @@ angular.module('app')
             //video
             videoService.getOne($scope.query).then(function(response) {
                 $scope.video = response.data;
+<<<<<<< HEAD
                 $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml);
+=======
+                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay\=1/g,"autoplay=0"));
+>>>>>>> 2330075a593a63a08a8f8f7f09710f45b192ed1d
             });
 
             // WEB API

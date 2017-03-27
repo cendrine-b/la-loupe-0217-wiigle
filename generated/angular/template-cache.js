@@ -120,12 +120,13 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                </div>\n" +
     "                <!-- IMAGE -->\n" +
     "                <div class=\"col-lg-4 image\" style=\"border:1px solid yellow;\">\n" +
-    "                    <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\"> </div>\n" +
+    "                    <a href=\"{{image.value[0].contentUrl}}\" target=\"_blank\"> <img class=\"img-responsive border\" src=\"{{image.value[0].contentUrl}}\" alt=\"\"></a>\n" +
+    "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"row ligne2\">\n" +
     "                <!-- GIF -->\n" +
-    "                <div class=\"col-lg-4\" ng-repeat=\"i in gif \" ng-show=\"$first\">\n" +
-    "                    <img class=\"img-responsive\" src=\"{{i.images.downsized.url}}\" alt=\"\">\n" +
+    "                <div class=\"col-lg-4\">\n" +
+    "                    <a href=\"{{gif[0].bitly_gif_url}}\"  target=\"_blank\"><img class=\"img-responsive\" src=\"{{gif[0].images.downsized.url}}\" alt=\"\"></a>\n" +
     "                </div>\n" +
     "                <!-- FILM -->\n" +
     "                <div class=\"col-lg-8 col-md-8 col-sm-12 col-xs-12 film\" style=\"border:1px solid yellow\">\n" +
@@ -133,7 +134,7 @@ angular.module("app").run(["$templateCache", function($templateCache) {
     "                        <div ng-if=\"details.Response==='True'\" class=\"ng-binding ng-scope\">\n" +
     "                            <div id=\"results\">\n" +
     "                                <div class=\"col-lg-5 col-md-5 col-sm-5 col-xs-12\">\n" +
-    "                                    <img class=\"img-responsive center-block\" ng-src=\"{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}\">\n" +
+    "                                    <a href=\"http://imdb.com/title/{{ details.imdbID }}\" target=\"_blank\"><img class=\"img-responsive center-block\" ng-src=\"{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}\"></a>\n" +
     "                                </div>\n" +
     "                                <div class=\"col-lg-7 col-md-7 col-sm-7 col-xs-12\">\n" +
     "                                    <h3 class=\"title\"><a href=\"http://imdb.com/title/{{ details.imdbID }}\" target=\"_blank\">{{ details.Title }}</a></h3>\n" +
