@@ -105,10 +105,16 @@ body{
 	height: 250px;
 	margin-top: 2%;
 }
+
+/* Musique */
 .musique{
 	margin-top: 2%;
 	background-color: green;
-	height: 120px;
+	height: 70px;
+}
+
+.titremusique{
+	margin-top: 0px;
 }
 
 /* Video */
@@ -127,6 +133,8 @@ body{
 	width:100%;
 	height:100%;
 }
+
+
 
 
 
