@@ -81,7 +81,12 @@
             </div>
             <!-- END WEBSITE -->
             <!-- START MUSIQUE -->
-            <audio class="col-xs-12 music text-center" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
+            <div class="col-xs-12 site text-center music">
+              <h3><a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].name }}</a></h3>
+              <p><a href="{{ data.tracks.items[0].artists[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].artists[0].name }}</a></p>
+              <a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank"><img class="img-responsive center-block" src="{{ data.tracks.items[0].album.images[1].url }}" /></a>
+              <audio class="col-xs-12" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
+            </div>
             <!-- END MUSIQUE -->
         </div>
     </div>
