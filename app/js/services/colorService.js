@@ -3,7 +3,7 @@ angular.module('app')
         return {
 
             getOne: function(query) {
-                return $http.get("http://www.colourlovers.com/api/colors/keywords=" + query + "?format=json");
+                return $http.get("http://www.colr.org/json/tag/" + query);
             },
         };
     });
