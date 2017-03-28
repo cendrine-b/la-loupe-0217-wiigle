@@ -1,26 +1,17 @@
-<div class="container recherche">
-    <div class="row">
-        <div class="col-xs-12 text-center logo">
-            <h1><span class="blue">W</span><span class="rouge">I</span><span class="jaune">I</span><span class="blue">G</span><span class="blue">L</span><span class="rouge">E</span></h1>
+<div class="vertical-center">
+    <div class="container">
+        <div class="col-xs-12 text-center logo-home">
+            <h1><span class="blue">W</span><span class="red">I</span><span class="yellow">I</span><span class="blue">G</span><span class="green">L</span><span class="red">E</span></h1>
         </div>
-        <div class="row">
-            <div class="col-xs-12 text-center">
-              <form ng-submit="goSearch()">
-
-                <input class="search-bar" type="text" name="searching" value="" placeholder="Search something..." ng-model="query">
-              <a ui-sref="anon.resultat"><button type="submit" class="btn btn-default glyphicon glyphicon-search loupe" aria-hidden="true">
-                </button></a>
-              </form>
-
-<div ng-repeat="i in gif " ng-show="$first">
-  <img src="{{i.images.downsized.url}}" alt="">
-
-<!-- </div>
-<div ng-repeat="i in deezer ">
-  <img src="{{i.images.downsized.url}}" alt="">
-
-</div> -->
-            </div>
+        <div class="col-lg-offset-2 col-lg-8 col-xs-12 text-center input-group">
+            <input class="search-query form-control" placeholder="Search something..." type="text" ng-model="query">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit">
+                <a ui-sref="anon.resultat">
+                  <span class="glyphicon glyphicon-search"></span>
+                </a>
+              </button>
+            </span>
         </div>
     </div>
 </div>

@@ -1,150 +1,161 @@
-body{
-	font-family: Helvetica, sans-serif;
-	background-color: #EDB2FF;/*fond rose*/
+html, body {
+    height: 100%;
+    font-family: Helvetica, sans-serif;
+    background-color: #EDB2FF;
+    /*fond rose*/
 }
-/*START position contain bar+logo*/
-.recherche{margin-top: 15%;}
-/*END position contain bar+logo*/
+
+
+/* START Search section - Home */
+
+.vertical-center {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.logo-home {
+    margin-bottom: 2%;
+}
+
+.logo-home h1 {
+    letter-spacing: 0.6vmax;
+    font-size: 3.5vmax;
+    font-weight: bold;
+}
+
+.glyphicon-search {
+    opacity: 0.6;
+}
+
+/* END Search section - Home */
+
 
 /*START lettres logo*/
-.blue{color: blue;}
-.rouge{color: red;}
-.jaune{color: yellow;}
-.vert{color: green;}
-h1{letter-spacing: 8px;font-size: 50px;font-weight: bold;}
-.logo{margin-bottom: 1%;}
+
+.blue {
+    color: blue;
+}
+
+.red {
+    color: red;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.green {
+    color: green;
+}
+
 /*END lettres logo*/
 
-/*START Barre de Recherche */
-.search-bar{width: 50%;}
-.search-bar{height: 40px;
-	font-family: sans-serif;}
-	.loupe{
-		height: 35px;
-		margin-left: -52px;font-size: 20px;opacity: 0.6;
-		margin-bottom: 5px;
-		border-radius: 10px;}
 
-/*START Barre de Recherche*/
+/* START Search section - Result */
 
+.logo-result h1 {
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.6vmax;
+    font-size: 2.8vmax;
+    font-weight: bold;
+}
 
-/*START general*/
-body{
-	background-color: #edb2ff;
+.vertical-line {
+    display: flex;
+    align-items: center;
 }
-.border{
-	border-radius:2em 2em 2em 2em;
-}
-/*END general*/
-/*START barre de recherche*/
-.barre{
-	margin-top: 5%;
-}
-.barre-rech{
-	margin-top: 2%;
-	width:50%;
-	height: 35px;
-}
-.logo{
-	margin-right: -150px;
-	width: 200px;
-	margin-left: 40px;
-}
-/*END barre de recherche*/
+
+/* END Search section - Result */
+
 
 /*START Affichage des résultats*/
-.resultat{
-	margin-top: 3%;
-}
-.image img{
 
-}
-.video{
-
+.result {
+    margin-top: 3%;
 }
 
-/* Film section */
-.film {
-	text-align: left;
-	background-color: white;
-	border-radius: 2em;
-	padding: 1em 0.5em 0.5em 0.5em;
-}
-.film img {
-	padding: 0 0 1em 0;
-}
-.film h3 {
-	font-size: 1.5em;
-	font-weight: 600;
-	margin: 0 0 1em 0;
-}
-.film h3 a {
-	color: #340B40;
-	text-decoration: none;
-}
-.film h3 a:hover {
-	color: #EDB2FF;
-}
-.film strong {
-	color: #340B40;
-}
-.film ul {
-	font-weight: 600;
-	font-size: 0.9em;
-	list-style: none;
-	padding: 0;
-	margin: 0 0 1em 0;
+.video, .film, .image, .gif, .color, .site, .music {
+    border-radius: 1em;
+    margin-bottom: 1.6em;
 }
 
-.ligne2{
-	margin-top: 2%;
+.first-column, .second-column, .third-column {
+	padding: 0 0.8em;
+	margin: 0;
 }
 
-.site{
-	background-color: white;
-	height: 250px;
-	margin-top: 2%;
+/* Sections' titles */
+h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 0 1em 0;
 }
 
-/* Musique */
-.musique{
-	margin-top: 2%;
-	background-color: green;
-	height: 70px;
+a {
+    color: #5A0074;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.titremusique{
-	margin-top: 0px;
+a:hover {
+    color: #EDB2FF;
 }
 
 /* Video */
+
 .video-container {
-	position:relative;
-	padding-bottom:34.2%;
-	padding-top:0px;
-	overflow:hidden;
-	height: 0px;
+    position: relative;
+    padding-bottom: 56%;
+    padding-top: 0px;
+    overflow: hidden;
 }
 
 .video-container iframe, .video-container object, .video-container embed {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
+/* Film */
 
-
-
-
-/*color*/
-
-.color {
-
-height: 100px;
-
+.film {
+    text-align: left;
+    background-color: white;
+    padding: 1.5em 0.5em 0.5em 0.5em;
+		word-wrap: break-word;
 }
 
+.film img {
+    padding: 0 0 1em 0;
+}
+
+.film strong {
+    color: #5A0074;
+}
+
+.film ul {
+    font-weight: 600;
+    font-size: 0.9em;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1em 0;
+}
+
+/* Website */
+.site {
+    background-color: white;
+    padding: 1.5em 1em 1em 1em;
+    word-wrap: break-word;
+}
+
+.site .website-link {
+	text-transform: uppercase;
+}
+
+.site p {
+    margin-top: 1em;
+}
 
 /*ENd affichage des resultats*/
