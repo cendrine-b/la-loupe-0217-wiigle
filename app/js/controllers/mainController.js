@@ -23,8 +23,6 @@ angular.module('app')
             // SPOTIFY API
             spotifyService.getOne($scope.query).then(function(response) {
                 $scope.data = response.data;
-                console.log($scope.data);
-
             });
 
             //video
