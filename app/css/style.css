@@ -67,6 +67,12 @@ html, body {
     align-items: center;
 }
 
+/* TEMPORARY SEARCH-BAR */
+.search-bar {
+  height: 34px;
+  width: 80%;
+}
+
 /* END Search section - Result */
 
 

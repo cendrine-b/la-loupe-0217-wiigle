@@ -5,8 +5,8 @@
         </div>
         <div class="col-lg-offset-2 col-lg-8 col-xs-12 text-center input-group">
             <input class="search-query form-control" placeholder="Search something..." type="text" ng-model="query">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="submit">
+            <span class="input-group-btn" type="submit">
+              <button class="btn btn-default" ng-submit="goSearch()">
                 <a ui-sref="anon.resultat">
                   <span class="glyphicon glyphicon-search"></span>
                 </a>
