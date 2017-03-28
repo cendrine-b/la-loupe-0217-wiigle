@@ -23,13 +23,18 @@ angular.module('app')
             // SPOTIFY API
             spotifyService.getOne($scope.query).then(function(response) {
                 $scope.data = response.data;
-                console.log(response.data);
+
             });
 
             //video
             videoService.getOne($scope.query).then(function(response) {
                 $scope.video = response.data;
-                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay\=1/g,"autoplay=0"));
+
+
+                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g,"autoplay=0"));
+
+                console.log($scope.video);
+
             });
 
             // WEB API
