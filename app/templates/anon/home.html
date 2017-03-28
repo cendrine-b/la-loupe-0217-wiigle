@@ -4,14 +4,18 @@
             <h1><span class="blue">W</span><span class="red">I</span><span class="yellow">I</span><span class="blue">G</span><span class="green">L</span><span class="red">E</span></h1>
         </div>
         <div class="col-lg-offset-2 col-lg-8 col-xs-12 text-center input-group">
-            <input class="search-query form-control" placeholder="Search something..." type="text" ng-model="query">
-            <span class="input-group-btn" type="submit">
-              <button class="btn btn-default" ng-submit="goSearch()">
-                <a ui-sref="anon.resultat">
-                  <span class="glyphicon glyphicon-search"></span>
-                </a>
-              </button>
-            </span>
+          <form ng-submit="goSearch()">
+              <div class="input-group">
+                  <input class="search-query form-control" placeholder="Search something..." type="text" ng-model="query">
+                  <span class="input-group-btn" type="submit">
+                    <a ui-sref="anon.resultat">
+                      <button class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span>
+                      </button>
+                    </a>
+                  </span>
+              </div>
+          </form>
         </div>
     </div>
 </div>
