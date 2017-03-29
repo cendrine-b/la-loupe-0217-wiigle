@@ -6,22 +6,22 @@ angular.module('app')
 
 
         $scope.query = $stateParams.query;
+        
 
-    
         $scope.hideAudio = true;
-        $scope.hideWeb=true;
+        $scope.hideWeb = true;
         $scope.hideMovie = true;
-        $scope.query = "";
 
 
-  $scope.goSearch = function() {
+
+        $scope.goSearch = function() {
 
 
 
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {
-              $scope.hideMovie = false;
+                $scope.hideMovie = false;
                 $scope.details = response.data;
             });
 
@@ -42,7 +42,7 @@ angular.module('app')
 
             // SPOTIFY API
             spotifyService.getOne($scope.query).then(function(response) {
-              $scope.hideAudio = false;
+                $scope.hideAudio = false;
                 $scope.data = response.data;
             });
 
@@ -51,7 +51,7 @@ angular.module('app')
                 $scope.video = response.data;
 
 
-                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g,"autoplay=0"));
+                $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g, "autoplay=0"));
 
                 console.log($scope.video);
 
@@ -59,7 +59,7 @@ angular.module('app')
 
             // WEB API
             webService.getOne($scope.query).then(function(response) {
-              $scope.hideWeb=false;
+                $scope.hideWeb = false;
                 $scope.web = response.data;
             });
 
