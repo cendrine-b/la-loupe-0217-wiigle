@@ -28,8 +28,8 @@
             </div>
             <!-- END VIDEO -->
             <!-- START FILM -->
-            <div class="col-xs-12 film">
-                <div ng-if="details.Response==='True'" class="ng-binding ng-scope">
+            <div ng-hide="hideMovie" class="col-xs-12 film">
+
                     <div id="results">
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                             <a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"></a>
@@ -49,7 +49,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
             </div>
             <!-- END FILM -->
         </div>
@@ -74,14 +73,14 @@
             </div>
             <!-- END COULEUR -->
             <!-- START WEBSITE -->
-            <div class="col-xs-12 site text-center">
+            <div ng-hide="hideWeb" class="col-xs-12 site text-center">
                 <h3><a href="{{web.webPages.value[0].url}}" target="_blank">{{web.webPages.value[0].name}}</a></h3>
                 <a class="website-link" href="{{web.webPages.value[0].url}}" target="_blank">See website</a>
                 <p>{{web.webPages.value[0].snippet}}</p>
             </div>
             <!-- END WEBSITE -->
             <!-- START MUSIQUE -->
-            <div class="col-xs-12 site text-center music">
+            <div ng-hide="hideAudio" class="col-xs-12 site text-center music">
               <h3><a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].name }}</a></h3>
               <p><a href="{{ data.tracks.items[0].artists[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].artists[0].name }}</a></p>
               <a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank"><img class="img-responsive center-block" src="{{ data.tracks.items[0].album.images[1].url }}" /></a>
