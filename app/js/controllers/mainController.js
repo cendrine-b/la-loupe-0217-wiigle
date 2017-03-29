@@ -7,14 +7,13 @@ angular.module('app')
 
         $scope.query = $stateParams.query;
 
-      .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, randomImgService) {
-        /* Here is your main controller */
+    
         $scope.hideAudio = true;
         $scope.hideWeb=true;
         $scope.hideMovie = true;
         $scope.query = "";
-  
-  
+
+
   $scope.goSearch = function() {
 
 
