@@ -1,11 +1,24 @@
 angular.module('app')
-    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, randomImgService) {
+
+    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
+        /* Here is your main controller */
+
+
+
+        $scope.query = $stateParams.query;
+
+      .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, randomImgService) {
         /* Here is your main controller */
         $scope.hideAudio = true;
         $scope.hideWeb=true;
         $scope.hideMovie = true;
         $scope.query = "";
-        $scope.goSearch = function() {
+  
+  
+  $scope.goSearch = function() {
+
+
+
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {

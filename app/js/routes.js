@@ -18,14 +18,14 @@ angular.module('app')
                 views: {
                     'content@': {
                         templateUrl: 'anon/home.html',
-                        controller: 'MainController'
+                        controller: 'homeController'
                     }
                 }
             })
 
 
             .state('anon.resultat', {
-                url: '/resultat',
+                url: '/resultat/:query',
                 views: {
                     'content@': {
                         templateUrl: 'anon/resultat.html',
