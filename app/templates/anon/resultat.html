@@ -55,13 +55,19 @@
 
         <div class="col-lg-4 col-md-5 col-sm-5 second-column">
             <!-- START IMAGE -->
-            <div>
                 <a href="{{image.value[0].contentUrl}}" target="_blank"> <img class="img-responsive center-block image" src="{{image.value[0].contentUrl}}" alt=""></a>
+                <div ng-hide="hideTxtImage">
+                  <img src="img/404.jpg" alt="">
+                <p>sorry we didn't find an image of "{{query}}" so there is a cat !</p>
             </div>
             <!-- END IMAGE -->
             <!-- START GIF -->
             <div>
                 <a href="{{gif[0].bitly_gif_url}}" target="_blank"><img class="img-responsive center-block gif" src="{{gif[0].images.downsized.url}}" alt=""></a>
+                <div ng-hide="imgNotFound">
+                <p>sorry we didn't find a gif of "{{query}}" so there is a cat !</p>
+                <img src="img/404.jpg" alt="">
+              </div>
             </div>
             <!-- END GIF -->
 
@@ -77,6 +83,10 @@
                 <h3><a href="{{web.webPages.value[0].url}}" target="_blank">{{web.webPages.value[0].name}}</a></h3>
                 <a class="website-link" href="{{web.webPages.value[0].url}}" target="_blank">See website</a>
                 <p>{{web.webPages.value[0].snippet}}</p>
+                <div ng-hide="hideWeb">
+                  <img src="img/404.jpg" alt="">
+                <p>sorry we didn't find any website of "{{query}}" so there is a cat !</p>
+            </div>
             </div>
             <!-- END WEBSITE -->
             <!-- START MUSIQUE -->
