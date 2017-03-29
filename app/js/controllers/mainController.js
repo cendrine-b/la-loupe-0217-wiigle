@@ -7,7 +7,7 @@ angular.module('app')
 
         $scope.query = $stateParams.query;
 
-    
+        $scope.hideImgWeb = true;
         $scope.hideAudio = true;
         $scope.hideWeb = true;
         $scope.imageGify = true;
@@ -68,9 +68,11 @@ angular.module('app')
               $scope.hideWeb=false;
                 $scope.web = response.data;
                 console.log($scope.web);
-                if ($scope.web.rankingResponse.arguments === null) {
-
+                if ($scope.webPages.rankingResponse.proto.defineGetter.arguments=== null)
+                {
                     $scope.hideWeb = true;
+                    $scope.hideImgWeb = false;
+                    console.log(coucou);
                     console.log($scope.web);
                 }
             });
