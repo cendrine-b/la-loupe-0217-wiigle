@@ -6,7 +6,7 @@ angular.module('app')
 
 
         $scope.query = $stateParams.query;
-        
+
 
         $scope.hideAudio = true;
         $scope.hideWeb = true;
@@ -71,4 +71,5 @@ angular.module('app')
 
 
         };
+        $scope.goSearch();
     });
