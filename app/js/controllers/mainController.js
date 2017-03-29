@@ -1,17 +1,28 @@
 angular.module('app')
+
     .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
         /* Here is your main controller */
 
 
 
         $scope.query = $stateParams.query;
-        $scope.goSearch = function() {
+
+      .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, randomImgService) {
+        /* Here is your main controller */
+        $scope.hideAudio = true;
+        $scope.hideWeb=true;
+        $scope.hideMovie = true;
+        $scope.query = "";
+  
+  
+  $scope.goSearch = function() {
 
 
 
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {
+              $scope.hideMovie = false;
                 $scope.details = response.data;
             });
 
@@ -23,12 +34,17 @@ angular.module('app')
             //image
             imageService.getOne($scope.query).then(function(response) {
                 $scope.image = response.data;
+                if ($scope.image.value.length === 0) {
+                    randomImgService.getOne($scope.query).then(function(response) {
+                        $scope.image = response.data;
+                    });
+                }
             });
 
             // SPOTIFY API
             spotifyService.getOne($scope.query).then(function(response) {
+              $scope.hideAudio = false;
                 $scope.data = response.data;
-
             });
 
             //video
@@ -44,6 +60,7 @@ angular.module('app')
 
             // WEB API
             webService.getOne($scope.query).then(function(response) {
+              $scope.hideWeb=false;
                 $scope.web = response.data;
             });
 
