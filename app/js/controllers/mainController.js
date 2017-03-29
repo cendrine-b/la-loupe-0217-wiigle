@@ -1,9 +1,14 @@
 angular.module('app')
-    .controller('MainController', function($scope, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
+    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
         /* Here is your main controller */
 
-        $scope.query = "";
+
+
+        $scope.query = $stateParams.query;
         $scope.goSearch = function() {
+
+
+
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {
