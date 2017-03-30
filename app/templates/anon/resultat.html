@@ -11,7 +11,7 @@
                     <span class="input-group-btn" type="submit">
                       <button class="btn btn-default">
                         <span class="glyphicon glyphicon-search"></span>
-                      </button>
+                    </button>
                     </span>
                 </div>
             </form>
@@ -24,40 +24,48 @@
     <div class="row">
         <div class="col-lg-5 col-md-7 col-sm-7 first-column">
             <!-- VIDEO -->
-            <div ng-bind-html="bindHTML" class="video-container video">
+            <div ng-hide="hideVideo" ng-bind-html="bindHTML" class="video-container video">
+              <div ng-hide="imgVideo">
+                  <img src="img/404.jpg" alt="">
+                  <p>sorry we didn't find any Video of "{{query}}" so there is a cat !</p>
+              </div>
             </div>
             <!-- END VIDEO -->
             <!-- START FILM -->
             <div ng-hide="hideMovie" class="col-xs-12 film">
 
-                    <div id="results">
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                            <a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"></a>
-                        </div>
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                            <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
-                            <ul class="film-details">
-                                <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
-                                <li><strong>Director: </strong> {{ details.Director }}</li>
-                                <li><strong>Actors: </strong> {{ details.Actors }}</li>
-                                <li><strong>Genre: </strong> {{ details.Genre }}</li>
-                            </ul>
-                            <p>{{ details.Plot }}</p>
-                            <ul class="ratings">
-                                <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
-                                <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
-                            </ul>
-                        </div>
+                <div id="results">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"></a>
                     </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
+                        <ul class="film-details">
+                            <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
+                            <li><strong>Director: </strong> {{ details.Director }}</li>
+                            <li><strong>Actors: </strong> {{ details.Actors }}</li>
+                            <li><strong>Genre: </strong> {{ details.Genre }}</li>
+                        </ul>
+                        <p>{{ details.Plot }}</p>
+                        <ul class="ratings">
+                            <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
+                            <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div ng-hide="cineImage">
+                <img src="img/404.jpg" alt="">
+                <p>sorry we didn't find any Film of "{{query}}" so there is a cat !</p>
             </div>
             <!-- END FILM -->
         </div>
 
         <div class="col-lg-4 col-md-5 col-sm-5 second-column">
             <!-- START IMAGE -->
-                <a href="{{image.value[0].contentUrl}}" target="_blank"> <img class="img-responsive center-block image" src="{{image.value[0].contentUrl}}" alt=""></a>
-                <div ng-hide="hideTxtImage">
-                  <img src="img/404.jpg" alt="">
+            <a href="{{image.value[0].contentUrl}}" target="_blank"> <img class="img-responsive center-block image" src="{{image.value[0].contentUrl}}" alt=""></a>
+            <div ng-hide="hideTxtImage">
+                <img src="img/404.jpg" alt="">
                 <p>sorry we didn't find an image of "{{query}}" so there is a cat !</p>
             </div>
             <!-- END IMAGE -->
@@ -65,9 +73,9 @@
             <div>
                 <a href="{{gif[0].bitly_gif_url}}" target="_blank"><img class="img-responsive center-block gif" src="{{gif[0].images.downsized.url}}" alt=""></a>
                 <div ng-hide="imgNotFound">
-                <p>sorry we didn't find a gif of "{{query}}" so there is a cat !</p>
-                <img src="img/404.jpg" alt="">
-              </div>
+                    <p>sorry we didn't find a gif of "{{query}}" so there is a cat !</p>
+                    <img src="img/404.jpg" alt="">
+                </div>
             </div>
             <!-- END GIF -->
 
@@ -83,18 +91,22 @@
                 <h3><a href="{{web.webPages.value[0].url}}" target="_blank">{{web.webPages.value[0].name}}</a></h3>
                 <a class="website-link" href="{{web.webPages.value[0].url}}" target="_blank">See website</a>
                 <p>{{web.webPages.value[0].snippet}}</p>
-                <div ng-hide="hideImgWeb">
-                  <img src="img/404.jpg" alt="">
-                <p>sorry we didn't find any website of "{{query}}" so there is a cat !</p>
             </div>
+            <div ng-hide="hideImgWeb">
+                <img src="img/404.jpg" alt="">
+                <p>sorry we didn't find any website of "{{query}}" so there is a cat !</p>
             </div>
             <!-- END WEBSITE -->
             <!-- START MUSIQUE -->
             <div ng-hide="hideAudio" class="col-xs-12 site text-center music">
-              <h3><a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].name }}</a></h3>
-              <p><a href="{{ data.tracks.items[0].artists[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].artists[0].name }}</a></p>
-              <a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank"><img class="img-responsive center-block" src="{{ data.tracks.items[0].album.images[1].url }}" /></a>
-              <audio class="col-xs-12" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
+                <h3><a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].name }}</a></h3>
+                <p><a href="{{ data.tracks.items[0].artists[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].artists[0].name }}</a></p>
+                <a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank"><img class="img-responsive center-block" src="{{ data.tracks.items[0].album.images[1].url }}" /></a>
+                <audio class="col-xs-12" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
+            </div>
+            <div ng-hide="imgAudio">
+                <img src="img/404.jpg" alt="">
+                <p>sorry we didn't find any Music of "{{query}}" so there is a cat !</p>
             </div>
             <!-- END MUSIQUE -->
         </div>
