@@ -3,8 +3,7 @@ angular.module('app')
     .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
         /* Here is your main controller */
 
-
-
+        $scope.query = "";
         $scope.query = $stateParams.query;
 
 
@@ -16,12 +15,10 @@ angular.module('app')
         $scope.imgNotFound = true;
         $scope.hideWeb=true;
         $scope.hideMovie = true;
-        $scope.query = "";
         $scope.cineImage = true;
         $scope.imgAudio = true;
         $scope.hideVideo = true;
         $scope.imgVideo = true;
-
 
 
 
