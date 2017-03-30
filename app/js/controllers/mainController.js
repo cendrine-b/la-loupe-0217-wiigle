@@ -5,7 +5,6 @@ angular.module('app')
 
 
 
-        $scope.query = $stateParams.query;
 
         $scope.hideImgWeb = true;
         $scope.hideAudio = true;
@@ -15,12 +14,14 @@ angular.module('app')
         $scope.imgNotFound = true;
         $scope.hideWeb=true;
         $scope.hideMovie = true;
-        $scope.query = "";
+
         $scope.cineImage = true;
         $scope.imgAudio = true;
         $scope.hideVideo = true;
         $scope.imgVideo = true;
 
+        $scope.query = "";
+              $scope.query = $stateParams.query;
 
   $scope.goSearch = function() {
 
