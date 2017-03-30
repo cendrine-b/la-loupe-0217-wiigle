@@ -9,7 +9,7 @@ angular.module('app')
 
             $state.go('anon.resultat', {query: $scope.query});
 
-      
+
 
             console.log($scope.query);
 
