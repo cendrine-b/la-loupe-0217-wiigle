@@ -7,6 +7,7 @@ angular.module('app')
 
         $scope.query = $stateParams.query;
 
+
         $scope.hideImgWeb = true;
         $scope.hideAudio = true;
         $scope.hideWeb = true;
@@ -22,14 +23,16 @@ angular.module('app')
         $scope.imgVideo = true;
 
 
-  $scope.goSearch = function() {
+
+
+        $scope.goSearch = function() {
 
 
 
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {
-              $scope.hideMovie = false;
+                $scope.hideMovie = false;
                 $scope.details = response.data;
                 if ($scope.details.Response == "False"){
                     $scope.hideMovie = true;
@@ -57,7 +60,7 @@ angular.module('app')
 
             // SPOTIFY API
             spotifyService.getOne($scope.query).then(function(response) {
-              $scope.hideAudio = false;
+                $scope.hideAudio = false;
                 $scope.data = response.data;
                 if ($scope.data.tracks.items.length === 0){
                     $scope.imgAudio = false;
@@ -73,14 +76,11 @@ angular.module('app')
                 $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g,"autoplay=0"));
                 $scope.hideVideo = false;
 
-
-
-
-
             });
 
             // WEB API
             webService.getOne($scope.query).then(function(response) {
+
               $scope.hideWeb = false;
               $scope.web = response.data;
               if ($scope.web.rankingResponse.mainline !== undefined) {
@@ -88,7 +88,6 @@ angular.module('app')
                 $scope.hideWeb = true;
                 $scope.hideImgWeb = false;
               }
-
 
             });
 
@@ -99,4 +98,5 @@ angular.module('app')
 
 
         };
+        $scope.goSearch();
     });
