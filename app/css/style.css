@@ -6,7 +6,7 @@ html, body {
 }
 
 
-/* TEST NAVBAR */
+/* NAVBAR ANON */
 
 .overlay {
     height: 100%;
@@ -99,6 +99,53 @@ html, body {
         padding: 5px 10px;
     }
 }
+
+/* NAVBAR USER */
+#user-menu {
+  margin: 0;
+  padding: 0;
+}
+
+#user-menu h2 {
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.menu {
+  margin-top: 2em;
+}
+
+.logout {
+  margin-top: 0.8em;
+}
+
+#user-menu ul {
+  font-size: 1.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#user-menu li {
+  margin: 0 0 0.3em 0;
+}
+
+#user-menu a {
+  color: white;
+  font-weight: 400;
+}
+
+#user-menu i {
+  font-size: 2em;
+  margin-right: 0.4em;
+}
+
+#user-menu a:hover, #user-menu i:hover {
+  color: #EDB2FF;
+}
+
+
+
 
 
 

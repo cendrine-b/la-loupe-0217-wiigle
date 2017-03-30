@@ -6,7 +6,8 @@
 
     <div class="overlay-content">
         <!-- LOGIN -->
-        <form class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-sm-offset-3 col-sm-6" name="loginForm" novalidate ng-submit="login()">
+        <form class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-sm-offset-3 col-sm-6" name="loginForm" novalidate ng-submit="login()"
+        ng-hide="auth.isAuthenticated()">
             <h2>Login</h2>
             <div ng-repeat="error in errors">{{error.error}}</div>
             <div class="form-group">
@@ -24,7 +25,8 @@
             <button type="submit" class="btn btn-default pull-right">Submit</button>
         </form>
         <!-- REGISTER -->
-        <form class="col-lg-offset-2 col-lg-3 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6" name="loginForm" novalidate ng-submit="register()">
+        <form class="col-lg-offset-2 col-lg-3 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6" name="loginForm" novalidate ng-submit="register()"
+        ng-hide="auth.isAuthenticated()">
             <div ng-repeat="error in errors">{{error.error}}</div>
             <h2>Subscribe</h2>
             <div class="form-group">
