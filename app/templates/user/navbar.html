@@ -5,8 +5,47 @@
     </button>
 
     <div class="overlay-content" ng-controller="NavbarController">
-        <div id="user-menu" class="container-fluid" ng-show="auth.isAuthenticated()">
 
+
+      <!-- LOGIN -->
+      <form class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-sm-offset-3 col-sm-6 form" name="loginForm" novalidate ng-submit="login()"
+      ng-hide="auth.isAuthenticated()" ng-controller="LoginController">
+          <h2>Login</h2>
+          <div ng-repeat="error in errors">{{error.error}}</div>
+          <div class="form-group">
+              <input id="enter-email" type="email" class="form-control" ng-model="user.login.email" required placeholder="Email Address">
+          </div>
+          <div class="form-group">
+              <input id="password" type="password" class="form-control" ng-model="user.login.password" required placeholder="Password">
+          </div>
+          <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input">
+                Remember me
+              </label>
+          </div>
+          <button type="submit" class="btn btn-default pull-right">Submit</button>
+      </form>
+      <!-- REGISTER -->
+      <form class="col-lg-offset-2 col-lg-3 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6 form" name="registerForm" novalidate ng-submit="register()"
+      ng-hide="auth.isAuthenticated()" ng-controller="RegisterController">
+          <h2>Subscribe</h2>
+          <div ng-repeat="error in errors">{{error.error}}</div>
+          <div class="form-group">
+              <input id="register-email" type="email" class="form-control" ng-model="user.register.email" required placeholder="Enter your email address">
+          </div>
+          <div class="form-group">
+              <input id="create-password" type="password" class="form-control" ng-model="user.register.password" required placeholder="Define a password">
+          </div>
+          <div class="form-group">
+              <input id="confirm-password" type="password" class="form-control" ng-model="user.register.password.confirm" required placeholder="Confirm password">
+          </div>
+          <button type="submit" class="btn btn-default pull-right">Submit</button>
+      </form>
+
+
+      <!-- PERSONNAL MENUE -->
+        <div id="user-menu" class="container-fluid" ng-show="auth.isAuthenticated()">
             <div class="row">
 
                 <div class="col-lg-offset-4 col-lg-2 col-md-offset-4 col-md-2 col-sm-offset-3 col-sm-3 col-xs-offset-1 col-xs-10">
@@ -46,12 +85,10 @@
                     </div>
                 </div>
 
-
-
-
             </div>
-
         </div>
+
+
     </div>
 </div>
 
