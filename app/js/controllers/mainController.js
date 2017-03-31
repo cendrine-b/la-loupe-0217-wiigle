@@ -95,7 +95,7 @@ angular.module('app')
                 $scope.color = response.data;
                 $scope.imgColor = true;
                 console.log("non");
-                if ($scope.color.counts.matching_colors == 0) {
+                if ($scope.color.counts.matching_colors === "0") {
                 $scope.imgColor = false;
                 $scope.hideColor=true;
                 console.log("oui");
