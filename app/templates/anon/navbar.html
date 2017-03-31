@@ -4,14 +4,15 @@
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </button>
 
-    <div class="overlay-content">
+    <div class="overlay-content" ng-controller="NavbarController">
+
         <!-- LOGIN -->
-        <form class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-sm-offset-3 col-sm-6" name="loginForm" novalidate ng-submit="login()"
-        ng-hide="auth.isAuthenticated()">
+        <form class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-sm-offset-3 col-sm-6 form" name="loginForm" novalidate ng-submit="login()"
+        ng-hide="auth.isAuthenticated()" ng-controller="LoginController">
             <h2>Login</h2>
             <div ng-repeat="error in errors">{{error.error}}</div>
             <div class="form-group">
-                <input id="email" type="email" class="form-control" ng-model="user.email" required placeholder="Email Address">
+                <input id="enter-email" type="email" class="form-control" ng-model="user.email" required placeholder="Email Address">
             </div>
             <div class="form-group">
                 <input id="password" type="password" class="form-control" ng-model="user.password" required placeholder="Password">
@@ -25,18 +26,18 @@
             <button type="submit" class="btn btn-default pull-right">Submit</button>
         </form>
         <!-- REGISTER -->
-        <form class="col-lg-offset-2 col-lg-3 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6" name="loginForm" novalidate ng-submit="register()"
-        ng-hide="auth.isAuthenticated()">
-            <div ng-repeat="error in errors">{{error.error}}</div>
+        <form class="col-lg-offset-2 col-lg-3 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6 form" name="loginForm" novalidate ng-submit="register()"
+        ng-hide="auth.isAuthenticated()" ng-controller="RegisterController">
             <h2>Subscribe</h2>
+            <div ng-repeat="error in errors">{{error.error}}</div>
             <div class="form-group">
-                <input id="email" type="email" class="form-control" ng-model="user.email" required placeholder="Enter your email address">
+                <input id="register-email" type="email" class="form-control" ng-model="user.email" required placeholder="Enter your email address">
             </div>
             <div class="form-group">
-                <input id="password" type="password" class="form-control" ng-model="user.password" required placeholder="Define a password">
+                <input id="create-password" type="password" class="form-control" ng-model="user.password" required placeholder="Define a password">
             </div>
             <div class="form-group">
-                <input id="password" type="password" class="form-control" ng-model="user.password" required placeholder="Confirm password">
+                <input id="confirm-password" type="password" class="form-control" ng-model="user.password" required placeholder="Confirm password">
             </div>
             <button type="submit" class="btn btn-default pull-right">Submit</button>
         </form>

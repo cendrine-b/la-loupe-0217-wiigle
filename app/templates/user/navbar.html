@@ -4,8 +4,8 @@
       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
     </button>
 
-    <div class="overlay-content">
-        <div id="user-menu" class="container-fluid" ng-show="auth.isAuthenticated()">
+    <div class="overlay-content" ng-controller="NavbarController">
+        <div id="user-menu" class="container-fluid" ui-sref-active="active" ng-show="auth.isAuthenticated()">
 
             <div class="row">
 
