@@ -31,18 +31,22 @@ html, body {
     font-size: 1.8em;
 }
 
+.glyphicon-menu-hamburger, .glyphicon-remove {
+    opacity: 0.6;
+}
+
 /* RESPONSIVE BUTTON MENU */
 @media (min-width: 320px) {
     .overlay .closebtn {
         position: absolute;
-        top: 1em;
+        top: 0.9em;
         right: 1em;
         margin: 0;
         padding: 5px 10px;
     }
     .hamburger-menu {
-        position: fixed;
-        top: 1em;
+        position: absolute;
+        top: 0.9em;
         right: 1em;
         margin: 0;
         padding: 5px 10px;
@@ -52,14 +56,14 @@ html, body {
 @media (min-width: 768px) {
     .overlay .closebtn {
         position: absolute;
-        top: 2em;
+        top: 1.8em;
         right: 2em;
         margin: 0;
         padding: 5px 10px;
     }
     .hamburger-menu {
-        position: fixed;
-        top: 2em;
+        position: absolute;
+        top: 1.8em;
         right: 2em;
         margin: 0;
         padding: 5px 10px;
@@ -69,14 +73,14 @@ html, body {
 @media (min-width: 992px) {
     .overlay .closebtn {
         position: absolute;
-        top: 2.8em;
+        top: 2.3em;
         right: 5em;
         margin: 0;
         padding: 5px 10px;
     }
     .hamburger-menu {
-        position: fixed;
-        top: 2.8em;
+        position: absolute;
+        top: 2.3em;
         right: 5em;
         margin: 0;
         padding: 5px 10px;
@@ -86,14 +90,14 @@ html, body {
 @media (min-width: 1200px) {
     .overlay .closebtn {
         position: absolute;
-        top: 2.8em;
+        top: 2.9em;
         right: 5em;
         margin: 0;
         padding: 5px 10px;
     }
     .hamburger-menu {
-        position: fixed;
-        top: 2.8em;
+        position: absolute;
+        top: 2.9em;
         right: 5em;
         margin: 0;
         padding: 5px 10px;
