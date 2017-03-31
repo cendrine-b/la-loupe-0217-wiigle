@@ -4,6 +4,6 @@ angular.module('app')
             create: function(search) {
                 return $http.post('/search', search);
             },
-          
+
         };
     });

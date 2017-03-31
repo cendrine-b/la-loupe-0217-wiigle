@@ -1,6 +1,6 @@
 angular.module('app')
 
-    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
+    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -16,7 +16,7 @@ angular.module('app')
         $scope.imgVideo = true;
 
         $scope.goSearch = function() {
-            postSearchService.create($scope.query).then(function(res) {
+
                 //good
 
                 // OMDB API
@@ -101,12 +101,12 @@ angular.module('app')
                         console.log("oui");
                     }
                 });
+
+
+                  postSearchService.create($scope.query).then(function(res) {
             }, function(err) {
                 console.log("erreur data base");
             });
         };
+        $scope.goSearch();
     });
-
-
-$scope.goSearch();
-});
