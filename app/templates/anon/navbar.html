@@ -1,20 +1,55 @@
-<nav class="navbar navbar-default" role="navigation" ng-controller="NavbarController">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-            <a class="navbar-brand" href="#"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-                <li ui-sref-active="active"><a ui-sref="anon.home">Home</a></li>
-                  <li ui-sref-active="active"><a ui-sref="anon.resultat">resultat</a></li>
+<div id="myNav" class="overlay">
 
-            </ul>
+    <button type="button" class="btn btn-default btn-md closebtn" ng-click="closeNav()">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
+
+    <div class="overlay-content" ng-controller="NavbarController">
+
+        <!-- LOGIN -->
+        <form class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-sm-offset-3 col-sm-6 form" name="loginForm" novalidate ng-submit="login()"
+        ng-hide="auth.isAuthenticated()" ng-controller="LoginController">
+            <h2>Login</h2>
+            <div ng-repeat="error in errors">{{error.error}}</div>
+            <div class="form-group">
+                <input id="enter-email" type="email" class="form-control" ng-model="user.email" required placeholder="Email Address">
+            </div>
+            <div class="form-group">
+                <input id="password" type="password" class="form-control" ng-model="user.password" required placeholder="Password">
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input">
+                  Remember me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-default pull-right">Submit</button>
+        </form>
+        <!-- REGISTER -->
+        <form class="col-lg-offset-2 col-lg-3 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6 form" name="loginForm" novalidate ng-submit="register()"
+        ng-hide="auth.isAuthenticated()" ng-controller="RegisterController">
+            <h2>Subscribe</h2>
+            <div ng-repeat="error in errors">{{error.error}}</div>
+            <div class="form-group">
+                <input id="register-email" type="email" class="form-control" ng-model="user.email" required placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <input id="create-password" type="password" class="form-control" ng-model="user.password" required placeholder="Define a password">
+            </div>
+            <div class="form-group">
+                <input id="confirm-password" type="password" class="form-control" ng-model="user.password" required placeholder="Confirm password">
+            </div>
+            <button type="submit" class="btn btn-default pull-right">Submit</button>
+        </form>
+    </div>
+</div>
+
+<button type="button" class="btn btn-default btn-md hamburger-menu" ng-click="openNav()">
+  <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+</button>
+
+
+<!-- <nav class="navbar navbar-default" role="navigation" ng-controller="NavbarController">
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <li ui-sref-active="active"><a ui-sref="anon.login" ng-hide="auth.isAuthenticated()">Login</a></li>
@@ -25,4 +60,4 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
