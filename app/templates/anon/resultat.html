@@ -25,14 +25,14 @@
         <div class="col-lg-5 col-md-7 col-sm-7 first-column">
             <!-- VIDEO -->
             <div ng-hide="hideVideo" ng-bind-html="bindHTML" class="video-container video">
-              <div ng-hide="imgVideo">
-                  <img src="img/404.jpg" alt="">
-                  <p>sorry we didn't find any Video of "{{query}}" so there is a cat !</p>
-              </div>
+                <div ng-hide="imgVideo">
+                    <img src="img/404.jpg" alt="">
+                    <p>sorry we didn't find any Video of "{{query}}" so there is a cat !</p>
+                </div>
             </div>
             <div ng-hide="imgVideo">
-              <img src="img/404.jpg" alt="">
-              <p>sorry we didn't find any video of "{{query}}" so there is a cat !</p>
+                <img src="img/404.jpg" alt="">
+                <p>sorry we didn't find any video of "{{query}}" so there is a cat !</p>
             </div>
             <!-- END VIDEO -->
             <!-- START FILM -->
@@ -85,14 +85,15 @@
 
         </div>
         <!-- START COULEUR -->
-        <div ng-hide="hideColor" class="col-lg-3 col-md-5 col-sm-5 third-column">
-            <div class="color" style="background-color: #{{ color.colors[0].hex }};">
-                <p>#{{ color.colors[0].hex }}</p>
+        <div class="col-lg-3 col-md-5 col-sm-5 third-column">
+            <div ng-hide="hideColor">
+                <div class="color" style="background-color: #{{ color.colors[0].hex }};">
+                    <p>#{{ color.colors[0].hex }}</p>
+                </div>
             </div>
-          </div>
             <div ng-hide="imgColor">
-              <p>sorry we didn't find any color of "{{query}}" so there is a cat !</p>
-              <img src="img/404.jpg" alt="">
+                <p>sorry we didn't find any color of "{{query}}" so there is a cat !</p>
+                <img src="img/404.jpg" alt="">
             </div>
             <!-- END COULEUR -->
             <!-- START WEBSITE -->
@@ -118,5 +119,6 @@
                 <p>sorry we didn't find any Music of "{{query}}" so there is a cat !</p>
             </div>
             <!-- END MUSIQUE -->
+        </div>
     </div>
 </div>
