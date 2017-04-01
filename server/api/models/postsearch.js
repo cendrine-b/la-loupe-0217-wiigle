@@ -1,12 +1,17 @@
 import mongoose from 'mongoose';
+import User from './user.js';
+
 const searchSchema = new mongoose.Schema({
     content: {
         type: String
-
     },
     user: {
-        type: String,
-        unique: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    count: {
+      type: Number,
+      default: 0
     }
 });
 

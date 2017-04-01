@@ -16,6 +16,6 @@ module.exports = (app) => {
     router.post('/', search.create);
 
 
-    app.use('/users', router);
+    app.use('/search', router);
 
 };
