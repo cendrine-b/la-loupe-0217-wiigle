@@ -6,10 +6,161 @@ html, body {
 }
 
 
+/* NAVBAR ANON */
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    background-color: rgba(54, 11, 65, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 30%;
+    width: 100%;
+    color: white;
+}
+
+.overlay-content h2 {
+    font-size: 1.8em;
+}
+
+.glyphicon-menu-hamburger, .glyphicon-remove {
+    opacity: 0.6;
+}
+
+/* RESPONSIVE BUTTON MENU */
+@media (min-width: 320px) {
+    .overlay .closebtn {
+        position: absolute;
+        top: 0.9em;
+        right: 1em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 0.9em;
+        right: 1em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .overlay .closebtn {
+        position: absolute;
+        top: 1.8em;
+        right: 2em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 1.8em;
+        right: 2em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .overlay .closebtn {
+        position: absolute;
+        top: 2.3em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 2.3em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .overlay .closebtn {
+        position: absolute;
+        top: 2.9em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 2.9em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+
+/* NAVBAR USER */
+#user-menu {
+  margin: 0;
+  padding: 0;
+}
+
+#user-menu h2 {
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
+.menu {
+  margin-top: 2em;
+}
+
+.logout {
+  margin-top: 0.8em;
+}
+
+#user-menu ul {
+  font-size: 1.5em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#user-menu li {
+  margin: 0 0 0.3em 0;
+}
+
+#user-menu a {
+  color: white;
+  font-weight: 400;
+}
+
+#user-menu i {
+  font-size: 2em;
+  margin-right: 0.4em;
+}
+
+#user-menu a:hover, #user-menu i:hover {
+  color: #EDB2FF;
+}
+
+#user-menu img {
+  background-color: white;
+}
+
+
+
+
+
+
 /* START Search section - Home */
 
 .vertical-center {
-    min-height: 70vh;
+    min-height: 82vh;
     display: flex;
     align-items: center;
 }
@@ -27,6 +178,7 @@ html, body {
 .glyphicon-search {
     opacity: 0.6;
 }
+
 
 /* END Search section - Home */
 
@@ -49,6 +201,7 @@ html, body {
     color: green;
 }
 
+
 /*END lettres logo*/
 
 
@@ -63,9 +216,12 @@ html, body {
 }
 
 .vertical-line {
+    margin-top: 3%;
     display: flex;
     align-items: center;
 }
+
+
 /* END Search section - Result */
 
 
@@ -81,11 +237,13 @@ html, body {
 }
 
 .first-column, .second-column, .third-column {
-	padding: 0 0.8em;
-	margin: 0;
+    padding: 0 0.8em;
+    margin: 0;
 }
 
+
 /* Sections' titles */
+
 h3 {
     font-size: 1.5em;
     font-weight: bold;
@@ -102,6 +260,7 @@ a:hover {
     color: #EDB2FF;
 }
 
+
 /* Video */
 
 .video-container {
@@ -117,13 +276,14 @@ a:hover {
     height: 100%;
 }
 
+
 /* Film */
 
 .film {
     text-align: left;
     background-color: white;
     padding: 1.5em 0.5em 0.5em 0.5em;
-		word-wrap: break-word;
+    word-wrap: break-word;
 }
 
 .film img {
@@ -142,22 +302,26 @@ a:hover {
     margin: 0 0 1em 0;
 }
 
+
 /* Color */
+
 .color {
-  min-height: 80px;
-  display: flex;
-  align-items: center;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
 }
 
 .color p {
-  margin: 0 auto;
-  padding: 0;
-  font-weight: bold;
-  font-size: 1.2em;
-  color: #EDB2FF;
+    margin: 0 auto;
+    padding: 0;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #EDB2FF;
 }
 
+
 /* Website */
+
 .site {
     background-color: white;
     padding: 1.5em 1em 1em 1em;
@@ -165,19 +329,22 @@ a:hover {
 }
 
 .site .website-link {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .site p {
     margin-top: 1em;
 }
 
+
 /* Music */
+
 .music h3 {
-  margin-bottom: 0.2em;
+    margin-bottom: 0.2em;
 }
+
 .music p a, .music a img {
-  margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 

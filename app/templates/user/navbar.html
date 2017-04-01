@@ -1,4 +1,109 @@
-<nav class="navbar navbar-default" role="navigation" ng-controller="NavbarController">
+<div id="myNav" class="overlay">
+
+    <button type="button" class="btn btn-default btn-md closebtn" ng-click="closeNav()">
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
+
+    <div class="overlay-content" ng-controller="NavbarController">
+
+
+      <!-- LOGIN -->
+      <form class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-sm-offset-3 col-sm-6 form" name="loginForm" novalidate ng-submit="login()"
+      ng-hide="auth.isAuthenticated()" ng-controller="LoginController">
+          <h2>Login</h2>
+          <div ng-repeat="error in errors">{{error.error}}</div>
+          <div class="form-group">
+              <input id="enter-email" type="email" class="form-control" ng-model="user.login.email" required placeholder="Email Address">
+          </div>
+          <div class="form-group">
+              <input id="password" type="password" class="form-control" ng-model="user.login.password" required placeholder="Password">
+          </div>
+          <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input">
+                Remember me
+              </label>
+          </div>
+          <button type="submit" class="btn btn-default pull-right">Submit</button>
+      </form>
+      <!-- REGISTER -->
+      <form class="col-lg-offset-2 col-lg-3 col-md-offset-2 col-md-4 col-sm-offset-3 col-sm-6 form" name="registerForm" novalidate ng-submit="register()"
+      ng-hide="auth.isAuthenticated()" ng-controller="RegisterController">
+          <h2>Subscribe</h2>
+          <div ng-repeat="error in errors">{{error.error}}</div>
+          <div class="form-group">
+              <input id="register-email" type="email" class="form-control" ng-model="user.register.email" required placeholder="Enter your email address">
+          </div>
+          <div class="form-group">
+              <input id="create-password" type="password" class="form-control" ng-model="user.register.password" required placeholder="Define a password">
+          </div>
+          <div class="form-group">
+              <input id="confirm-password" type="password" class="form-control" ng-model="user.register.password.confirm" required placeholder="Confirm password">
+          </div>
+          <button type="submit" class="btn btn-default pull-right">Submit</button>
+      </form>
+
+
+      <!-- PERSONNAL MENUE -->
+        <div id="user-menu" class="container-fluid" ng-show="auth.isAuthenticated()">
+            <div class="row">
+
+                <div class="col-lg-offset-4 col-lg-2 col-md-offset-4 col-md-2 col-sm-offset-3 col-sm-3 col-xs-offset-1 col-xs-10">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2>Username</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-11 col-xs-offset-1 col-xs-10">
+                            <img src="https://openclipart.org/download/247316/abstract-user-flat-2.svg" class="img-responsive img-circle" alt="Profile picture">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-offset-0 col-lg-3 col-md-offset-0 col-md-3 col-sm-offset-0 col-sm-4 col-xs-offset-1 col-xs-10">
+                    <div class="row">
+                        <div class="col-xs-12 logout">
+                            <a ng-click="logout()" href='#'>Logout</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 menu">
+                            <ul>
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">Bookmark</a></li>
+                                <li>Share your moodboards:</li>
+                                <li>
+                                    <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<button type="button" class="btn btn-default btn-md hamburger-menu" ng-click="openNav()">
+  <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+</button>
+
+
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-default" role="navigation" ng-controller="NavbarController">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
@@ -23,4 +128,4 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> -->
