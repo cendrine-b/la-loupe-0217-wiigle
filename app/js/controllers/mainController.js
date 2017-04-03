@@ -106,11 +106,14 @@ angular.module('app')
                     $scope.hideColor = true;
                 }
             });
-
-
-            postSearchService.create($scope.query).then(function(res) {}, function(err) {
-                console.log("erreur data base");
-            });
+            if (loger === true) {
+                  console.log("rentre dans la condition");
+                postSearchService.create($scope.query).then(function(res) {
+                    console.log("ok");
+                }, function(err) {
+                    console.log("erreur data base");
+                });
+            }
         };
         $scope.goSearch();
     });
