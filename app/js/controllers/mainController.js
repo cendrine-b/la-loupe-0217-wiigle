@@ -15,8 +15,12 @@ angular.module('app')
         $scope.hideVideo = true;
         $scope.imgVideo = true;
 
+
+
         $scope.goSearch = function() {
 
+ $scope.spinner = true;
+ $scope.resultatrecherche = false;
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {
@@ -27,6 +31,7 @@ angular.module('app')
                     $scope.hideMovie = true;
                     $scope.cineImage = false;
                 }
+
 
             });
 
@@ -48,6 +53,10 @@ angular.module('app')
                 if ($scope.image.value.length === 0) {
                     $scope.hideTxtImage = false;
                 }
+
+                $scope.spinner = false;
+                console.log('spinner supposé false')
+                $scope.resultatrecherche = true;
             });
 
             // SPOTIFY API
@@ -60,6 +69,7 @@ angular.module('app')
                     $scope.hideAudio = true;
 
                 }
+
             });
 
             //video
@@ -75,6 +85,9 @@ angular.module('app')
                   $scope.imgVideo = false;
                 }
 
+
+
+
             });
 
             // WEB API
@@ -88,6 +101,7 @@ angular.module('app')
                     $scope.hideImgWeb = false;
                 }
 
+
             });
 
             // color API
@@ -99,8 +113,18 @@ angular.module('app')
                 $scope.imgColor = false;
                 $scope.hideColor=true;
                 console.log("oui");
+
                 }
             });
+
+
+
+
         };
+
         $scope.goSearch();
+
+
+
+
     });

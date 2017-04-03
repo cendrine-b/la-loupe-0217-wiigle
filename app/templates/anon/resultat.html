@@ -11,7 +11,7 @@
                     <span class="input-group-btn" type="submit">
                       <button class="btn btn-default">
                         <span class="glyphicon glyphicon-search"></span>
-                      </button>
+                    </button>
                     </span>
                 </div>
             </form>
@@ -19,8 +19,15 @@
     </div>
 </div>
 <!-- END Barre de recherche -->
+<div class="container-fluid" ng-show="spinner">
+  <div class="row">
+    <div class="spinner col-xs-offset-5 col-xs-1" style="border:1px solid red;">
+      <img src="../img/spinner.gif" alt="spinner loader" class=""   />
+    </div>
+  </div>
+</div>
 
-<div class="container-fluid result">
+<div class="container-fluid result" ng-show="resultatrecherche">
     <div class="row">
         <div class="col-lg-5 col-md-7 col-sm-7 first-column">
             <!-- VIDEO -->
