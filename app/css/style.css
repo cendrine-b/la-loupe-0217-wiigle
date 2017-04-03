@@ -153,7 +153,39 @@ html, body {
 }
 
 
+/* BACK TO TOP BUTTON */
+#top-button {
+  position: fixed;
+  z-index: 99999999;
+  right: 3%;
+  bottom: 3%;
+  color: white;
+  font-size: 1.4em;
+  background-color: #340B40;
+  border-radius: 50%;
+  border: solid white 4px;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 1.1em;
+}
 
+#top-button:hover {
+  background-color: #5A0074;
+}
+
+@media (min-width: 320px) {
+  #top-button {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  #top-button {
+    opacity: 0;
+  }
+}
 
 
 

@@ -101,8 +101,6 @@ angular.module('app')
                 console.log("oui");
                 }
             });
-
-
         };
         $scope.goSearch();
     });
