@@ -6,7 +6,7 @@ angular.module('app')
             method: 'GET',
             url: "https://api.cognitive.microsoft.com/bing/v5.0/search?q=" + query + "&count=1",
             headers: {
-              'Ocp-Apim-Subscription-Key' : '9a7fe6e652c0485dbbf8946a0b2a8ade'
+              'Ocp-Apim-Subscription-Key' : 'bd2b70894a31474f8da2e1c3a56b0788'
             }
           };
             return $http(reqweb);

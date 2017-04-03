@@ -266,6 +266,7 @@ html, body {
 .video, .film, .image, .gif, .color, .site, .music {
     border-radius: 10px;
     margin-bottom: 1.6em;
+
 }
 
 .first-column, .second-column, .third-column {
@@ -379,5 +380,58 @@ a:hover {
     margin-bottom: 0.5em;
 }
 
+/* Spinner */
+
+
+
 
 /*ENd affichage des resultats*/
+/* MEDIA QUERYS */
+/*--------------------------------------------------------------------------------------------------------------*/
+/*-- LG + Default -----------------------------------------------------------------------------------------------------------*/
+@media (min-width: 1200px) {
+  .spinner {
+    margin-top: 20%;
+  }
+}
+/*-- MD ------------------------------------------------------------------------------------------------------------*/
+@media (min-width: 992px) and (max-width: 1199px) {
+  .spinner {
+    margin-top:25%;
+    margin-left:45%;
+  }
+}
+/*-- SM ------------------------------------------------------------------------------------------------------------*/
+@media (max-width: 992px) {
+  .spinner {
+    margin-top:30%;
+    margin-left:45%;
+  }
+}
+/*-- XS ------------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .spinner {
+    margin-top:40%;
+    margin-left:45%;
+  }
+}
+/*--------------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 610px) {
+  .spinner {
+    margin-top:50%;
+    margin-left:35%;
+  }
+}
+/*--------------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 480px) {
+  .spinner {
+    margin-top:60%;
+    margin-left:37%;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .spinner {
+    margin-top:65%;
+    margin-left:35%;
+  }
+}
