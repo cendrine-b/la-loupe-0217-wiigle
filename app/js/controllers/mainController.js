@@ -106,14 +106,25 @@ angular.module('app')
                     $scope.hideColor = true;
                 }
             });
-            if (loger === true) {
-                  console.log("rentre dans la condition");
+
+            // $scope.user = CurrentUser.user();
+            // if ($scope.user === true) {
+              // console.log("logok");
+              //   postSearchService.create($scope.query).then(function(res) {
+              //       console.log("ok");
+              //   }, function(err) {
+              //       console.log("erreur data base");
+              //   });
+
+            // }
+
+
                 postSearchService.create($scope.query).then(function(res) {
                     console.log("ok");
                 }, function(err) {
                     console.log("erreur data base");
                 });
-            }
+
         };
         $scope.goSearch();
     });
