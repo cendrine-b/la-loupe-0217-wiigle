@@ -118,7 +118,7 @@ angular.module('app')
 
             $scope.user = CurrentUser.user();
             console.log($scope.user);
-            if ($scope.user.isAdmin === "true" || "false") {
+            if ($scope.user.email!==undefined) {
                 console.log($scope.user.isAdmin);
                 postSearchService.create($scope.query).then(function(res) {
                     console.log("ok");
