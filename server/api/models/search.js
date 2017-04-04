@@ -5,13 +5,14 @@ const searchSchema = new mongoose.Schema({
     content: {
         type: String
     },
+    image: {
+      type: String
+    },
+
     user: {
         type: String
     },
-    count: {
-        type: Number,
-        default: 1
-    },
+
     date: {
         type: Date,
         default: new Date()
