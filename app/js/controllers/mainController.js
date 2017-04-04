@@ -1,6 +1,6 @@
 angular.module('app')
 
-    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser) {
+    .controller('MainController', function($scope, $state, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -21,8 +21,6 @@ angular.module('app')
         $scope.hideMovie = true;
         $scope.hideVideo = true;
         $scope.imgVideo = true;
-
-
 
         $scope.goSearch = function() {
 
@@ -128,5 +126,9 @@ angular.module('app')
             }
         };
         $scope.goSearch();
+
+        $scope.nextSearch = function () {
+            $state.go('anon.resultat', {query: $scope.query});
+        }
 
     });
