@@ -26,8 +26,8 @@ angular.module('app')
 
         $scope.goSearch = function() {
 
- $scope.spinner = true;
- $scope.resultatrecherche = false;
+            $scope.spinner = true;
+            $scope.resultatrecherche = false;
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {
@@ -62,7 +62,6 @@ angular.module('app')
                 }
 
                 $scope.spinner = false;
-                console.log('spinner supposé false');
                 $scope.resultatrecherche = true;
             });
 
@@ -91,9 +90,6 @@ angular.module('app')
                     $scope.hideVideo = true;
                     $scope.imgVideo = false;
                 }
-
-
-
 
             });
 
@@ -131,10 +127,6 @@ angular.module('app')
                 });
             }
         };
-
         $scope.goSearch();
-
-
-
 
     });
