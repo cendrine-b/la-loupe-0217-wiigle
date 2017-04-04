@@ -2,6 +2,7 @@ import jsonwebtoken from 'jsonwebtoken';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import token from '../token.js';
+import Search from './search.js';
 
 const hashCode = (s) => s.split("").reduce((a, b) => {
     a = ((a << 5) - a) + b.charCodeAt(0);
@@ -25,7 +26,10 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+search : [{type: mongoose.Schema.ObjectId,
+          ref: 'Search'}]
+
 });
 
 userSchema.methods.comparePassword = function(pwd, cb) {

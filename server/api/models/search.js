@@ -5,10 +5,9 @@ const searchSchema = new mongoose.Schema({
     content: {
         type: String
     },
-    user: [{
-        type: mongoose.Schema.ObjectId,
-        ref: 'User'
-    }],
+    user: {
+        type: String
+    },
     count: {
         type: Number,
         default: 1
@@ -27,7 +26,7 @@ export default class Search {
 
         model.create(req.body,
             (err, search) => {
-                if (err || !user) {
+                if (err || !search) {
                     res.status(500).send(err.message);
                 } else {
                     res.json({

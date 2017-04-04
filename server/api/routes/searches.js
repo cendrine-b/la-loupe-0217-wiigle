@@ -1,5 +1,5 @@
 import express from 'express';
-import Search from '../models/postsearch.js';
+import Search from '../models/search.js';
 import Auth from '../middlewares/authorization.js';
 
 let router = express.Router();
