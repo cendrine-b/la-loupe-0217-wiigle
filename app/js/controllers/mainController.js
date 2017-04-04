@@ -1,6 +1,6 @@
 angular.module('app')
 
-    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService) {
+    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -107,24 +107,16 @@ angular.module('app')
                 }
             });
 
-            // $scope.user = CurrentUser.user();
-            // if ($scope.user === true) {
-              // console.log("logok");
-              //   postSearchService.create($scope.query).then(function(res) {
-              //       console.log("ok");
-              //   }, function(err) {
-              //       console.log("erreur data base");
-              //   });
-
-            // }
-
-
+            $scope.user = CurrentUser.user();
+            console.log($scope.user);
+            if ($scope.user.isAdmin === "true" || "false") {
+                console.log($scope.user.isAdmin);
                 postSearchService.create($scope.query).then(function(res) {
                     console.log("ok");
                 }, function(err) {
                     console.log("erreur data base");
                 });
-
+            }
         };
         $scope.goSearch();
     });

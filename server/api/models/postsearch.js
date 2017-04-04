@@ -11,7 +11,11 @@ const searchSchema = new mongoose.Schema({
     },
     count: {
       type: Number,
-      default: 0
+      default: 1
+    },
+    date:{
+      type: Date,
+      default: new Date()
     }
 });
 
@@ -26,7 +30,6 @@ export default class Search {
                 if (err || !user) {
                     res.status(500).send(err.message);
                 } else {
-
                     res.json({
                         success: true,
                         search: search
