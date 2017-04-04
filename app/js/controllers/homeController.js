@@ -11,7 +11,7 @@ angular.module('app')
 
 
 
-            console.log($scope.query);
+        
 
 
 
