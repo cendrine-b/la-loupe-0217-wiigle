@@ -53,7 +53,9 @@ angular.module('app')
                 if (LocalService.get('auth_token')) {
                     token = LocalService.get('auth_token');
                 }
-                if (token) {
+                var color = /www.colr.org/i;
+                var spotify = /api.spotify.com/i;
+                if (token && !color.test(config.url) && !spotify.test(config.url)) {
                     config.headers.authorization = token;
                 }
                 return config;

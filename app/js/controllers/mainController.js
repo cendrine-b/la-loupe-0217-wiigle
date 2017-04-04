@@ -1,11 +1,18 @@
 angular.module('app')
 
-    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService) {
+    .controller('MainController', function($scope, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser) {
         /* Here is your main controller */
 
         $scope.query = "";
         $scope.query = $stateParams.query;
 
+        $scope.cineImage = true;
+        $scope.imgNotFound = true;
+        $scope.hideTxtImage = true;
+        $scope.imgAudio = true;
+        $scope.imgVideo = true;
+        $scope.hideImgWeb = true;
+        $scope.imgColor = true;
 
         $scope.hideAudio = true;
         $scope.hideWeb = true;
@@ -19,8 +26,8 @@ angular.module('app')
 
         $scope.goSearch = function() {
 
- $scope.spinner = true;
- $scope.resultatrecherche = false;
+            $scope.spinner = true;
+            $scope.resultatrecherche = false;
 
             // OMDB API
             omdbService.getOne($scope.query).then(function(response) {
@@ -55,7 +62,6 @@ angular.module('app')
                 }
 
                 $scope.spinner = false;
-                console.log('spinner supposé false')
                 $scope.resultatrecherche = true;
             });
 
@@ -76,17 +82,14 @@ angular.module('app')
             videoService.getOne($scope.query).then(function(response) {
 
                 $scope.video = response.data;
-                if ($scope.video.value.length > 0 ) {
-                  $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g, "autoplay=0"));
-                  $scope.hideVideo = false;
-                  $scope.imgVideo = true;
+                if ($scope.video.value.length > 0) {
+                    $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g, "autoplay=0"));
+                    $scope.hideVideo = false;
+                    $scope.imgVideo = true;
                 } else {
-                  $scope.hideVideo = true;
-                  $scope.imgVideo = false;
+                    $scope.hideVideo = true;
+                    $scope.imgVideo = false;
                 }
-
-
-
 
             });
 
@@ -95,8 +98,7 @@ angular.module('app')
                 $scope.hideImgWeb = true;
                 $scope.hideWeb = false;
                 $scope.web = response.data;
-                if ($scope.web.rankingResponse.mainline !== undefined) {
-                } else {
+                if ($scope.web.rankingResponse.mainline !== undefined) {} else {
                     $scope.hideWeb = true;
                     $scope.hideImgWeb = false;
                 }
@@ -108,23 +110,23 @@ angular.module('app')
             colorService.getOne($scope.query).then(function(response) {
                 $scope.color = response.data;
                 $scope.imgColor = true;
-                console.log("non");
                 if ($scope.color.counts.matching_colors === "0") {
-                $scope.imgColor = false;
-                $scope.hideColor=true;
-                console.log("oui");
-
+                    $scope.imgColor = false;
+                    $scope.hideColor = true;
                 }
             });
 
-
-
-
+            $scope.user = CurrentUser.user();
+            console.log($scope.user);
+            if ($scope.user.email!==undefined) {
+                console.log($scope.user.isAdmin);
+                postSearchService.create($scope.query).then(function(res) {
+                    console.log("ok");
+                }, function(err) {
+                    console.log("problem data");
+                });
+            }
         };
-
         $scope.goSearch();
-
-
-
 
     });
