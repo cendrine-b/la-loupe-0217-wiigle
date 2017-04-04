@@ -10,10 +10,9 @@ module.exports = (app) => {
     var search = new Search();
 
 
-    router.post('/', search.create);
-    // router.post('/', Auth.hasAuthorization, search.create);
+    router.post('/', Auth.hasAuthorization, search.create);
 
-
-    app.use('/search', router);
+    router.get('/', search.getAll);
+    app.use('/searches', router);
 
 };

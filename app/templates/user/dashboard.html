@@ -1,1 +1,15 @@
-Dashboard de {{user.email}}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h2>History</h2>
+      <ul ng-repeat=" search in history">
+        <li>{{search.content}}</li>
+      </ul>
+    </div>
+    <div class="col-xs-6">
+    <h2>Favourites</h2>
+    </div>
+
+  </div>
+
+</div>

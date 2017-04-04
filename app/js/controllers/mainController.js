@@ -123,7 +123,7 @@ angular.module('app')
                 postSearchService.create($scope.query).then(function(res) {
                     console.log("ok");
                 }, function(err) {
-                    console.log("erreur data base");
+                    console.log("problem data");
                 });
             }
         };

@@ -5,17 +5,17 @@ const searchSchema = new mongoose.Schema({
     content: {
         type: String
     },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
+    user: [{
+        type: mongoose.Schema.ObjectId,
         ref: 'User'
-    },
+    }],
     count: {
-      type: Number,
-      default: 1
+        type: Number,
+        default: 1
     },
-    date:{
-      type: Date,
-      default: new Date()
+    date: {
+        type: Date,
+        default: new Date()
     }
 });
 
@@ -38,4 +38,15 @@ export default class Search {
             });
 
     }
+    getAll(req, res) {
+        model.find({}, (err, searches) => {
+            if (err) {
+                res.status(500).send(err.message);
+            } else {
+                res.json(searches);
+            }
+        });
+    }
+
+
 }
