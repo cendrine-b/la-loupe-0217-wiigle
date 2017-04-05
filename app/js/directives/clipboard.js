@@ -29,6 +29,4 @@ angular.module('app').directive('copyToClipboard', function($window) {
                 }
             }
 
-            
-
             });

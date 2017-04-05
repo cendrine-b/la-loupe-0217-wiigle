@@ -126,9 +126,6 @@ angular.module('app')
             }
         };
 
-        /////////////////////////
-
-        ////////////////////////
         $scope.goSearch();
 
         $scope.nextSearch = function () {
