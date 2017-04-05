@@ -130,6 +130,6 @@ angular.module('app')
 
         $scope.nextSearch = function () {
             $state.go('anon.resultat', {query: $scope.query});
-        }
+        };
 
     });
