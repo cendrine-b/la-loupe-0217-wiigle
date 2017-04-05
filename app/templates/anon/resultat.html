@@ -96,7 +96,7 @@
             <div ng-hide="hideColor">
 
                   <a class="linkcolor" copy-to-clipboard="#{{ color.colors[0].hex }}">
-                    <div class="color" style="background-color: #{{ color.colors[0].hex }}">
+                    <div onclick="alert('The color has been copied to the clipboard')" class="color" style="background-color: #{{ color.colors[0].hex }}">
                     <p>#{{ color.colors[0].hex }}</p>
                     </div>
                   </a>
