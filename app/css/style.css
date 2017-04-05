@@ -434,3 +434,45 @@ a.linkcolor{
     margin-left:35%;
   }
 }
+
+
+/* ////////////////////////////// HISTORY ////////////////////////////// */
+.history h2, .favourite h2 {
+  color: white;
+  font-weight: bold;
+  margin: 1em 0;
+}
+.searchHistory {
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 1.6em;
+  padding: 1em;
+}
+.searchHistory h4 {
+  font-weight: bold;
+  color: #5A0074;
+  margin: 0 0 0.5em 0;
+  cursor: pointer;
+}
+.searchHistory h5 {
+  margin: 0 0 0.5em 0;
+}
+.searchHistory i {
+  font-size: 2.5em;
+  color: #340B40;
+  margin: 0 0.2em 0 0;
+  padding: 0;
+}
+.delete {
+  float: right;
+}
+.result-thumb {
+  background-color: #EDB2FF;
+  border-radius: 10px;
+  margin: 0 0 0.6em 0;
+  padding: 10px 10px;
+}
+.options {
+  margin: 0;
+  padding: 0;
+}
