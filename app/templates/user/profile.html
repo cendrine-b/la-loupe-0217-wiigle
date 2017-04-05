@@ -1,1 +1,49 @@
-Profile de {{user.email}}
+<div class="container profile">
+    <div class="row">
+
+        <div class="col-lg-offset-2 col-lg-3 col-md-offset-1 col-md-4 col-xs-12 profile-picture">
+            <h2>Profile</h2>
+
+            <div class="col-xs-12 text-center">
+                <img src="//placehold.it/200" class="avatar img-circle" alt="avatar">
+                <h5>Choose a profile picture</h5>
+                <input type="file" class="form-control-file" aria-describedby="fileHelp">
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-md-6 col-xs-12 personal-info">
+
+            <div class="alert alert-info alert-dismissable text-center">
+              <a class="panel-close close" data-dismiss="alert">×</a>
+              <i class="fa fa-coffee"></i>
+              <p>Your changes have been taken into account.</p>
+            </div>
+
+            <form class="col-xs-12" role="form" name="profileForm" novalidate ng-submit="">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Enter your username">
+                </div>
+                <div class="form-group">
+                    <label>Email address</label>
+                    <p>You defined {{ user.email }} as your email address.</p>
+                    <input type="email" class="form-control" placeholder="Enter a new email address">
+                    <input type="email" class="form-control" placeholder="Confirm your new email address">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Enter your actual password">
+                    <input type="password" class="form-control" placeholder="Enter your new password">
+                    <input type="password" class="form-control" placeholder="Confirm your new password">
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-default pull-right" type="button" name="button">Save changes</button>
+                </div>
+
+            </form>
+        </div>
+
+
+
+    </div>
+</div>
