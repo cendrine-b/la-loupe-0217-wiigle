@@ -4,11 +4,11 @@
     <div class="col-md-6 col-xs-12 history">
       <h2>History</h2>
       <div class="searchHistory" ng-repeat="search in history">
-        <h4><a ng-click="seeContent()">{{search.content}}</a></h4>
+        <h4><a ng-click="seeContent($index)">{{search.content}}</a></h4>
         <h5>{{search.date}}</h5>
 
         <!-- SHOW RESULTS  -->
-        <div class="container-fluid result-thumb" ng-hide="hideVisuals">
+        <div class="container-fluid result-thumb" ng-show="$index === selectedIndex">
           <div class="row">
             <!-- FIRST COLUMN -->
             <div class="col-lg-5 col-md-7 col-sm-7 first-column">
@@ -77,18 +77,18 @@
 
         </div>
 
-<div class="container-fluid options">
-        <div class="row">
-          <div class="col-xs-6">
-            <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-          </div>
-          <div class="col-xs-6">
-            <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="">Delete</button>
+        <div class="container-fluid options">
+          <div class="row">
+            <div class="col-xs-6">
+              <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </div>
+            <div class="col-xs-6">
+              <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="delete($index)">Delete</button>
+            </div>
           </div>
         </div>
-    </div>
 
       </div>
 

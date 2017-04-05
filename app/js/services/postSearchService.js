@@ -5,5 +5,10 @@ angular.module('app')
                 return $http.post('/searches', {content: search, user});
             },
 
+            // DELETE SEARCH FROM DATABASE
+            // delete: function(id) {
+            //     return $http.delete('/searches/' + id);
+            // }
+
         };
     });
