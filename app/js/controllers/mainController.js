@@ -1,6 +1,6 @@
 angular.module('app')
 
-    .controller('MainController', function($scope, $state, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser) {
+    .controller('MainController', function($scope, $state, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser, $q) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -26,9 +26,16 @@ angular.module('app')
 
             $scope.spinner = true;
             $scope.resultatrecherche = false;
+            var appelOmdb = omdbService.getOne($scope.query);
+            var appelGiphy = gifService.getOne($scope.query);
+            var appelImage = imageService.getOne($scope.query);
+            var appelSpotify = spotifyService.getOne($scope.query);
+            var appelVideo = videoService.getOne($scope.query);
+            var appelWeb = webService.getOne($scope.query);
+            var appelColor = colorService.getOne($scope.query);
 
             // OMDB API
-            omdbService.getOne($scope.query).then(function(response) {
+            appelOmdb.then(function(response) {
                 $scope.cineImage = true;
                 $scope.hideMovie = false;
                 $scope.details = response.data;
@@ -41,7 +48,7 @@ angular.module('app')
             });
 
             // GIPHY API
-            gifService.getOne($scope.query).then(function(res) {
+            appelGiphy.then(function(res) {
                 $scope.imgNotFound = true;
                 $scope.imageGify = false;
                 $scope.gif = res.data.data;
@@ -52,28 +59,18 @@ angular.module('app')
             });
 
             //image
-            imageService.getOne($scope.query).then(function(response) {
+            appelImage.then(function(response) {
                 $scope.hideTxtImage = true;
                 $scope.image = response.data;
-                $scope.user = CurrentUser.user();
-                if ($scope.user.email !== undefined) {
-                    postSearchService.create($scope.image).then(function(res) {
-                        console.log("genial", $scope.image);
-                    }, function(err) {
-                        console.log("dommmmmmage !", $scope.image.value[0].contentUrl);
-                    });
-                }
-                console.log($scope.image.value[0].contentUrl);
                 if ($scope.image.value.length === 0) {
                     $scope.hideTxtImage = false;
                 }
-
                 $scope.spinner = false;
                 $scope.resultatrecherche = true;
             });
 
             // SPOTIFY API
-            spotifyService.getOne($scope.query).then(function(response) {
+            appelSpotify.then(function(response) {
                 $scope.imgAudio = true;
                 $scope.hideAudio = false;
                 $scope.data = response.data;
@@ -86,8 +83,7 @@ angular.module('app')
             });
 
             //video
-            videoService.getOne($scope.query).then(function(response) {
-
+            appelVideo.then(function(response) {
                 $scope.video = response.data;
                 if ($scope.video.value.length > 0) {
                     $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g, "autoplay=0"));
@@ -101,11 +97,13 @@ angular.module('app')
             });
 
             // WEB API
-            webService.getOne($scope.query).then(function(response) {
+            appelWeb.then(function(response) {
                 $scope.hideImgWeb = true;
                 $scope.hideWeb = false;
                 $scope.web = response.data;
-                if ($scope.web.rankingResponse.mainline !== undefined) {} else {
+                if ($scope.web.rankingResponse.mainline !== undefined) {
+
+                } else {
                     $scope.hideWeb = true;
                     $scope.hideImgWeb = false;
                 }
@@ -114,7 +112,7 @@ angular.module('app')
             });
 
             // color API
-            colorService.getOne($scope.query).then(function(response) {
+            appelColor.then(function(response) {
                 $scope.color = response.data;
                 $scope.imgColor = true;
                 if ($scope.color.counts.matching_colors === "0") {
@@ -123,14 +121,37 @@ angular.module('app')
                 }
             });
 
-            $scope.user = CurrentUser.user();
-            if ($scope.user.email !== undefined) {
-                postSearchService.create($scope.query, $scope.user).then(function(res) {
-                    console.log("ok");
-                }, function(err) {
-                    console.log("problem data");
-                });
-            }
+            $q.all({
+                appelOmdb,
+                appelGiphy,
+                appelImage,
+                appelSpotify,
+                appelVideo,
+                appelWeb,
+                appelColor
+            }).then(function(responses) {
+                console.log('all done', responses);
+
+                $scope.user = CurrentUser.user();
+                console.log('user', $scope.user);
+                if ($scope.user.email !== undefined) {
+                    var results = {
+                        omdb: $scope.details.Title,
+                        giphy: $scope.gif[0].bitly_gif_url,
+                        image: $scope.image.value[0].contentUrl,
+                        spotify: $scope.data.tracks.items[0].preview_url,
+                        video: $scope.bindHTML,
+                        web: $scope.web.webPages.value[0].url,
+                        color: $scope.color[0].hex
+                    };
+                    console.log(results);
+                    console.log("coucou");
+
+                    postSearchService.create($scope.query, $scope.user, results).then(function(res) {
+
+                    }, function(err) {});
+                }
+            });
         };
 
         $scope.goSearch();
