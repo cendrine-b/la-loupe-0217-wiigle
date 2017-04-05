@@ -32,7 +32,7 @@ angular.module('app')
                 $scope.cineImage = true;
                 $scope.hideMovie = false;
                 $scope.details = response.data;
-                if ($scope.details.Response == "False") {
+                if ($scope.details.Response === "False") {
                     $scope.hideMovie = true;
                     $scope.cineImage = false;
                 }
@@ -132,6 +132,7 @@ angular.module('app')
                 });
             }
         };
+
         $scope.goSearch();
 
         $scope.nextSearch = function() {

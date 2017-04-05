@@ -4,5 +4,11 @@ angular.module('app')
             create: function(search, user, image) {
                 return $http.post('/searches', {content: search, user: user, image: image});
             },
+
+            // DELETE SEARCH FROM DATABASE
+            // delete: function(id) {
+            //     return $http.delete('/searches/' + id);
+            // }
+
         };
     });
