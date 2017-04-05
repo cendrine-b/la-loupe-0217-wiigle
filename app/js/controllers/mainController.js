@@ -55,6 +55,15 @@ angular.module('app')
             imageService.getOne($scope.query).then(function(response) {
                 $scope.hideTxtImage = true;
                 $scope.image = response.data;
+                $scope.user = CurrentUser.user();
+                if ($scope.user.email !== undefined) {
+                    postSearchService.create($scope.image).then(function(res) {
+                        console.log("genial", $scope.image);
+                    }, function(err) {
+                        console.log("dommmmmmage !", $scope.image.value[0].contentUrl);
+                    });
+                }
+                console.log($scope.image.value[0].contentUrl);
                 if ($scope.image.value.length === 0) {
                     $scope.hideTxtImage = false;
                 }
@@ -115,10 +124,8 @@ angular.module('app')
             });
 
             $scope.user = CurrentUser.user();
-            console.log($scope.user);
-            if ($scope.user.email!==undefined) {
-                console.log($scope.user.isAdmin);
-                postSearchService.create($scope.query).then(function(res) {
+            if ($scope.user.email !== undefined) {
+                postSearchService.create($scope.query, $scope.user).then(function(res) {
                     console.log("ok");
                 }, function(err) {
                     console.log("problem data");
@@ -127,8 +134,10 @@ angular.module('app')
         };
         $scope.goSearch();
 
-        $scope.nextSearch = function () {
-            $state.go('anon.resultat', {query: $scope.query});
-        }
+        $scope.nextSearch = function() {
+            $state.go('anon.resultat', {
+                query: $scope.query
+            });
+        };
 
     });

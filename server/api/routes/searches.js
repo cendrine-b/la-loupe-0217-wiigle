@@ -14,5 +14,4 @@ module.exports = (app) => {
 
     router.get('/', search.getAll);
     app.use('/searches', router);
-
 };
