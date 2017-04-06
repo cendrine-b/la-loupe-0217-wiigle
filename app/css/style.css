@@ -380,8 +380,23 @@ a:hover {
     margin-bottom: 0.5em;
 }
 
+/*//////////////////////////////*/
 a.linkcolor{
   cursor: pointer;
+}
+
+.errormessage{
+font-size: 16px;
+font-weight: bold;
+color: white;
+text-align: center;
+}
+
+.medialogo{
+margin: 20px;
+}
+.divmedia{
+  text-align: center;
 }
 
 /*ENd affichage des resultats*/
