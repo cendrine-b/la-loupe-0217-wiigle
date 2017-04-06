@@ -26,16 +26,16 @@ angular.module('app')
 
             $scope.spinner = true;
             $scope.resultatrecherche = false;
-            var appelOmdb = omdbService.getOne($scope.query);
-            var appelGiphy = gifService.getOne($scope.query);
-            var appelImage = imageService.getOne($scope.query);
-            var appelSpotify = spotifyService.getOne($scope.query);
-            var appelVideo = videoService.getOne($scope.query);
-            var appelWeb = webService.getOne($scope.query);
-            var appelColor = colorService.getOne($scope.query);
+            var callOmdb = omdbService.getOne($scope.query);
+            var callGiphy = gifService.getOne($scope.query);
+            var callImage = imageService.getOne($scope.query);
+            var callSpotify = spotifyService.getOne($scope.query);
+            var callVideo = videoService.getOne($scope.query);
+            var callWeb = webService.getOne($scope.query);
+            var callColor = colorService.getOne($scope.query);
 
             // OMDB API
-            appelOmdb.then(function(response) {
+            callOmdb.then(function(response) {
                 $scope.cineImage = true;
                 $scope.hideMovie = false;
                 $scope.details = response.data;
@@ -48,7 +48,7 @@ angular.module('app')
             });
 
             // GIPHY API
-            appelGiphy.then(function(res) {
+            callGiphy.then(function(res) {
                 $scope.imgNotFound = true;
                 $scope.imageGify = false;
                 $scope.gif = res.data.data;
@@ -59,7 +59,7 @@ angular.module('app')
             });
 
             //image
-            appelImage.then(function(response) {
+            callImage.then(function(response) {
                 $scope.hideTxtImage = true;
                 $scope.image = response.data;
                 if ($scope.image.value.length === 0) {
@@ -70,7 +70,7 @@ angular.module('app')
             });
 
             // SPOTIFY API
-            appelSpotify.then(function(response) {
+            callSpotify.then(function(response) {
                 $scope.imgAudio = true;
                 $scope.hideAudio = false;
                 $scope.data = response.data;
@@ -83,7 +83,7 @@ angular.module('app')
             });
 
             //video
-            appelVideo.then(function(response) {
+            callVideo.then(function(response) {
                 $scope.video = response.data;
                 if ($scope.video.value.length > 0) {
                     $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g, "autoplay=0"));
@@ -97,7 +97,7 @@ angular.module('app')
             });
 
             // WEB API
-            appelWeb.then(function(response) {
+            callWeb.then(function(response) {
                 $scope.hideImgWeb = true;
                 $scope.hideWeb = false;
                 $scope.web = response.data;
@@ -112,7 +112,7 @@ angular.module('app')
             });
 
             // color API
-            appelColor.then(function(response) {
+            callColor.then(function(response) {
                 $scope.color = response.data;
                 $scope.imgColor = true;
                 if ($scope.color.counts.matching_colors === "0") {
@@ -122,30 +122,31 @@ angular.module('app')
             });
 
             $q.all({
-                appelOmdb,
-                appelGiphy,
-                appelImage,
-                appelSpotify,
-                appelVideo,
-                appelWeb,
-                appelColor
+                callOmdb,
+                callGiphy,
+                callImage,
+                callSpotify,
+                callVideo,
+                callWeb,
+                callColor
             }).then(function(responses) {
                 console.log('all done', responses);
 
                 $scope.user = CurrentUser.user();
                 console.log('user', $scope.user);
                 if ($scope.user.email !== undefined) {
-                    var results = {
-                        omdb: $scope.details.Title,
+                  console.log("log in ok");
+                  var results = {
+                        omdb: $scope.details.Poster,
                         giphy: $scope.gif[0].bitly_gif_url,
                         image: $scope.image.value[0].contentUrl,
                         spotify: $scope.data.tracks.items[0].preview_url,
-                        video: $scope.bindHTML,
+                        video: $scope.video.value[0].contentUrl,
                         web: $scope.web.webPages.value[0].url,
-                        color: $scope.color[0].hex
+                        color: $scope.color.colors[0].hex
                     };
                     console.log(results);
-                    console.log("coucou");
+
 
                     postSearchService.create($scope.query, $scope.user, results).then(function(res) {
 

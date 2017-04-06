@@ -5,12 +5,9 @@ const searchSchema = new mongoose.Schema({
             content: {
                 type: String
             },
-
-
             user: {
                 type: String
             },
-
             date: {
                 type: Date,
                 default: new Date()
