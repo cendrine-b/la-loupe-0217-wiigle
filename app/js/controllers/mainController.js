@@ -1,6 +1,6 @@
 angular.module('app')
 
-    .controller('MainController', function($scope, $state, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser, $q) {
+    .controller('MainController', function($scope, $state, $stateParams, omdbService, gifService, imageService, spotifyService, videoService, $sce, webService, colorService, postSearchService, CurrentUser) {
         /* Here is your main controller */
 
         $scope.query = "";
@@ -26,16 +26,9 @@ angular.module('app')
 
             $scope.spinner = true;
             $scope.resultatrecherche = false;
-            var callOmdb = omdbService.getOne($scope.query);
-            var callGiphy = gifService.getOne($scope.query);
-            var callImage = imageService.getOne($scope.query);
-            var callSpotify = spotifyService.getOne($scope.query);
-            var callVideo = videoService.getOne($scope.query);
-            var callWeb = webService.getOne($scope.query);
-            var callColor = colorService.getOne($scope.query);
 
             // OMDB API
-            callOmdb.then(function(response) {
+            omdbService.getOne($scope.query).then(function(response) {
                 $scope.cineImage = true;
                 $scope.hideMovie = false;
                 $scope.details = response.data;
@@ -48,7 +41,7 @@ angular.module('app')
             });
 
             // GIPHY API
-            callGiphy.then(function(res) {
+            gifService.getOne($scope.query).then(function(res) {
                 $scope.imgNotFound = true;
                 $scope.imageGify = false;
                 $scope.gif = res.data.data;
@@ -59,18 +52,19 @@ angular.module('app')
             });
 
             //image
-            callImage.then(function(response) {
+            imageService.getOne($scope.query).then(function(response) {
                 $scope.hideTxtImage = true;
                 $scope.image = response.data;
                 if ($scope.image.value.length === 0) {
                     $scope.hideTxtImage = false;
                 }
+
                 $scope.spinner = false;
                 $scope.resultatrecherche = true;
             });
 
             // SPOTIFY API
-            callSpotify.then(function(response) {
+            spotifyService.getOne($scope.query).then(function(response) {
                 $scope.imgAudio = true;
                 $scope.hideAudio = false;
                 $scope.data = response.data;
@@ -83,7 +77,8 @@ angular.module('app')
             });
 
             //video
-            callVideo.then(function(response) {
+            videoService.getOne($scope.query).then(function(response) {
+
                 $scope.video = response.data;
                 if ($scope.video.value.length > 0) {
                     $scope.bindHTML = $sce.trustAsHtml($scope.video.value[0].embedHtml.replace(/autoplay|autoPlay\=1/g, "autoplay=0"));
@@ -97,13 +92,11 @@ angular.module('app')
             });
 
             // WEB API
-            callWeb.then(function(response) {
+            webService.getOne($scope.query).then(function(response) {
                 $scope.hideImgWeb = true;
                 $scope.hideWeb = false;
                 $scope.web = response.data;
-                if ($scope.web.rankingResponse.mainline !== undefined) {
-
-                } else {
+                if ($scope.web.rankingResponse.mainline !== undefined) {} else {
                     $scope.hideWeb = true;
                     $scope.hideImgWeb = false;
                 }
@@ -112,8 +105,7 @@ angular.module('app')
             });
 
             // color API
-            callColor.then(function(response) {
-              console.log(response.data);
+            colorService.getOne($scope.query).then(function(response) {
                 $scope.color = response.data;
                 $scope.imgColor = true;
                 if ($scope.color.counts.matching_colors === "0") {
@@ -122,51 +114,22 @@ angular.module('app')
                 }
             });
 
-            $q.all({
-                callOmdb,
-                callGiphy,
-                callImage,
-                callSpotify,
-                callVideo,
-                callWeb,
-                callColor
-            }).then(function(responses) {
-                console.log('all done', responses);
-
-                $scope.user = CurrentUser.user();
-                console.log('user', $scope.user);
-                if ($scope.user.email !== undefined) {
-                  console.log("log in ok");
-                  var results = {
-                        omdb: $scope.details.Poster,
-                        omdbTitle: $scope.details.Title,
-                        omdbLink: $scope.details.imdbID,
-                        giphy: $scope.gif[0].images.downsized.url,
-                        image: $scope.image.value[0].contentUrl,
-                        spotify: $scope.data.tracks.items[0].preview_url,
-                        spotifyAlbum: $scope.data.tracks.items[0].album.images[1].url,
-                        video: $scope.video.value[0].contentUrl,
-                        videoImage: $scope.video.value[0].thumbnailUrl,
-                        web: $scope.web.webPages.value[0].url,
-                        webName: $scope.web.webPages.value[0].name,
-                        color: $scope.color.colors.length > 0 ? $scope.color.colors[0].hex : null
-                    };
-                    console.log(results);
-
-
-                    postSearchService.create($scope.query, $scope.user, results).then(function(res) {
-
-                    }, function(err) {});
-                }
-            });
+            $scope.user = CurrentUser.user();
+            console.log($scope.user);
+            if ($scope.user.email!==undefined) {
+                console.log($scope.user.isAdmin);
+                postSearchService.create($scope.query).then(function(res) {
+                    console.log("ok");
+                }, function(err) {
+                    console.log("problem data");
+                });
+            }
         };
 
         $scope.goSearch();
 
-        $scope.nextSearch = function() {
-            $state.go('anon.resultat', {
-                query: $scope.query
-            });
-        };
+        $scope.nextSearch = function () {
+            $state.go('anon.resultat', {query: $scope.query});
+        }
 
     });
