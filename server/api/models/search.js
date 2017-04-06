@@ -63,7 +63,29 @@ const searchSchema = new mongoose.Schema({
                 });
             }
 
+            getByUser(req, res) {
+                model.find({
+                  user: req.params.id
+                }, (err, searches) => {
+                  if (err) {
+                  res.status(500).send(err.message);
+                } else {
+                  res.json(searches)
+                }
+                });
+            }
 
+            // getById(req, res) {
+            //     model.findById(req.params.id, {
+            //         user: CurrentUser
+            //     }, (err, user) => {
+            //         if (err || !searches) {
+            //             res.sendStatus(403);
+            //         } else {
+            //             res.json(searches);
+            //         }
+            //     });
+            // }
 
             create(req, res) {
                 console.log('body', req.body);

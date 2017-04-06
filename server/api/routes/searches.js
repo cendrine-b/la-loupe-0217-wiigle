@@ -13,6 +13,8 @@ module.exports = (app) => {
 
 
     router.get('/', search.getAll);
+    router.get('/:id', search.getByUser);
+
 
 
     app.use('/searches', router);
