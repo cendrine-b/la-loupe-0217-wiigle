@@ -3,9 +3,27 @@
     <!-- HISTORY -->
     <div class="col-md-offset-1 col-md-6 col-xs-12 history">
       <h2>History</h2>
-      <div class="searchHistory" ng-repeat="search in history">
-        <h4><a ng-click="seeContent($index)">{{search.content}}</a></h4>
-        <h5>{{search.date}}</h5>
+      <div class="row">
+        <div class="col-xs-6">
+          <label>Show last
+            <input type="number" class="form-control bfh-number" value="5" step="5" min="0" ng-model="numLimit">
+          </label>
+        </div>
+        <div class="col-xs-6">
+          <button class="btn btn-default btn-md pull-right delete-all" type="button" name="button" ng-click="deleteAll()">Delete all</button>
+        </div>
+      </div>
+
+      <div class="searchHistory" ng-repeat="search in history | limitTo : numLimit">
+        <div class="row">
+          <div class="col-xs-6">
+            <h4><a ng-click="seeContent($index)">{{search.content}}</a></h4>
+            <h5>{{search.date | date: 'yyyy-MM-dd' }}</h5>
+          </div>
+          <div class="col-xs-6">
+            <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="delete(search._id)">Delete</button>
+          </div>
+        </div>
 
         <!-- SHOW RESULTS  -->
         <div class="container-fluid result-thumb" ng-show="$index === selectedIndex">
@@ -53,7 +71,7 @@
 
         </div>
 
-        <div class="container-fluid options">
+        <!-- <div class="container-fluid options">
           <div class="row">
             <div class="col-xs-6">
               <a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
@@ -61,16 +79,13 @@
               <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
             <div class="col-xs-6">
-              <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="delete(search._id, $index)">Delete</button>
+              <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="delete(search._id)">Delete</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
 
-
-
-      <button class="btn btn-default btn-md" type="button" name="button" ng-click="">Delete all</button>
     </div>
 
 
@@ -79,17 +94,17 @@
     <!-- FAVOURITE -->
     <div class="col-md-4 col-xs-12 favourite">
       <h2>Favourites</h2>
-      <div class="searchFavourites" ng-repeat="search in favourites | orderBy: '-count'">
-
-        <div class="row">
-          <div class="col-xs-6">
-            <!-- <i class="fa fa-trophy" aria-hidden="true"></i> -->
-            <h4><i class="fa fa-star" aria-hidden="true"></i><a href="http://localhost:8000/#!/resultat/{{ search.content }}">{{ search.content }}</a></h4>
+      <div class="zoneFavourites">
+        <div class="searchFavourites" ng-repeat="search in favourites | orderBy: '-count'">
+          <div class="row">
+            <div class="col-xs-6">
+              <h4><i class="fa fa-star" aria-hidden="true"></i><a href="http://localhost:8000/#!/resultat/{{ search.content }}">{{ search.content }}</a></h4>
+            </div>
+            <div class="col-xs-6 text-right">
+              <h4>{{ search.count }} search(es)</h4>
+            </div>
           </div>
-          <div class="col-xs-6 text-right">
-            <h4>{{ search.count }} search(es)</h4>
-          </div>
-        </div>
+      </div>
 
 
 

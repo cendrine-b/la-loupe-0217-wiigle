@@ -11,11 +11,13 @@ module.exports = (app) => {
 
     router.post('/', search.create);
 
-
     router.get('/', search.getAll);
+
+    router.delete('/', search.deleteAll);
+
     router.get('/:id', search.getByUser);
 
-
+    router.delete('/:id', search.delete);
 
     app.use('/searches', router);
 };

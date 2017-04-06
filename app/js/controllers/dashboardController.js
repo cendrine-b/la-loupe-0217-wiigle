@@ -1,13 +1,24 @@
 angular.module('app')
-    .controller('DashboardController', function($scope, CurrentUser, UserService, HistoryService, postSearchService, FavouritesService) {
+    .controller('DashboardController', function($scope, CurrentUser, UserService, HistoryService, postSearchService, FavouritesService, DeleteSearchService) {
 
         $scope.seeContent = function(idx) {
             $scope.selectedIndex = idx;
         };
 
-        $scope.delete = function(index) {
-            $scope.history.splice(index, 1);
+        $scope.numLimit = 5;
+
+        $scope.delete = function (id) {
+          DeleteSearchService.delete(id).then(function(res) {
+            location.reload(true);
+          });
         };
+
+        $scope.deleteAll = function () {
+          DeleteSearchService.deleteAll().then(function(res) {
+            location.reload(true);
+          });
+        };
+
 
         UserService.getOne(CurrentUser.user()._id).then(function(res) {
             $scope.user = res.data;

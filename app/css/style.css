@@ -442,6 +442,24 @@ a.linkcolor{
   font-weight: bold;
   margin: 1em 0;
 }
+
+@media (min-width: 320px) {
+  .zoneFavourites {
+    margin-top : 0em;
+  }
+}
+@media (min-width: 992px) {
+  .zoneFavourites {
+    margin-top : 7.35em;
+  }
+}
+
+.history .delete-all {
+  margin-top: 1.4em;
+}
+.history .bfh-number, .history .delete-all {
+  margin-bottom: 1em;
+}
 .searchHistory, .searchFavourites {
   background-color: white;
   border-radius: 10px;
@@ -463,7 +481,7 @@ a.linkcolor{
 }
 
 .searchHistory h5 {
-  margin: 0 0 0.5em 0;
+  margin: 0;
 }
 
 .searchHistory i {
@@ -487,7 +505,7 @@ a.linkcolor{
 .result-thumb {
   background-color: #EDB2FF;
   border-radius: 10px;
-  margin: 0 0 0.6em 0;
+  margin-top: 0.6em;
   padding: 10px 14px;
 }
 
@@ -547,4 +565,9 @@ a.linkcolor{
 .result-thumb h5 {
   margin: 0 0 4px 0;
   text-align: center;
+}
+
+/* LABEL IN FORMS */
+label {
+  color: #5A0074;
 }
