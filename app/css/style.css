@@ -236,11 +236,12 @@ a.linkcolor {
 .medialogo {
     margin: 20px;
 }
-
 .divmedia {
     text-align: center;
 }
-/*ENd affichage des resultats*/
+
+
+/*END affichage des resultats*/
 /* ////////////////////////////// HISTORY and FAVOURITES ////////////////////////////// */
 .history h2, .favourite h2 {
     color: white;
@@ -340,6 +341,9 @@ a.linkcolor {
         right: 5em;
         margin: 0;
         padding: 5px 10px;
+    }
+    .decalFilm{
+      margin-top: 35px !important; /*désolé c'est david !!!*/
     }
 }
 /*-- MD ------------------------------------------------------------------------------------------------------------*/

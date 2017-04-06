@@ -27,7 +27,6 @@
     </div>
 </div>
 <div class="container-fluid result" ng-show="resultatrecherche">
-  <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&mobile_iframe=true&width=105&height=20&appId" width="105" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
     <div class="row">
         <div class="col-lg-5 col-md-7 col-sm-7 first-column">
             <!-- VIDEO -->
@@ -64,7 +63,7 @@
                     </div>
                 </div>
             </div>
-             <div class="divmedia" ng-hide="cineImage">
+             <div class="divmedia decalFilm" ng-hide="cineImage">
                 <img src="img/movie.png" alt="" class="medialogo">
                 <p class="errormessage">Sorry we didn't find any Film of "{{query}}"</p>
             </div>
@@ -98,7 +97,7 @@
                 </a>
             </div>
             <div ng-hide="imgColor" class="divmedia">
-                <p class="errormessage">Sorry don't find a color of "{{query}}"</p>
+              <p class="errormessage">Sorry don't find a color of "{{query}}"</p>
                 <img src="img/color.png" alt="" class="medialogo">
             </div>
             <!-- END COULEUR -->
@@ -109,8 +108,8 @@
                 <p>{{web.webPages.value[0].snippet}}</p>
             </div>
             <div class="divmedia" ng-hide="hideImgWeb">
-                <img src="img/web.png" alt="" class="medialogo">
-                <p class="errormessage">Sorry we didn't find any website of "{{query}}"</p>
+              <img src="img/web.png" alt="" class="medialogo">
+              <p class="errormessage">Sorry we didn't find any website of "{{query}}"</p>
             </div>
           </div>
             <!-- END WEBSITE -->
@@ -123,8 +122,8 @@
                 <audio class="col-xs-12" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
             </div>
             <div class="divmedia" ng-hide="imgAudio">
-                <p class="errormessage">Sorry we didn't find any Music of "{{query}}"</p>
                 <img src="img/music.png" alt="" class="medialogo">
+                <p class="errormessage">Sorry we didn't find any Music of "{{query}}"</p>
             </div>
             <!-- END MUSIQUE -->
         </div>
