@@ -149,7 +149,7 @@ angular.module('app')
                         videoImage: $scope.video.value[0].thumbnailUrl,
                         web: $scope.web.webPages.value[0].url,
                         webName: $scope.web.webPages.value[0].name,
-                        color: $scope.color.colors[0].hex
+                        color: $scope.color.colors.length > 0 ? $scope.color.colors[0].hex : null
                     };
                     console.log(results);
 
