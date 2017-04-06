@@ -79,12 +79,12 @@
     <!-- FAVOURITE -->
     <div class="col-md-4 col-xs-12 favourite">
       <h2>Favourites</h2>
-      <div class="searchFavourites" ng-repeat="search in favourites | orderBy: 'count'">
+      <div class="searchFavourites" ng-repeat="search in favourites | orderBy: '-count'">
 
         <div class="row">
           <div class="col-xs-6">
             <!-- <i class="fa fa-trophy" aria-hidden="true"></i> -->
-            <h4><i class="fa fa-star" aria-hidden="true"></i><a href="{{ }}">{{ search.content }}</a></h4>
+            <h4><i class="fa fa-star" aria-hidden="true"></i><a href="http://localhost:8000/#!/resultat/{{ search.content }}">{{ search.content }}</a></h4>
           </div>
           <div class="col-xs-6 text-right">
             <h4>{{ search.count }} search(es)</h4>

@@ -44,20 +44,4 @@ angular.module('app')
           return favs;
         };
 
-        // $scope.favourite = [];
-        // FavouritesService.getAll().then(function(res) {
-        //     $scope.favourite = res.data;
-        //
-        //       console.log("before", $scope.favourite);
-
-      // for(var i = 0; i < favourite.length; i++) {
-      //  if(map[favourite[i]] !== null) {
-      //     map[favourite[i]] += 1;
-      // } else {
-      //     map[favourite[i]] = 1;
-      //     }
-          // console.log("after", $scope.favourite);
-      // }
-    //     });
-    //
   });
