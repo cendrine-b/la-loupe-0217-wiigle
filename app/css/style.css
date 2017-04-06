@@ -118,6 +118,9 @@ html, body {
 .menu {
   margin-top: 2em;
 }
+.menuList {
+  margin-top: 4.6em;
+}
 
 .logout {
   margin-top: 0.8em;
@@ -156,7 +159,7 @@ html, body {
 /* BACK TO TOP BUTTON */
 #top-button {
   position: fixed;
-  z-index: 99999999;
+  z-index: 2;
   right: 3%;
   bottom: 3%;
   color: white;
