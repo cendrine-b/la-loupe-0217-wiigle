@@ -71,8 +71,11 @@ angular.module('app')
                 if ($scope.data.tracks.items.length === 0) {
                     $scope.imgAudio = false;
                     $scope.hideAudio = true;
+                  }else{
+                    $scope.imgAudio = true;
+                    $scope.hideAudio = false;
 
-                }
+                  }
 
             });
 
@@ -85,10 +88,9 @@ angular.module('app')
                     $scope.hideVideo = false;
                     $scope.imgVideo = true;
                 } else {
-                    $scope.hideVideo = true;
-                    $scope.imgVideo = false;
+                  $scope.hideVideo = true;
+                  $scope.imgVideo = false;
                 }
-
             });
 
             // WEB API

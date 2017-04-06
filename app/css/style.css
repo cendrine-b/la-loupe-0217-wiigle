@@ -4,10 +4,7 @@ html, body {
     background-color: #EDB2FF;
     /*fond rose*/
 }
-
-
 /* NAVBAR ANON */
-
 .overlay {
     height: 100%;
     width: 0;
@@ -19,226 +16,110 @@ html, body {
     overflow-x: hidden;
     transition: 0.5s;
 }
-
 .overlay-content {
     position: relative;
     top: 30%;
     width: 100%;
     color: white;
 }
-
 .overlay-content h2 {
     font-size: 1.8em;
 }
-
 .glyphicon-menu-hamburger, .glyphicon-remove {
     opacity: 0.6;
 }
-
 /* RESPONSIVE BUTTON MENU */
-@media (min-width: 320px) {
-    .overlay .closebtn {
-        position: absolute;
-        top: 0.9em;
-        right: 1em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-    .hamburger-menu {
-        position: absolute;
-        top: 0.9em;
-        right: 1em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-}
-
-@media (min-width: 768px) {
-    .overlay .closebtn {
-        position: absolute;
-        top: 1.8em;
-        right: 2em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-    .hamburger-menu {
-        position: absolute;
-        top: 1.8em;
-        right: 2em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-}
-
-@media (min-width: 992px) {
-    .overlay .closebtn {
-        position: absolute;
-        top: 2.3em;
-        right: 5em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-    .hamburger-menu {
-        position: absolute;
-        top: 2.3em;
-        right: 5em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .overlay .closebtn {
-        position: absolute;
-        top: 2.9em;
-        right: 5em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-    .hamburger-menu {
-        position: absolute;
-        top: 2.9em;
-        right: 5em;
-        margin: 0;
-        padding: 5px 10px;
-    }
-}
-
 /* NAVBAR USER */
 #user-menu {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
-
 #user-menu h2 {
-  margin: 0 0 1em 0;
-  padding: 0;
+    margin: 0 0 1em 0;
+    padding: 0;
 }
-
 .menu {
-  margin-top: 2em;
+    margin-top: 2em;
 }
-
 .logout {
-  margin-top: 0.8em;
+    margin-top: 0.8em;
 }
-
 #user-menu ul {
-  font-size: 1.5em;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    font-size: 1.5em;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-
 #user-menu li {
-  margin: 0 0 0.3em 0;
+    margin: 0 0 0.3em 0;
 }
-
 #user-menu a {
-  color: white;
-  font-weight: 400;
+    color: white;
+    font-weight: 400;
 }
-
 #user-menu i {
-  font-size: 2em;
-  margin-right: 0.4em;
+    font-size: 2em;
+    margin-right: 0.4em;
 }
-
 #user-menu a:hover, #user-menu i:hover {
-  color: #EDB2FF;
+    color: #EDB2FF;
 }
-
 #user-menu img {
-  background-color: white;
+    background-color: white;
 }
-
-
 /* BACK TO TOP BUTTON */
 #top-button {
-  position: fixed;
-  z-index: 99999999;
-  right: 3%;
-  bottom: 3%;
-  color: white;
-  font-size: 1.4em;
-  background-color: #340B40;
-  border-radius: 50%;
-  border: solid white 4px;
-  margin: 0;
-  padding: 0;
-  width: 50px;
-  height: 50px;
-  line-height: 1.1em;
+    position: fixed;
+    z-index: 99999999;
+    right: 3%;
+    bottom: 3%;
+    color: white;
+    font-size: 1.4em;
+    background-color: #340B40;
+    border-radius: 50%;
+    border: solid white 4px;
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 1.1em;
 }
-
 #top-button:hover {
-  background-color: #5A0074;
+    background-color: #5A0074;
 }
-
-@media (min-width: 320px) {
-  #top-button {
-    opacity: 1;
-  }
-}
-
-@media (min-width: 1200px) {
-  #top-button {
-    opacity: 0;
-  }
-}
-
-
-
 /* START Search section - Home */
-
 .vertical-center {
     min-height: 82vh;
     display: flex;
     align-items: center;
 }
-
 .logo-home {
     margin-bottom: 2%;
 }
-
 .logo-home h1 {
     letter-spacing: 0.6vmax;
     font-size: 3.5vmax;
     font-weight: bold;
 }
-
 .glyphicon-search {
     opacity: 0.6;
 }
-
-
 /* END Search section - Home */
-
-
 /*START lettres logo*/
-
 .blue {
     color: blue;
 }
-
 .red {
     color: red;
 }
-
 .yellow {
     color: yellow;
 }
-
 .green {
     color: green;
 }
-
-
 /*END lettres logo*/
-
-
 /* START Search section - Result */
-
 .logo-result h1 {
     margin: 0;
     padding: 0;
@@ -246,87 +127,63 @@ html, body {
     font-size: 2.8vmax;
     font-weight: bold;
 }
-
 .vertical-line {
     margin-top: 3%;
     display: flex;
     align-items: center;
 }
-
-
 /* END Search section - Result */
-
-
 /*START Affichage des résultats*/
-
 .result {
     margin-top: 3%;
 }
-
 .video, .film, .image, .gif, .color, .site, .music {
     border-radius: 10px;
     margin-bottom: 1.6em;
-
 }
-
 .first-column, .second-column, .third-column {
     padding: 0 0.8em;
     margin: 0;
 }
-
-
 /* Sections' titles */
-
 h3 {
     font-size: 1.5em;
     font-weight: bold;
     margin: 0 0 1em 0;
 }
-
 a {
     color: #5A0074;
     text-decoration: none;
     font-weight: bold;
 }
-
 a:hover {
     color: #EDB2FF;
 }
-
-
 /* Video */
-
 .video-container {
     position: relative;
     padding-bottom: 56%;
     padding-top: 0px;
     overflow: hidden;
 }
-
 .video-container iframe, .video-container object, .video-container embed {
     position: absolute;
     width: 100%;
     height: 100%;
 }
-
-
 /* Film */
-
 .film {
     text-align: left;
     background-color: white;
     padding: 1.5em 0.5em 0.5em 0.5em;
     word-wrap: break-word;
 }
-
 .film img {
     padding: 0 0 1em 0;
 }
-
 .film strong {
     color: #5A0074;
 }
-
 .film ul {
     font-weight: 600;
     font-size: 0.9em;
@@ -334,16 +191,12 @@ a:hover {
     padding: 0;
     margin: 0 0 1em 0;
 }
-
-
 /* Color */
-
 .color {
     min-height: 80px;
     display: flex;
     align-items: center;
 }
-
 .color p {
     margin: 0 auto;
     padding: 0;
@@ -351,215 +204,250 @@ a:hover {
     font-size: 1.2em;
     color: #EDB2FF;
 }
-
-
 /* Website */
-
 .site {
     background-color: white;
     padding: 1.5em 1em 1em 1em;
     word-wrap: break-word;
 }
-
 .site .website-link {
     text-transform: uppercase;
 }
-
 .site p {
     margin-top: 1em;
 }
-
-
 /* Music */
-
 .music h3 {
     margin-bottom: 0.2em;
 }
-
 .music p a, .music a img {
     margin-bottom: 0.5em;
 }
-
 /*//////////////////////////////*/
-a.linkcolor{
-  cursor: pointer;
+a.linkcolor {
+    cursor: pointer;
+}
+.errormessage {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+.medialogo {
+    margin: 20px;
 }
 
-.errormessage{
-font-size: 16px;
-font-weight: bold;
-color: white;
-text-align: center;
+.divmedia {
+    text-align: center;
 }
-
-.medialogo{
-margin: 20px;
-}
-.divmedia{
-  text-align: center;
-}
-
 /*ENd affichage des resultats*/
-/* MEDIA QUERYS */
-/*--------------------------------------------------------------------------------------------------------------*/
-/*-- LG + Default -----------------------------------------------------------------------------------------------------------*/
-@media (min-width: 1200px) {
-  .spinner {
-    margin-top: 20%;
-  }
-}
-/*-- MD ------------------------------------------------------------------------------------------------------------*/
-@media (min-width: 992px) and (max-width: 1199px) {
-  .spinner {
-    margin-top:25%;
-    margin-left:45%;
-  }
-}
-/*-- SM ------------------------------------------------------------------------------------------------------------*/
-@media (max-width: 992px) {
-  .spinner {
-    margin-top:30%;
-    margin-left:45%;
-  }
-}
-/*-- XS ------------------------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 767px) {
-  .spinner {
-    margin-top:40%;
-    margin-left:45%;
-  }
-}
-/*--------------------------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 610px) {
-  .spinner {
-    margin-top:50%;
-    margin-left:35%;
-  }
-}
-/*--------------------------------------------------------------------------------------------------------------*/
-@media only screen and (max-width: 480px) {
-  .spinner {
-    margin-top:60%;
-    margin-left:37%;
-  }
-}
-@media only screen and (max-width: 430px) {
-  .spinner {
-    margin-top:65%;
-    margin-left:35%;
-  }
-}
-
-
 /* ////////////////////////////// HISTORY and FAVOURITES ////////////////////////////// */
 .history h2, .favourite h2 {
-  color: white;
-  font-weight: bold;
-  margin: 1em 0;
+    color: white;
+    font-weight: bold;
+    margin: 1em 0;
 }
 .searchHistory, .searchFavourites {
-  background-color: white;
-  border-radius: 10px;
-  margin-bottom: 1.6em;
-  padding: 1em;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 1.6em;
+    padding: 1em;
 }
 .searchHistory h4 {
-  font-weight: bold;
-  color: #5A0074;
-  margin: 0 0 0.5em 0;
-  cursor: pointer;
+    font-weight: bold;
+    color: #5A0074;
+    margin: 0 0 0.5em 0;
+    cursor: pointer;
 }
-
 .searchFavourites h4 {
-  font-weight: bold;
-  color: #5A0074;
-  margin: 0;
-  cursor: pointer;
+    font-weight: bold;
+    color: #5A0074;
+    margin: 0;
+    cursor: pointer;
 }
-
 .searchHistory h5 {
-  margin: 0 0 0.5em 0;
+    margin: 0 0 0.5em 0;
 }
-
 .searchHistory i {
-  font-size: 2.5em;
-  color: #340B40;
-  margin: 0 0.2em 0 0;
-  padding: 0;
+    font-size: 2.5em;
+    color: #340B40;
+    margin: 0 0.2em 0 0;
+    padding: 0;
 }
-
 .searchFavourites i {
-  font-size: 1em;
-  color: #340B40;
-  margin: 0 0.5em 0 0;
-  padding: 0;
+    font-size: 1em;
+    color: #340B40;
+    margin: 0 0.5em 0 0;
+    padding: 0;
 }
-
 .delete {
-  float: right;
+    float: right;
 }
-
 .result-thumb {
-  background-color: #EDB2FF;
-  border-radius: 10px;
-  margin: 0 0 0.6em 0;
-  padding: 10px 14px;
+    background-color: #EDB2FF;
+    border-radius: 10px;
+    margin: 0 0 0.6em 0;
+    padding: 10px 14px;
 }
-
 .options {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
-
 /* BUTTON PLAY ON VIDEO */
 .video-wrapper {
-  position: relative;
+    position: relative;
 }
 .video-wrapper img {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 .video-wrapper a i {
-  position: absolute;
-  color: white;
-  z-index: 2;
+    position: absolute;
+    color: white;
+    z-index: 2;
 }
-
-
-@media (min-width: 320px){
-  .video-wrapper i {
-    margin: 5% 0 0 10%;
-    font-size: 4em;
-  }
-}
-@media (min-width: 768px) {
-  .video-wrapper i {
-    margin: 5% 0 0 15%;
-    font-size: 4em;
-  }
-}
-@media (min-width: 992px) {
-  .video-wrapper i {
-    margin: 5% 0 0 10%;
-    font-size: 2.5em;
-  }
-}
-
 /* RESULT THUMB */
 .result-thumb .video-wrapper, .result-thumb .image, .result-thumb .color {
-  margin-bottom: 10px;
-  margin-top: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .result-thumb .site {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .result-thumb .film, .result-thumb .gif, .result-thumb .music {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
-
 .result-thumb h5 {
-  margin: 0 0 4px 0;
-  text-align: center;
+    margin: 0 0 4px 0;
+    text-align: center;
 }
+/* MEDIA QUERYS */
+/*--------------------------------------------------------------------------------------------------------------*/
+/*-- LG + Default -----------------------------------------------------------------------------------------------------------*/
+
+@media (min-width: 1200px) {
+    .spinner {
+        margin-top: 20%;
+    }
+    #top-button {
+        opacity: 0;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 2.9em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+/*-- MD ------------------------------------------------------------------------------------------------------------*/
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .spinner {
+        margin-top: 25%;
+        margin-left: 45%;
+    }
+    .video-wrapper i {
+        margin: 5% 0 0 10%;
+        font-size: 2.5em;
+    }
+    .overlay .closebtn {
+        position: absolute;
+        top: 2.9em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+/*-- SM ------------------------------------------------------------------------------------------------------------*/
+@media (max-width: 992px) {
+    .spinner {
+        margin-top: 30%;
+        margin-left: 45%;
+    }
+    .overlay .closebtn {
+        position: absolute;
+        top: 2.3em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 2.3em;
+        right: 5em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+/*-- XS ------------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+    .spinner {
+        margin-top: 40%;
+        margin-left: 45%;
+    }
+    .video-wrapper i {
+        margin: 5% 0 0 15%;
+        font-size: 4em;
+    }
+    .overlay .closebtn {
+        position: absolute;
+        top: 1.8em;
+        right: 2em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 1.8em;
+        right: 2em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 610px) {
+    .spinner {
+        margin-top: 50%;
+        margin-left: 35%;
+    }
+}
+/*--------------------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 480px) {
+    .spinner {
+        margin-top: 60%;
+        margin-left: 37%;
+    }
+}
+@media only screen and (max-width: 430px) {
+    .spinner {
+        margin-top: 65%;
+        margin-left: 35%;
+    }
+}
+@media (min-width: 320px) {
+    .video-wrapper i {
+        margin: 5% 0 0 10%;
+        font-size: 4em;
+    }
+    #top-button {
+        opacity: 1;
+    }
+    .overlay .closebtn {
+        position: absolute;
+        top: 0.9em;
+        right: 1em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+    .hamburger-menu {
+        position: absolute;
+        top: 0.9em;
+        right: 1em;
+        margin: 0;
+        padding: 5px 10px;
+    }
+}
+/*--------------------------------------END MEDIA QUERIES----------------------------------------------------------------------------------------------*/

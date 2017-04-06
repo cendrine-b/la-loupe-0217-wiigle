@@ -26,9 +26,7 @@
         </div>
     </div>
 </div>
-
 <div class="container-fluid result" ng-show="resultatrecherche">
-
   <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&mobile_iframe=true&width=105&height=20&appId" width="105" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
     <div class="row">
         <div class="col-lg-5 col-md-7 col-sm-7 first-column">
@@ -39,10 +37,13 @@
                       <p class="errormessage">Sorry we didn't find any Video of "{{query}}"</p>
                 </div>
             </div>
+            <div class="divmedia" ng-hide="imgVideo">
+               <p class="errormessage">Sorry we didn't find any Video of "{{query}}"</p>
+               <img src="img/video.png" alt="" class="medialogo">
+           </div>
             <!-- END VIDEO -->
             <!-- START FILM -->
             <div ng-hide="hideMovie" class="col-xs-12 film">
-
                 <div id="results">
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                         <a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"></a>
@@ -63,14 +64,12 @@
                     </div>
                 </div>
             </div>
-
              <div class="divmedia" ng-hide="cineImage">
                 <img src="img/movie.png" alt="" class="medialogo">
                 <p class="errormessage">Sorry we didn't find any Film of "{{query}}"</p>
             </div>
             <!-- END FILM -->
         </div>
-
         <div class="col-lg-4 col-md-5 col-sm-5 second-column">
             <!-- START IMAGE -->
             <a href="{{image.value[0].contentUrl}}" target="_blank"> <img class="img-responsive center-block image" src="{{image.value[0].contentUrl}}" alt=""></a>
@@ -88,7 +87,6 @@
                 </div>
             </div>
             <!-- END GIF -->
-
         </div>
         <!-- START COULEUR -->
         <div class="col-lg-3 col-md-6 col-sm-6 third-column">
@@ -99,9 +97,8 @@
                     </div>
                 </a>
             </div>
-
             <div ng-hide="imgColor" class="divmedia">
-                <p class="errormessage">Sorry we didn't find any color of "{{query}}"</p>
+                <p class="errormessage">Sorry don't find a color of "{{query}}"</p>
                 <img src="img/color.png" alt="" class="medialogo">
             </div>
             <!-- END COULEUR -->
@@ -126,15 +123,13 @@
                 <audio class="col-xs-12" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
             </div>
             <div class="divmedia" ng-hide="imgAudio">
-                <img src="img/music.png" alt="" class="medialogo">
                 <p class="errormessage">Sorry we didn't find any Music of "{{query}}"</p>
+                <img src="img/music.png" alt="" class="medialogo">
             </div>
             <!-- END MUSIQUE -->
         </div>
     </div>
 </div>
-
-
 <!-- BACK TO TOP BUTTON -->
 <button id="top-button" class="btn btn-default" ng-click="scroll()" ng-controller="ScrollController">
   <span class="glyphicon glyphicon-menu-up"></span>
