@@ -92,7 +92,7 @@
 
         </div>
         <!-- START COULEUR -->
-        <div class="col-lg-3 col-md-5 col-sm-5 third-column">
+        <div class="col-lg-3 col-md-6 col-sm-6 third-column">
             <div ng-hide="hideColor">
                 <a class="linkcolor" copy-to-clipboard="#{{ color.colors[0].hex }}">
                     <div onclick="alert('The color has been copied to the clipboard')" class="color" style="background-color: #{{ color.colors[0].hex }}">
@@ -116,8 +116,10 @@
                 <img src="img/404.jpg" alt="">
                 <p>sorry we didn't find any website of "{{query}}" so there is a cat !</p>
             </div>
+          </div>
             <!-- END WEBSITE -->
             <!-- START MUSIQUE -->
+            <div class="col-lg-3 col-md-6 col-sm-6 third-column">
             <div ng-hide="hideAudio" class="col-xs-12 site text-center music">
                 <h3><a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].name }}</a></h3>
                 <p><a href="{{ data.tracks.items[0].artists[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].artists[0].name }}</a></p>

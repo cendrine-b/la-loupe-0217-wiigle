@@ -13,67 +13,43 @@
             <!-- FIRST COLUMN -->
             <div class="col-lg-5 col-md-7 col-sm-7 first-column">
               <!-- VIDEO -->
-              <div class="col-xs-12 video-container video" ng-bind-html="bindHTML">
+              <div class="video-wrapper">
+                <a href="{{ search.results.video }}" target="_blank"><i class="fa fa-play-circle" aria-hidden="true"></i><img class="img-responsive center-block image" src="{{ search.results.videoImage }}" alt=""></a>
               </div>
               <!-- FILM -->
               <div class="col-xs-12 film">
-                <div id="results">
-                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-                        <a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ details.Poster=='N/A' ? 'http://placehold.it/150x220&text=N/A' : details.Poster }}"></a>
-                    </div>
-                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                        <h3 class="title"><a href="http://imdb.com/title/{{ details.imdbID }}" target="_blank">{{ details.Title }}</a></h3>
-                        <ul class="film-details">
-                            <li><strong>Released on: </strong> {{ details.Released }} ({{ details.Runtime }})</li>
-                            <li><strong>Director: </strong> {{ details.Director }}</li>
-                            <li><strong>Actors: </strong> {{ details.Actors }}</li>
-                            <li><strong>Genre: </strong> {{ details.Genre }}</li>
-                        </ul>
-                        <p>{{ details.Plot }}</p>
-                        <ul class="ratings">
-                            <li><strong>IMDb Rating: </strong> {{ details.imdbRating }}</li>
-                            <li><strong>Rotten Tomatoes: </strong> {{ details.tomatoRating }}</li>
-                        </ul>
-                    </div>
+                <div class="col-xs-12">
+                    <h5><a href="http://imdb.com/title/{{ search.results.omdbLink }}" target="_blank">{{ search.results.omdbTitle }}</a></h5>
+                    <a href="{{ search.results.omdb }}" target="_blank"><img class="img-responsive center-block" ng-src="{{ search.results.omdb }}"></a>
                 </div>
               </div>
             </div>
             <!-- SECOND COLUMN -->
             <div class="col-lg-4 col-md-5 col-sm-5 second-column">
               <!-- IMAGE -->
-              <a href="{{image.value[0].contentUrl}}" target="_blank"> <img class="img-responsive center-block image" src="{{image.value[0].contentUrl}}" alt=""></a>
+              <a href="{{ search.results.image }}" target="_blank"> <img class="img-responsive center-block image" src="{{ search.results.image }}" alt=""></a>
               <!-- GIF -->
-              <div>
-                  <a href="{{gif[0].bitly_gif_url}}" target="_blank"><img class="img-responsive center-block gif" src="{{gif[0].images.downsized.url}}" alt=""></a>
-              </div>
+              <a href="{{ search.results.giphy }}" target="_blank"><img class="img-responsive center-block gif" src="{{ search.results.giphy }}" alt=""></a>
             </div>
             <!-- THIRD COLUMN -->
             <div class="col-lg-3 col-md-5 col-sm-5 third-column">
-              <div class="">
-                <div class="color" style="background-color: #{{ color.colors[0].hex }};">
-                  <p>#{{ color.colors[0].hex }}</p>
-                </div>
-              </div>
+              <a class="linkcolor" copy-to-clipboard="#{{ search.results.color }}">
+                  <div onclick="alert('The color has been copied to the clipboard')" class="color" style="background-color: #{{ search.results.color }}">
+                      <p>#{{ search.results.color }}</p>
+                  </div>
+              </a>
               <!-- WEBSITE -->
               <div class="col-xs-12 site text-center">
-                <h3><a href="{{web.webPages.value[0].url}}" target="_blank">{{web.webPages.value[0].name}}</a></h3>
-                <a class="website-link" href="{{web.webPages.value[0].url}}" target="_blank">See website</a>
-                <p>{{web.webPages.value[0].snippet}}</p>
+                <h5><a href="{{ search.results.web }}" target="_blank">{{ search.results.webName }}</a></h5>
               </div>
               <!-- MUSIC -->
               <div class="col-xs-12 site text-center music">
-                <h3><a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].name }}</a></h3>
-                <p><a href="{{ data.tracks.items[0].artists[0].external_urls.spotify }}" target="_blank">{{ data.tracks.items[0].artists[0].name }}</a></p>
-                <a href="{{ data.tracks.items[0].external_urls.spotify }}" target="_blank"><img class="img-responsive center-block" src="{{ data.tracks.items[0].album.images[1].url }}" /></a>
-                <audio class="col-xs-12" src="{{ data.tracks.items[0].preview_url }}" controls></audio>
+                <a href="{{ search.results.spotifyAlbum }}" target="_blank"><img class="img-responsive center-block" src="{{ search.results.spotifyAlbum }}" /></a>
+                <audio class="col-xs-12" src="{{ search.results.spotify }}" controls></audio>
               </div>
             </div>
 
-
-
           </div>
-
-
 
         </div>
 
@@ -85,7 +61,7 @@
               <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
             <div class="col-xs-6">
-              <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="delete($index)">Delete</button>
+              <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="delete(search._id, $index)">Delete</button>
             </div>
           </div>
         </div>
@@ -112,3 +88,8 @@
 
   </div>
 </div>
+
+<!-- BACK TO TOP BUTTON -->
+<button id="top-button" class="btn btn-default" ng-click="scroll()" ng-controller="ScrollController">
+  <span class="glyphicon glyphicon-menu-up"></span>
+</button>

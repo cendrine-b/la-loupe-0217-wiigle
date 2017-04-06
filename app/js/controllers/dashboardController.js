@@ -6,7 +6,7 @@ angular.module('app')
         };
 
 
-        $scope.delete = function (index) {
+        $scope.delete = function (id, index) {
           $scope.history.splice(index, 1);
         };
 

@@ -470,9 +470,62 @@ a.linkcolor{
   background-color: #EDB2FF;
   border-radius: 10px;
   margin: 0 0 0.6em 0;
-  padding: 10px 10px;
+  padding: 10px 14px;
 }
 .options {
   margin: 0;
   padding: 0;
+}
+
+/* BUTTON PLAY ON VIDEO */
+.video-wrapper {
+  position: relative;
+}
+.video-wrapper img {
+  position: relative;
+  z-index: 1;
+}
+.video-wrapper a i {
+  position: absolute;
+  color: white;
+  z-index: 2;
+}
+
+
+@media (min-width: 320px){
+  .video-wrapper i {
+    margin: 5% 0 0 10%;
+    font-size: 4em;
+  }
+}
+@media (min-width: 768px) {
+  .video-wrapper i {
+    margin: 5% 0 0 15%;
+    font-size: 4em;
+  }
+}
+@media (min-width: 992px) {
+  .video-wrapper i {
+    margin: 5% 0 0 10%;
+    font-size: 2.5em;
+  }
+}
+
+/* RESULT THUMB */
+.result-thumb .video-wrapper, .result-thumb .image, .result-thumb .color {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.result-thumb .site {
+  margin-bottom: 10px;
+}
+
+.result-thumb .film, .result-thumb .gif, .result-thumb .music {
+  margin-bottom: 10px;
+}
+
+.result-thumb h5 {
+  margin: 0 0 4px 0;
+  text-align: center;
 }
