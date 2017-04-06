@@ -9,14 +9,13 @@ module.exports = (app) => {
 
     var search = new Search();
 
-
     router.post('/', search.create);
 
-    router.get('/', search.getAll);
 
-    // DELETE SEARCH FROM DATABASE
-    // router.delete('/:id', Auth.hasAuthorization, search.delete);
+    router.get('/', search.getAll);
+    router.get('/:id', search.getByUser);
+
+
 
     app.use('/searches', router);
-
 };
