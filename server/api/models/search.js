@@ -14,7 +14,19 @@ const searchSchema = new mongoose.Schema({
             },
             results: {
                 omdb: {
-                    type: String
+                    type: {
+                        String
+                    }
+                },
+                omdbTitle: {
+                    type: {
+                        String
+                    }
+                },
+                omdbLink: {
+                    type: {
+                        String
+                    }
                 },
                 giphy: {
                     type: {
@@ -31,12 +43,27 @@ const searchSchema = new mongoose.Schema({
                         String
                     }
                 },
+                spotifyAlbum: {
+                    type: {
+                        String
+                    }
+                },
                 video: {
                     type: {
                         String
                     }
                 },
+                videoImage: {
+                    type: {
+                        String
+                    }
+                },
                 web: {
+                    type: {
+                        String
+                    }
+                },
+                webName: {
                     type: {
                         String
                     }
@@ -70,7 +97,7 @@ const searchSchema = new mongoose.Schema({
                   if (err) {
                   res.status(500).send(err.message);
                 } else {
-                  res.json(searches)
+                  res.json(searches);
                 }
                 });
             }

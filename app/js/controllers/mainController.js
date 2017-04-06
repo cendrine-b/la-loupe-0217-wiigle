@@ -139,12 +139,17 @@ angular.module('app')
                   console.log("log in ok");
                   var results = {
                         omdb: $scope.details.Poster,
-                        giphy: $scope.gif[0].bitly_gif_url,
+                        omdbTitle: $scope.details.Title,
+                        omdbLink: $scope.details.imdbID,
+                        giphy: $scope.gif[0].images.downsized.url,
                         image: $scope.image.value[0].contentUrl,
                         spotify: $scope.data.tracks.items[0].preview_url,
+                        spotifyAlbum: $scope.data.tracks.items[0].album.images[1].url,
                         video: $scope.video.value[0].contentUrl,
+                        videoImage: $scope.video.value[0].thumbnailUrl,
                         web: $scope.web.webPages.value[0].url,
-                        color: $scope.color.colors.length > 0 ? $scope.color.colors[0].hex : null
+                        webName: $scope.web.webPages.value[0].name,
+                        color: $scope.color.colors[0].hex
                     };
                     console.log(results);
 
