@@ -113,6 +113,7 @@ angular.module('app')
 
             // color API
             callColor.then(function(response) {
+              console.log(response.data);
                 $scope.color = response.data;
                 $scope.imgColor = true;
                 if ($scope.color.counts.matching_colors === "0") {
@@ -143,7 +144,7 @@ angular.module('app')
                         spotify: $scope.data.tracks.items[0].preview_url,
                         video: $scope.video.value[0].contentUrl,
                         web: $scope.web.webPages.value[0].url,
-                        color: $scope.color.colors[0].hex
+                        color: $scope.color.colors.length > 0 ? $scope.color.colors[0].hex : null
                     };
                     console.log(results);
 

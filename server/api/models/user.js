@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     },
     isAdmin: {
         type: Boolean,
-        default: false
+        default: true
     },
 search : [{type: mongoose.Schema.ObjectId,
           ref: 'Search'}]
