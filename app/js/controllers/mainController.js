@@ -77,8 +77,11 @@ angular.module('app')
                 if ($scope.data.tracks.items.length === 0) {
                     $scope.imgAudio = false;
                     $scope.hideAudio = true;
-
+                } else {
+                    $scope.hideWeb = true;
+                    $scope.hideImgWeb = false;
                 }
+
 
             });
 
