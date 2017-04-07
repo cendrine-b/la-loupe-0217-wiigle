@@ -142,11 +142,6 @@ html, body {
   font-weight: 400;
 }
 
-#user-menu i {
-  font-size: 2em;
-  margin-right: 0.4em;
-}
-
 #user-menu a:hover, #user-menu i:hover {
   color: #EDB2FF;
 }
