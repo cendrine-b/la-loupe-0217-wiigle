@@ -106,7 +106,8 @@ angular.module('app')
                 $scope.web = response.data;
                 if ($scope.web.rankingResponse.mainline !== undefined) {
 
-                } else {
+                }
+                else {
                     $scope.hideWeb = true;
                     $scope.hideImgWeb = false;
                 }

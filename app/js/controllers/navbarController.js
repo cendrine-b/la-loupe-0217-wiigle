@@ -3,7 +3,10 @@ angular.module('app')
         $scope.isCollapsed = true;
         $scope.auth = Auth;
         $scope.user = CurrentUser.user();
-        $scope.user.email = $scope.user.email.replace(/@.*$/,"");
+
+        if ($scope.user.email !== undefined) {
+          $scope.user.email = $scope.user.email.replace(/@.*$/,"");
+        }
 
         $scope.openNav = function () {
           document.getElementById("myNav").style.width = "100%";
