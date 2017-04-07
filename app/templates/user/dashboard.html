@@ -95,7 +95,7 @@
     <div class="col-md-4 col-xs-12 favourite">
       <h2>Favourites</h2>
       <div class="zoneFavourites">
-        <div class="searchFavourites" ng-repeat="search in favourites | orderBy: '-count'">
+        <div class="searchFavourites" ng-repeat="search in favourites | orderBy: '-count' | limitTo: 5">
           <div class="row">
             <div class="col-xs-6">
               <h4><i class="fa fa-star" aria-hidden="true"></i><a href="http://localhost:8000/#!/resultat/{{ search.content }}">{{ search.content }}</a></h4>

@@ -9,7 +9,7 @@ angular.module('app')
                     method: 'GET',
                     url: "https://api.cognitive.microsoft.com/bing/v5.0/videos/search?q=" + query + "&count=10&offset=0&safeSearch=Moderate",
                     headers: {
-                        'Ocp-Apim-Subscription-Key': 'db52e387ab0b4f7d8e24e84d4ce1c846'
+                        'Ocp-Apim-Subscription-Key': '6deba95f5e1f423a81e05087bd45fc54'
                     }
                 };
                 return $http(reqvideo);
