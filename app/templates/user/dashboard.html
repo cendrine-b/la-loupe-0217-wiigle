@@ -18,7 +18,7 @@
         <div class="row">
           <div class="col-xs-6">
             <h4><a ng-click="seeContent($index)">{{search.content}}</a></h4>
-            <h5>{{search.date | date: 'yyyy-MM-dd' }}</h5>
+            <h5>{{search.date | date: 'yyyy-MM-dd HH:mm' }}</h5>
           </div>
           <div class="col-xs-6">
             <button class="btn btn-default btn-md delete" type="button" name="button" ng-click="delete(search._id)">Delete</button>
