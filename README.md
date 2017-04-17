@@ -6,7 +6,7 @@ A search engine which gives you for each of your research one answer per medias 
 ![alt text](https://image.noelshack.com/fichiers/2017/16/1492438411-01-wiigle-homepage.png "Home page Wiigle")
 
 #### Results
-![alt text](https://image.noelshack.com/fichiers/2017/16/1492438415-02-wiigle-results.png "Result page Wiigle")
+![alt text](https://image.noelshack.com/fichiers/2017/16/1492438415-02-wiigle-results.png "Results Wiigle")
 
 #### History and favourites page
 ![alt text](https://image.noelshack.com/fichiers/2017/16/1492438413-03-wiigle-history.png "History and favourites page Wiigle")
