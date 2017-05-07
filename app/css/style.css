@@ -29,10 +29,6 @@ html, body {
     font-size: 1.8em;
 }
 
-.glyphicon-menu-hamburger, .glyphicon-remove {
-    opacity: 0.6;
-}
-
 /* RESPONSIVE BUTTON MENU */
 @media (min-width: 320px) {
     .overlay .closebtn {
@@ -203,8 +199,35 @@ html, body {
     font-weight: bold;
 }
 
-.glyphicon-search {
-    opacity: 0.6;
+.form-control, .btn-default {
+  border: solid blue 2px;
+}
+
+.btn-default {
+  color: blue;
+}
+
+.btn-default:hover {
+  border-color: #00007F;
+  color: #00007F;
+  background-color: white;
+}
+
+.search-query, .zoom {
+  border: solid blue 1px;
+}
+
+.btn-default.delete,
+.btn-default.delete-all {
+  color: white;
+  text-shadow: none;
+  background-color: blue;
+}
+
+.btn-default.delete:hover,
+.btn-default.delete-all:hover {
+  border: solid #00007F 2px;
+  background-color: #00007F;
 }
 
 
