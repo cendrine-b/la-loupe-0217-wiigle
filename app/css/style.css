@@ -1,8 +1,6 @@
 html, body {
     height: 100%;
     font-family: Helvetica, sans-serif;
-    background-color: #EDB2FF;
-    /*fond rose*/
 }
 
 
@@ -15,7 +13,7 @@ html, body {
     z-index: 3;
     top: 0;
     right: 0;
-    background-color: rgba(54, 11, 65, 0.9);
+    background-color: rgba(0, 0, 255, 0.9);
     overflow-x: hidden;
     transition: 0.5s;
 }
@@ -143,7 +141,7 @@ html, body {
 }
 
 #user-menu a:hover, #user-menu i:hover {
-  color: #EDB2FF;
+  color: #00007F;
 }
 
 #user-menu img {
@@ -159,7 +157,7 @@ html, body {
   bottom: 3%;
   color: white;
   font-size: 1.4em;
-  background-color: #340B40;
+  background-color: blue;
   border-radius: 50%;
   border: solid white 4px;
   margin: 0;
@@ -170,7 +168,7 @@ html, body {
 }
 
 #top-button:hover {
-  background-color: #5A0074;
+  background-color: #00007F;
 }
 
 @media (min-width: 320px) {
@@ -262,6 +260,7 @@ html, body {
 }
 
 .video, .film, .image, .gif, .color, .site, .music {
+    border: solid blue 1px;
     border-radius: 10px;
     margin-bottom: 1.6em;
 
@@ -282,13 +281,13 @@ h3 {
 }
 
 a {
-    color: #5A0074;
+    color: blue;
     text-decoration: none;
     font-weight: bold;
 }
 
 a:hover {
-    color: #EDB2FF;
+    color: #00007F;
 }
 
 
@@ -322,7 +321,7 @@ a:hover {
 }
 
 .film strong {
-    color: #5A0074;
+    color: blue;
 }
 
 .film ul {
@@ -347,7 +346,7 @@ a:hover {
     padding: 0;
     font-weight: bold;
     font-size: 1.2em;
-    color: #EDB2FF;
+    color: white;
 }
 
 
@@ -451,7 +450,7 @@ margin: 20px;
 
 /* ////////////////////////////// HISTORY and FAVOURITES ////////////////////////////// */
 .history h2, .favourite h2 {
-  color: white;
+  color: blue;
   font-weight: bold;
   margin: 1em 0;
 }
@@ -474,21 +473,21 @@ margin: 20px;
   margin-bottom: 1em;
 }
 .searchHistory, .searchFavourites {
-  background-color: white;
+  border: solid blue 1px;
   border-radius: 10px;
   margin-bottom: 1.6em;
   padding: 1em;
 }
 .searchHistory h4 {
   font-weight: bold;
-  color: #5A0074;
+  color: blue;
   margin: 0 0 0.5em 0;
   cursor: pointer;
 }
 
 .searchFavourites h4 {
   font-weight: bold;
-  color: #5A0074;
+  color: blue;
   margin: 0;
   cursor: pointer;
 }
@@ -499,14 +498,14 @@ margin: 20px;
 
 .searchHistory i {
   font-size: 2.5em;
-  color: #340B40;
+  color: blue;
   margin: 0 0.2em 0 0;
   padding: 0;
 }
 
 .searchFavourites i {
   font-size: 1em;
-  color: #340B40;
+  color: blue;
   margin: 0 0.5em 0 0;
   padding: 0;
 }
@@ -516,7 +515,6 @@ margin: 20px;
 }
 
 .result-thumb {
-  background-color: #EDB2FF;
   border-radius: 10px;
   margin-top: 0.6em;
   padding: 10px 14px;
@@ -582,5 +580,5 @@ margin: 20px;
 
 /* LABEL IN FORMS */
 label {
-  color: #5A0074;
+  color: blue;
 }
