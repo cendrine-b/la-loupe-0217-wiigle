@@ -211,26 +211,11 @@ html, body {
 /* END Search section - Home */
 
 
-/*START lettres logo*/
+/*LOGO*/
 
-.blue {
+.logo-home h1, .logo-result h1 {
     color: blue;
 }
-
-.red {
-    color: red;
-}
-
-.yellow {
-    color: yellow;
-}
-
-.green {
-    color: green;
-}
-
-
-/*END lettres logo*/
 
 
 /* START Search section - Result */
