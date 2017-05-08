@@ -9,7 +9,7 @@ A search engine which gives you for each of your research one answer per medias 
 ![](https://image.noelshack.com/fichiers/2017/19/1494256264-02-results.jpg "Results Wiigle")
 
 #### History and favourites page
-![](https://image.noelshack.com/fichiers/2017/19/1494256269-03-history-favourites.jpg "History and favourites page Wiigle")
+![](https://image.noelshack.com/fichiers/2017/19/1494256549-03-history-favourites.jpg "History and favourites page Wiigle")
 
 ### Requirements
 
