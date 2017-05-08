@@ -3,13 +3,13 @@
 A search engine which gives you for each of your research one answer per medias (video, film, image, gif, color, website and music).
 
 #### Home page
-![alt text](https://image.noelshack.com/fichiers/2017/16/1492438993-01-wiigle-homepage.png "Home page Wiigle")
+![](https://image.noelshack.com/fichiers/2017/19/1494256257-01-homepage.jpg "Home page Wiigle")
 
 #### Results
-![alt text](https://image.noelshack.com/fichiers/2017/16/1492438996-02-wiigle-results.png "Results Wiigle")
+![](https://image.noelshack.com/fichiers/2017/19/1494256264-02-results.jpg "Results Wiigle")
 
 #### History and favourites page
-![alt text](https://image.noelshack.com/fichiers/2017/16/1492438994-03-wiigle-history.png "History and favourites page Wiigle")
+![](https://image.noelshack.com/fichiers/2017/19/1494256549-03-history-favourites.jpg "History and favourites page Wiigle")
 
 ### Requirements
 
@@ -21,8 +21,8 @@ A search engine which gives you for each of your research one answer per medias 
 #### Installation
 
 ```bash
-git clone git@github.com:JbPasquier/mean-lineman.git
-cd mean-lineman
+git clone https://github.com/cendrine-b/la-loupe-0217-wiigle.git
+cd la-loupe-0217-wiigle
 npm install
 ```
 
