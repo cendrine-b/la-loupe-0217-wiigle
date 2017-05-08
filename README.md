@@ -3,13 +3,13 @@
 A search engine which gives you for each of your research one answer per medias (video, film, image, gif, color, website and music).
 
 #### Home page
-![alt text](https://image.noelshack.com/fichiers/2017/16/1492438993-01-wiigle-homepage.png "Home page Wiigle")
+![](https://image.noelshack.com/fichiers/2017/19/1494255021-01-homepage.jpg "Home page Wiigle")
 
 #### Results
-![alt text](https://image.noelshack.com/fichiers/2017/16/1492438996-02-wiigle-results.png "Results Wiigle")
+![](https://image.noelshack.com/fichiers/2017/19/1494255027-02-results.jpg "Results Wiigle")
 
 #### History and favourites page
-![alt text](https://image.noelshack.com/fichiers/2017/16/1492438994-03-wiigle-history.png "History and favourites page Wiigle")
+![](https://image.noelshack.com/fichiers/2017/19/1494255034-03-history-favourites.jpg "History and favourites page Wiigle")
 
 ### Requirements
 
