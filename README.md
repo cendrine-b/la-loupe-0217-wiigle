@@ -21,8 +21,8 @@ A search engine which gives you for each of your research one answer per medias 
 #### Installation
 
 ```bash
-git clone git@github.com:JbPasquier/mean-lineman.git
-cd mean-lineman
+git clone https://github.com/cendrine-b/la-loupe-0217-wiigle.git
+cd la-loupe-0217-wiigle
 npm install
 ```
 
